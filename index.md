@@ -38,5 +38,5 @@ title: WORFLOGY Inc. Vision and Tech.
 
 # 교육 문의
 
-> **worflogy@worflogy.com**
+> **worflogy@worflogy.com**<br>
 > [**카카오 오픈톡**](https://open.kakao.com/o/sDuIFoNh)
