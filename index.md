@@ -35,3 +35,8 @@ title: WORFLOGY Inc. Vision and Tech.
 ---
 
 ![프로세스](process.png) | ![스킬](technique.png)
+
+# 교육 문의
+
+> **worflogy@worflogy.com**
+> [**카카오 오픈톡**](https://open.kakao.com/o/sDuIFoNh)
