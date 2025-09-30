@@ -1,3 +1,8 @@
+---
+layout: default
+title: WORFLOGY Inc. Vision and Tech.
+---
+
 # AI 시대 필요한 사고(Thinking) 교육
 
 > edu.contextonai.com
@@ -29,5 +34,6 @@
 
 ---
 
-![프로세스](process.png)<br>
+![프로세스](process.png)
+
 ![스킬](technique.png)

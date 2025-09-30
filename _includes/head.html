@@ -1,0 +1,140 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  
+  <style>
+    /* Pretendard 폰트 불러오기 */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    /* 색상 변수 (GitHub Light Default 컨셉) */
+    :root {
+      --bg-color: #F6F8FA;
+      --text-color: #24292E;
+      --accent-color: #0969DA;
+      --border-color: #D0D7DE;
+      --card-bg-color: #FFFFFF;
+    }
+
+    /* 기본 스타일 */
+    body {
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        /* line-height: 1.7; */
+        margin: 0;
+    }
+
+    /* Markdown 콘텐츠를 감싸는 컨테이너 스타일 */
+    .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: var(--card-bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+    }
+
+    /* Markdown 태그별 스타일 */
+    /* 큰 제목(h1, h2)은 밑줄 유지 */
+    h1, h2 {
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+        font-weight: 600;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.3em;
+    }
+
+    /* 작은 제목(h3, h4, h5, h6)은 밑줄 제거 */
+    h3, h4, h5, h6 {
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+        font-weight: 600;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    a {
+        color: var(--accent-color);
+        text-decoration: none;
+        /* link-font-size-up */
+        font-size: larger;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    ul, ol {
+        padding-left: 2em;
+        margin-bottom: 1em;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    code {
+        font-family: monospace;
+        background-color: rgba(175, 184, 193, 0.2);
+        padding: 0.2em 0.4em;
+        border-radius: 6px;
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px solid var(--border-color);
+        margin: 2em 0;
+    }
+    
+    /* ======== ▼ 이미지 스타일 (추가된 부분) ▼ ======== */
+    .container img {
+      max-width: 80%;      /* 이미지가 컨테이너 너비를 넘지 않도록 설정 (반응형) */
+      height: auto;         /* 이미지의 가로세로 비율 유지 */
+      display: block;       /* 이미지를 블록 요소로 만들어 위아래 여백 적용 용이 */
+      margin: 1.5em auto;   /* 위아래 여백을 주고, 좌우는 auto로 설정하여 가운데 정렬 */
+      border-radius: 6px;   /* 컨테이너와 일관된 둥근 모서리 */
+      /* box-shadow: 0 4px 6px rgba(36, 41, 46, 0.1); /* 약간의 그림자 효과로 입체감 부여 */
+    }
+    /* ======== ▲ 이미지 스타일 (추가된 부분) ▲ ======== */
+
+    /* 테이블 스타일 */
+    .container table {
+      width: 100%;
+      margin-bottom: 1em;
+      border-spacing: 0;
+      border-collapse: collapse; 
+    }
+
+    .container th,
+    .container td {
+      padding: 0.75em;
+      border: 1px solid var(--border-color) !important; 
+    }
+
+    .container th {
+      font-weight: 600;
+      background-color: var(--bg-color);
+    }
+
+    .container tbody tr:nth-child(odd) {
+      background-color: var(--bg-color);
+    }
+
+    /* 반응형 */
+    @media (max-width: 768px) {
+        .container {
+            padding: 1.5rem;
+            margin: 1rem;
+        }
+    }
+  </style>
+  
+  <script>window.gtranslateSettings = {"default_language":"ko","languages":["ko","en"],"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"right","switcher_vertical_position":"top"}</script>
+  <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+</head>
