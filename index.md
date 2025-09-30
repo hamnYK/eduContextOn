@@ -34,7 +34,7 @@ title: WORFLOGY Inc. Vision and Tech.
 
 ---
 
-![프로세스](process.png) | ![스킬](technique.png)
+| ![프로세스](process.png) | ![스킬](technique.png) |
 
 # 교육 문의
 
