@@ -8,9 +8,9 @@ title: WORFLOGY Inc. Vision and Tech.
   <div class="section-label">Vision & Brand</div>
   <h2 class="section-title">AI 시대 필요한 사고(Thinking) 교육</h2>
   
-  <div class="vision-card" style="margin-bottom: 24px; border-left: 3px solid var(--accent);">
-    <div class="vision-label" style="color: var(--accent);">Notice</div>
-    <div class="vision-text" style="font-size: 15px; font-weight: normal; color: var(--text-muted); line-height: 1.6;">
+  <div class="vision-card notice-card">
+    <div class="vision-label">Notice</div>
+    <div class="vision-card-body">
       <strong>edu.contextonai.com</strong><br/>
       이하 내용은 개요이며 상세한 내용은 현재 준비 중입니다.
     </div>
@@ -31,7 +31,7 @@ title: WORFLOGY Inc. Vision and Tech.
       <div class="card-title">체계역학적 사고 교육</div>
       <div class="card-desc">시스템 다이내믹스(System Dynamics) 이론에 입각한 입체적 사고 교육을 수행합니다.</div>
     </div>
-    <div class="card" style="grid-column: span 2;">
+    <div class="card card-wide">
       <div class="card-icon">💬</div>
       <div class="card-title">문해력과 토론·논술</div>
       <div class="card-desc">글을 깊이 읽고, 논리 구조를 파악하며, 설득력 있는 글쓰기와 토론으로 연결하는 역량을 기릅니다.</div>
@@ -47,7 +47,7 @@ title: WORFLOGY Inc. Vision and Tech.
   <div class="vision-grid" style="margin-top: 24px;">
     <div class="vision-card">
       <div class="vision-label">The Paradox of Information</div>
-      <div class="vision-text" style="font-size: 15px; font-weight: normal; line-height: 1.7; color: var(--text-muted);">
+      <div class="vision-card-body">
         두 명에게 A에 대해 설명해 달라고 요청했습니다.<br/>
         • 한 명은 <strong>D</strong>라고 설명했고,<br/>
         • 나머지 한 명은 <strong>C</strong>라고 설명했습니다.<br/>
@@ -56,7 +56,7 @@ title: WORFLOGY Inc. Vision and Tech.
     </div>
     <div class="vision-card accent-card">
       <div class="vision-label">The Core of Thinking</div>
-      <div class="vision-text" style="font-size: 15px; font-weight: normal; line-height: 1.7;">
+      <div class="vision-card-body">
         우리는 <strong>A를 C라고 설명한 '그 왜'</strong>에 집중합니다. 질문을 통해 생각의 논리 구조(온톨로지)를 직접 그려보고, 가려진 새로운 가능성(Weak Signal)을 발견하여 더 설득력 있는 의사결정을 내릴 수 있는 사고 체계를 기릅니다.
       </div>
     </div>
@@ -82,7 +82,7 @@ title: WORFLOGY Inc. Vision and Tech.
       <div class="card-title">컨텍스톤 플랫폼</div>
       <div class="card-desc">생각의 도식을 온톨로지 맵으로 정밀하게 시각화하고 상호 피드백을 주고받는 협업 교육 도구입니다.</div>
     </div>
-    <div class="card" style="grid-column: span 2;">
+    <div class="card card-wide">
       <div class="card-icon">⚙️</div>
       <div class="card-title">워플로지 AI·온톨로지 엔진</div>
       <div class="card-desc">작성된 생각의 논리적 모순과 연결성을 지능형으로 분석하고 강화 포인트를 제안해주는 독자적인 기술 엔진입니다.</div>
@@ -99,12 +99,12 @@ title: WORFLOGY Inc. Vision and Tech.
   </p>
 
   <div class="card-grid" style="margin-top: 24px;">
-    <div class="card" style="background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); box-shadow: var(--shadow-sm); text-align: center; cursor: default;">
-      <img src="process.png" alt="프로세스" style="width: 100%; height: auto; border-radius: var(--r-sm); margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
+    <div class="card card-center">
+      <img src="process.png" alt="프로세스" class="card-img-fit">
       <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15.5px; color: var(--text);">Thinking 프로세스</span>
     </div>
-    <div class="card" style="background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); box-shadow: var(--shadow-sm); text-align: center; cursor: default;">
-      <img src="technique.png" alt="스킬" style="width: 100%; height: auto; border-radius: var(--r-sm); margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
+    <div class="card card-center">
+      <img src="technique.png" alt="스킬" class="card-img-fit">
       <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15.5px; color: var(--text);">사고 기법 및 툴</span>
     </div>
   </div>
