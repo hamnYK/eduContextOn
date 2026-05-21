@@ -57,8 +57,7 @@ title: WORFLOGY Inc. Vision and Tech.
     <div class="vision-card accent-card">
       <div class="vision-label">The Core of Thinking</div>
       <div class="vision-text" style="font-size: 15px; font-weight: normal; line-height: 1.7;">
-        우리는 <strong>A를 C라고 설명한 '그 왜'</strong>에 집중합니다.<br/>
-        질문을 통해 생각의 논리 구조(온톨로지)를 직접 그려보고, 가려진 새로운 가능성(Weak Signal)을 발견하여 더 설득력 있는 의사결정을 내릴 수 있는 사고 체계를 기릅니다.
+        우리는 <strong>A를 C라고 설명한 '그 왜'</strong>에 집중합니다. 질문을 통해 생각의 논리 구조(온톨로지)를 직접 그려보고, 가려진 새로운 가능성(Weak Signal)을 발견하여 더 설득력 있는 의사결정을 내릴 수 있는 사고 체계를 기릅니다.
       </div>
     </div>
   </div>
@@ -99,14 +98,14 @@ title: WORFLOGY Inc. Vision and Tech.
     과학적인 분석 절차와 정교하게 다듬어진 사고 스킬셋을 통해 생각을 맥락화합니다.
   </p>
 
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 24px;">
-    <div style="background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); box-shadow: var(--shadow-sm); text-align: center;">
+  <div class="card-grid" style="margin-top: 24px;">
+    <div class="card" style="background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); box-shadow: var(--shadow-sm); text-align: center; cursor: default;">
       <img src="process.png" alt="프로세스" style="width: 100%; height: auto; border-radius: var(--r-sm); margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
-      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15px; color: var(--text);">Thinking 프로세스</span>
+      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15.5px; color: var(--text);">Thinking 프로세스</span>
     </div>
-    <div style="background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); box-shadow: var(--shadow-sm); text-align: center;">
+    <div class="card" style="background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); box-shadow: var(--shadow-sm); text-align: center; cursor: default;">
       <img src="technique.png" alt="스킬" style="width: 100%; height: auto; border-radius: var(--r-sm); margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
-      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15px; color: var(--text);">사고 기법 및 툴</span>
+      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15.5px; color: var(--text);">사고 기법 및 툴</span>
     </div>
   </div>
 </section>
