@@ -108,6 +108,30 @@ title: WORFLOGY Inc. Vision and Tech.
       <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15.5px; color: var(--text);">사고 기법 및 툴</span>
     </div>
   </div>
+
+  <div class="gallery" style="margin-top: 40px; padding: 0;">
+    <div class="section-label">Screenshots</div>
+    <h2 class="section-title">주요 화면 (프로젝트 4: 게임 엔진)</h2>
+    <div class="slider-container">
+      <div class="slider-track">
+        <div class="slider-item"><img src="{{ '/images/project_4-0_narrative engine_story telling.png' | relative_url }}" alt="서사 엔진 - 스토리텔링" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/project_4-1_narrative engine_node.png' | relative_url }}" alt="서사 엔진 - 노드" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/project_4-2_narrative engine_edge.png' | relative_url }}" alt="서사 엔진 - 엣지" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/project_4-3_origin action.png' | relative_url }}" alt="오리진 액션" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/project_4-4_trpg transformation.png' | relative_url }}" alt="TRPG 변환" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/project_4-5_trpg combat.png' | relative_url }}" alt="TRPG 전투 시스템" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/project_4-6_narrative engine_quest generation.png' | relative_url }}" alt="서사 엔진 - 퀘스트 생성" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/project_4-7_game platform.png' | relative_url }}" alt="게임 플랫폼" loading="lazy" /></div>
+      </div>
+      <button class="slider-btn prev" aria-label="이전 이미지">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button class="slider-btn next" aria-label="다음 이미지">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="slider-dots"></div>
+  </div>
 </section>
 
 <!-- 5. 교육 문의 -->
