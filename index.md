@@ -113,14 +113,11 @@ title: WORFLOGY Inc. Vision and Tech.
     <h3 style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 18px; color: var(--text); margin-bottom: 20px; letter-spacing: -0.3px;">스토리텔링 게임 엔진 예시</h3>
     <div class="slider-container">
       <div class="slider-track">
-        <div class="slider-item"><img src="{{ '/images/project_4-0_narrative engine_story telling.png' | relative_url }}" alt="서사 엔진 - 스토리텔링" loading="lazy" /></div>
-        <div class="slider-item"><img src="{{ '/images/project_4-1_narrative engine_node.png' | relative_url }}" alt="서사 엔진 - 노드" loading="lazy" /></div>
-        <div class="slider-item"><img src="{{ '/images/project_4-2_narrative engine_edge.png' | relative_url }}" alt="서사 엔진 - 엣지" loading="lazy" /></div>
-        <div class="slider-item"><img src="{{ '/images/project_4-3_origin action.png' | relative_url }}" alt="오리진 액션" loading="lazy" /></div>
-        <div class="slider-item"><img src="{{ '/images/project_4-4_trpg transformation.png' | relative_url }}" alt="TRPG 변환" loading="lazy" /></div>
-        <div class="slider-item"><img src="{{ '/images/project_4-5_trpg combat.png' | relative_url }}" alt="TRPG 전투 시스템" loading="lazy" /></div>
-        <div class="slider-item"><img src="{{ '/images/project_4-6_narrative engine_quest generation.png' | relative_url }}" alt="서사 엔진 - 퀘스트 생성" loading="lazy" /></div>
-        <div class="slider-item"><img src="{{ '/images/project_4-7_game platform.png' | relative_url }}" alt="게임 플랫폼" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/4-0_narrative engine_story telling.png' | relative_url }}" alt="서사 엔진 - 스토리텔링" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/4-1_narrative engine_node.png' | relative_url }}" alt="서사 엔진 - 노드" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/4-2_narrative engine_edge.png' | relative_url }}" alt="서사 엔진 - 엣지" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/4-3_narrative engine_quest generation.png' | relative_url }}" alt="서사 엔진 - 퀘스트 생성" loading="lazy" /></div>
+        <div class="slider-item"><img src="{{ '/images/4-4_trpg combat.png' | relative_url }}" alt="TRPG 전투 시스템" loading="lazy" /></div>
       </div>
       <button class="slider-btn prev" aria-label="이전 이미지">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
