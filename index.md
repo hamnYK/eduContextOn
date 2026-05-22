@@ -139,7 +139,7 @@ title: WORFLOGY Inc. Vision and Tech.
   <div class="company-grid" style="margin-top: 24px; margin-bottom: 32px;">
     <div class="info-card">
       <div class="info-label">이메일 문의</div>
-      <div class="info-value"><a href="mailto:worflogy@worflogy.com">worflogy@worflogy.com</a></div>
+      <div class="info-value"><a href="mailto:worflogy@gmail.com">worflogy@gmail.com</a></div>
     </div>
     <div class="info-card">
       <div class="info-label">카카오 상담</div>
@@ -148,7 +148,7 @@ title: WORFLOGY Inc. Vision and Tech.
   </div>
 
   <div class="btn-group">
-    <a href="mailto:worflogy@worflogy.com" class="btn btn-primary">이메일 보내기</a>
+    <a href="mailto:worflogy@gmail.com" class="btn btn-primary">이메일 보내기</a>
     <a href="https://open.kakao.com/o/sDuIFoNh" target="_blank" rel="noopener noreferrer" class="btn btn-outline">실시간 카카오톡 상담</a>
   </div>
 </section>
