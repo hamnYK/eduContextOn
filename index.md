@@ -110,7 +110,7 @@ title: WORFLOGY Inc. Vision and Tech.
   </div>
 
   <div class="gallery" style="margin-top: 48px; padding: 0;">
-    <h3 style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 18px; color: var(--text); margin-bottom: 20px; letter-spacing: -0.3px;">스토리텔링 게임 엔진 예시</h3>
+    <h3 style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 18px; color: var(--text); margin-bottom: 20px; letter-spacing: -0.3px;">스토리텔링 게임 엔진 활용</h3>
     <div class="slider-container">
       <div class="slider-track">
         <div class="slider-item"><img src="{{ '/images/4-0_narrative engine_story telling.png' | relative_url }}" alt="서사 엔진 - 스토리텔링" loading="lazy" /></div>
