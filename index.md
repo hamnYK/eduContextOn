@@ -11,8 +11,8 @@ title: WORFLOGY Inc. Vision and Tech.
   <div class="vision-card notice-card">
     <div class="vision-label">Notice</div>
     <div class="vision-card-body">
-      <strong>edu.contextonai.com</strong><br/>
-      이하 내용은 개요이며 상세한 내용은 현재 준비 중입니다.
+      <p><strong>edu.contextonai.com</strong></p>
+      <p style="margin-top: 4px;">이하 내용은 개요이며 상세한 내용은 현재 준비 중입니다.</p>
     </div>
   </div>
 
@@ -48,10 +48,12 @@ title: WORFLOGY Inc. Vision and Tech.
     <div class="vision-card">
       <div class="vision-label">The Paradox of Information</div>
       <div class="vision-card-body">
-        두 명에게 A에 대해 설명해 달라고 요청했습니다.<br/>
-        • 한 명은 <strong>D</strong>라고 설명했고,<br/>
-        • 나머지 한 명은 <strong>C</strong>라고 설명했습니다.<br/>
-        대부분의 사람들은 익숙하고 노출 빈도가 높은 <strong>D</strong>라는 정보를 수용합니다.
+        <p>두 명에게 A에 대해 설명해 달라고 요청했습니다.</p>
+        <ul style="margin-top: 8px; margin-left: 20px; list-style-type: disc;">
+          <li>한 명은 <strong>D</strong>라고 설명했고,</li>
+          <li>나머지 한 명은 <strong>C</strong>라고 설명했습니다.</li>
+        </ul>
+        <p style="margin-top: 8px;">대부분의 사람들은 익숙하고 노출 빈도가 높은 <strong>D</strong>라는 정보를 수용합니다.</p>
       </div>
     </div>
     <div class="vision-card accent-card">
@@ -101,16 +103,16 @@ title: WORFLOGY Inc. Vision and Tech.
   <div class="card-grid" style="margin-top: 24px;">
     <div class="card card-center">
       <img src="process.png" alt="프로세스" class="card-img-fit">
-      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15.5px; color: var(--text);">Thinking 프로세스</span>
+      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: var(--fs-h4); color: var(--text);">Thinking 프로세스</span>
     </div>
     <div class="card card-center">
       <img src="technique.png" alt="스킬" class="card-img-fit">
-      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 15.5px; color: var(--text);">사고 기법 및 툴</span>
+      <span style="font-family: var(--font-serif-ko); font-weight: 600; font-size: var(--fs-h4); color: var(--text);">사고 기법 및 툴</span>
     </div>
   </div>
 
   <div class="gallery" style="margin-top: 48px; padding: 0;">
-    <h3 style="font-family: var(--font-serif-ko); font-weight: 600; font-size: 18px; color: var(--text); margin-bottom: 20px; letter-spacing: -0.3px;">스토리텔링 게임 엔진 활용</h3>
+    <h3 style="font-family: var(--font-serif-ko); font-weight: 600; font-size: var(--fs-body-sub); color: var(--text); margin-bottom: 20px; letter-spacing: -0.3px;">스토리텔링 게임 엔진 활용</h3>
     <div class="slider-container">
       <div class="slider-track">
         <div class="slider-item"><img src="{{ '/images/4-0_narrative engine_story telling.png' | relative_url }}" alt="서사 엔진 - 스토리텔링" loading="lazy" /></div>
