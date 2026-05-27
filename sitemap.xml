@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 1. 메인 페이지 (한국어) -->
+  <url>
+    <loc>https://edu.contextonai.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://edu.contextonai.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://edu.contextonai.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://edu.contextonai.com/"/>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 2. 메인 페이지 (영문) -->
+  <url>
+    <loc>https://edu.contextonai.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://edu.contextonai.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://edu.contextonai.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://edu.contextonai.com/"/>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+</urlset>

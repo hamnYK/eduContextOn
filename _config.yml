@@ -1,7 +1,20 @@
-url: "https://service.worflogy.com"
+url: "https://edu.contextonai.com"
 baseurl: ""
 
-title: 주식회사 워플로지
-description: AI·온톨로지 지능형 워크플로 디자인 & 솔루션
+# ── 사이트 기본 정보 ───────────────────────────────────────────
+title: "컨텍스톤 — AI 시대, 생각의 맥락을 디자인하다"
+title_short: "컨텍스톤 (Contexton)"
+brand_name_ko: "주식회사 워플로지"
+brand_name_en: "Worflogy Inc."
+description: "컨텍스톤은 주식회사 워플로지의 교육 브랜드입니다. 프랙털 온톨로지 기반의 체계역학적 사고 훈련과 AI 협업 역량을 기르는 맞춤형 교육 솔루션을 제공합니다."
+
+# ── SEO ──────────────────────────────────────────────────────
+canonical_url: "https://edu.contextonai.com"
+og_image: "https://edu.contextonai.com/assets/contexton_og_image.png"
+og_locale: "ko_KR"
+twitter_card: "summary_large_image"
+parent_site_url: "https://worflogy.com"
+
+# ── Jekyll ───────────────────────────────────────────────────
 markdown: kramdown
 # theme: minima

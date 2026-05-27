@@ -1,8 +1,12 @@
 ---
 layout: default
-title: WORFLOGY Inc. Vision and Tech.
 lang: en
 permalink: /en/
+title: "Contexton — Designing the Context of Thinking in the AI Era | Worflogy Education"
+seo_title: "Contexton — Designing the Context of Thinking in the AI Era | Worflogy Education"
+description: "Contexton is the educational brand of Worflogy Inc. We offer customized thinking education solutions — system dynamics-based cognitive training, literacy, debate, essay writing, and AI collaboration skills."
+og_image: "https://edu.contextonai.com/assets/contexton_og_image.png"
+og_locale: "en_US"
 ---
 
 <!-- 1. Education Vision & Philosophy -->
