@@ -65,10 +65,59 @@
       {{ content }}
     </main>
 
+    <!-- General Contact Modal Backdrop -->
+    <div id="ir-modal-backdrop" class="ir-modal-backdrop">
+      <div class="ir-modal-content">
+        <div class="ir-modal-header">
+          <h3 class="ir-modal-title">{% if lang == 'en' %}Education Service Inquiry{% else %}교육 서비스 문의{% endif %}</h3>
+          <button type="button" id="close-ir-modal" class="ir-modal-close-btn" aria-label="{% if lang == 'en' %}Close modal{% else %}모달 닫기{% endif %}">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <form id="ir-proposal-form">
+          <div class="ir-form-group">
+            <label for="ir-name">{% if lang == 'en' %}Name{% else %}문의자 이름{% endif %}</label>
+            <input type="text" id="ir-name" name="name" required placeholder="{% if lang == 'en' %}Enter your full name{% else %}성함을 입력해 주세요{% endif %}" autocomplete="name" />
+          </div>
+          <div class="ir-form-group">
+            <label for="ir-company">{% if lang == 'en' %}Company / Affiliation{% else %}회사명 / 소속{% endif %}</label>
+            <input type="text" id="ir-company" name="company" required placeholder="{% if lang == 'en' %}Enter your company or organization name{% else %}회사명 또는 기관명을 입력해 주세요{% endif %}" />
+          </div>
+          <div class="ir-form-group">
+            <label for="ir-email">{% if lang == 'en' %}Email Address{% else %}이메일 주소{% endif %}</label>
+            <input type="email" id="ir-email" name="email" required placeholder="{% if lang == 'en' %}Enter email to receive reply{% else %}답변을 받으실 이메일을 입력해 주세요{% endif %}" autocomplete="email" />
+          </div>
+          <div class="ir-form-group">
+            <label for="ir-message">{% if lang == 'en' %}Inquiry Details{% else %}문의 내용{% endif %}</label>
+            <textarea id="ir-message" name="message" required placeholder="{% if lang == 'en' %}Please describe details of your education service inquiry{% else %}교육 프로그램 도입 및 협업 문의 내용을 상세히 작성해 주세요{% endif %}"></textarea>
+          </div>
+          <div class="ir-modal-footer">
+            <button type="button" id="cancel-ir-modal" class="btn btn-outline">{% if lang == 'en' %}Cancel{% else %}취소{% endif %}</button>
+            <button type="submit" id="submit-ir-modal" class="btn btn-primary">{% if lang == 'en' %}Submit Inquiry{% else %}문의 제출하기{% endif %}</button>
+          </div>
+        </form>
+        <div id="ir-success-screen" class="ir-success-screen" style="display: none;">
+          <div class="ir-success-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+          </div>
+          <h4 class="ir-success-title">{% if lang == 'en' %}Submission Completed{% else %}문의 제출 완료{% endif %}</h4>
+          <p class="ir-success-desc">
+            {% if lang == 'en' %}Your education inquiry has been submitted successfully.<br>We will review your message and contact you shortly.{% else %}교육 서비스 문의가 성공적으로 접수되었습니다.<br>보내주신 문의 내용을 검토한 후 신속하게 연락드리겠습니다.{% endif %}
+          </p>
+          <button type="button" id="success-close-btn" class="btn btn-primary" style="border-radius: var(--r-sm);">{% if lang == 'en' %}OK{% else %}확인{% endif %}</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Language Switcher -->
     <script src="{{ '/js/language-switcher.js' | relative_url }}" defer></script>
 
     <!-- Scripts -->
     <script src="{{ '/js/main.js' | relative_url }}"></script>
+    <script src="{{ '/js/contact.js' | relative_url }}" defer></script>
   </body>
 </html>

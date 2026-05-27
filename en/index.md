@@ -145,14 +145,9 @@ permalink: /en/
       <div class="info-label">Email Inquiry</div>
       <div class="info-value"><a href="mailto:worflogy@gmail.com">worflogy@gmail.com</a></div>
     </div>
-    <div class="info-card">
-      <div class="info-label">KakaoTalk Consultation</div>
-      <div class="info-value"><a href="https://open.kakao.com/o/sDuIFoNh" target="_blank" rel="noopener noreferrer">Kakao Open Chat</a></div>
-    </div>
   </div>
 
   <div class="btn-group">
-    <a href="mailto:worflogy@gmail.com" class="btn btn-primary">Send Email</a>
-    <a href="https://open.kakao.com/o/sDuIFoNh" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Real-time KakaoTalk Consultation</a>
+    <button type="button" id="open-contact-modal" class="btn btn-primary">Send Email</button>
   </div>
 </section>
