@@ -27,9 +27,9 @@ graph TD
     subgraph Integrated_SD_System [Ontology-Based Simulation Engine (Closed Loop)]
         direction TB
         
-        Ontology[(Static Ontology DB \n [Current State: Stock] \n ex. Moon's Power=100, My Anger=50)]
-        RuleEngine{{SWRL / Rule Engine \n [Change Rule: Flow] \n IF Anger>40 THEN Trigger Resistance}}
-        TimeController((Time & State Controller \n [Time Progress: Δt] \n Mathematical Operation & Update))
+        Ontology[("Static Ontology DB <br> [Current State: Stock] <br> ex. Moon's Power=100, My Anger=50")]
+        RuleEngine{{"SWRL / Rule Engine <br> [Change Rule: Flow] <br> IF Anger>40 THEN Trigger Resistance"}}
+        TimeController(("Time & State Controller <br> [Time Progress: Δt] <br> Mathematical Operation & Update"))
         
         Ontology -- "① Provide Current State(t) Data" --> RuleEngine
         RuleEngine -- "② Infer Event/Change on Condition Met" --> TimeController
@@ -37,11 +37,11 @@ graph TD
     end
 
     subgraph LLM_Interface [AI / User Layer]
-        LLM[Language Model / AI Agent \n Flexible Context Understanding & Interface]
+        LLM["Language Model / AI Agent <br> Flexible Context Understanding & Interface"]
     end
 
     %% Guardrail Connection
-    LLM -. "④ Hallucination Prevention Verification (Grounding) \n Establish Secure Context Network" .-> Ontology
+    LLM -. "④ Hallucination Prevention Verification (Grounding) <br> Establish Secure Context Network" .-> Ontology
     TimeController -. "⑤ Block Action on Rule Violation (Risk Mitigation)" .-> LLM
 
     style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
