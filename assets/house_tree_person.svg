@@ -20,56 +20,56 @@
 
   <!-- 0. 삼각 관계 연결선 (온톨로지 링크) -->
   <g stroke="url(#htp-gradient)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.35">
-    <line x1="200" y1="120" x2="100" y2="220" />
-    <line x1="200" y1="120" x2="300" y2="220" />
-    <line x1="120" y1="240" x2="280" y2="240" />
+    <line x1="200" y1="120" x2="100" y2="230" />
+    <line x1="200" y1="120" x2="300" y2="230" />
+    <line x1="120" y1="250" x2="280" y2="250" />
   </g>
 
   <!-- 0-1. 연결선 상의 매개 노드 (Flow Nodes) -->
   <!-- 나무와 사람 사이 (중앙 가로선) -->
   <g fill="url(#htp-gradient)" opacity="0.8">
-    <circle cx="170" cy="240" r="3" />
-    <circle cx="200" cy="240" r="5" />
-    <circle cx="200" cy="240" r="9" stroke="url(#htp-gradient)" stroke-width="1" fill="none" opacity="0.4" />
-    <circle cx="230" cy="240" r="3" />
+    <circle cx="170" cy="250" r="3" />
+    <circle cx="200" cy="250" r="5" />
+    <circle cx="200" cy="250" r="9" stroke="url(#htp-gradient)" stroke-width="1" fill="none" opacity="0.4" />
+    <circle cx="230" cy="250" r="3" />
   </g>
   <!-- 집과 나무 사이 (사선) -->
-  <circle cx="150" cy="170" r="3" fill="url(#htp-gradient)" opacity="0.8" />
+  <circle cx="150" cy="185" r="3" fill="url(#htp-gradient)" opacity="0.8" />
   <!-- 집과 사람 사이 (사선) -->
-  <circle cx="250" cy="170" r="3" fill="url(#htp-gradient)" opacity="0.8" />
+  <circle cx="250" cy="185" r="3" fill="url(#htp-gradient)" opacity="0.8" />
 
-  <!-- 1. 집 (House) : 상단 중앙 -->
+  <!-- 1. 집 (House) : 상단 중앙 (x=160~240, y=70~150) -->
   <g class="house" stroke="url(#htp-gradient)" stroke-width="2">
     <!-- 지붕 -->
-    <path d="M 150 110 L 200 60 L 250 110 Z" fill="url(#htp-fill-coral)" />
+    <path d="M 160 110 L 200 70 L 240 110 Z" fill="url(#htp-fill-coral)" />
     <!-- 벽 -->
-    <rect x="165" y="110" width="70" height="50" fill="url(#htp-fill-navy)" />
+    <rect x="170" y="110" width="60" height="40" fill="url(#htp-fill-navy)" />
     <!-- 문 -->
-    <rect x="188" y="130" width="24" height="30" fill="url(#htp-fill-coral)" />
+    <rect x="190" y="125" width="20" height="25" fill="url(#htp-fill-coral)" />
     <!-- 창문 -->
-    <circle cx="200" cy="88" r="8" fill="#FFFFFF" fill-opacity="0.2" />
+    <circle cx="200" cy="94" r="6" fill="#FFFFFF" fill-opacity="0.2" />
   </g>
 
-  <!-- 2. 나무 (Tree) : 하단 좌측 -->
+  <!-- 2. 나무 (Tree) : 하단 좌측 (x=60~140, y=210~290) -->
   <g class="tree" stroke="url(#htp-gradient)" stroke-width="2">
     <!-- 나무 줄기 -->
-    <line x1="100" y1="245" x2="100" y2="290" />
-    <!-- 3단 삼각형 잎 -->
-    <polygon points="100,165 60,215 140,215" fill="url(#htp-fill-navy)" />
-    <polygon points="100,190 65,240 135,240" fill="url(#htp-fill-coral)" />
-    <polygon points="100,215 70,265 130,265" fill="url(#htp-fill-navy)" />
+    <line x1="100" y1="260" x2="100" y2="290" />
+    <!-- 기하학적 3단 삼각형 잎 -->
+    <polygon points="100,210 70,240 130,240" fill="url(#htp-fill-navy)" />
+    <polygon points="100,225 65,260 135,260" fill="url(#htp-fill-coral)" />
+    <polygon points="100,240 60,275 140,275" fill="url(#htp-fill-navy)" />
   </g>
 
-  <!-- 3. 사람 (Person) : 하단 우측 -->
+  <!-- 3. 사람 (Person) : 하단 우측 (x=260~340, y=210~290) -->
   <g class="person" stroke="url(#htp-gradient)" stroke-width="2">
     <!-- 머리 -->
-    <circle cx="300" cy="195" r="12" fill="url(#htp-fill-coral)" />
+    <circle cx="300" cy="223" r="10" fill="url(#htp-fill-coral)" />
     <!-- 몸통 -->
-    <path d="M 288 220 L 312 220 L 318 265 L 282 265 Z" fill="url(#htp-fill-navy)" />
+    <path d="M 285 233 L 315 233 L 320 265 L 280 265 Z" fill="url(#htp-fill-navy)" />
     <!-- 팔 -->
-    <path d="M 275 235 Q 300 220 325 235" />
+    <path d="M 265 248 L 285 240 L 300 240 L 315 240 L 335 248" />
     <!-- 다리 -->
-    <line x1="290" y1="265" x2="280" y2="305" />
-    <line x1="310" y1="265" x2="320" y2="305" />
+    <line x1="285" y1="265" x2="275" y2="290" />
+    <line x1="315" y1="265" x2="325" y2="290" />
   </g>
 </svg>
