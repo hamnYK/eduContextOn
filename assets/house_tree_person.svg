@@ -89,6 +89,26 @@
       .flow-line {
         animation: dash-flow 1.5s infinite linear;
       }
+
+      /* 5. 나무-사람 사이 양방향 빛방울 교차 애니메이션 */
+      @keyframes move-particle-right {
+        0% { transform: translateX(120px); opacity: 0; }
+        12% { opacity: 1; }
+        88% { opacity: 1; }
+        100% { transform: translateX(280px); opacity: 0; }
+      }
+      @keyframes move-particle-left {
+        0% { transform: translateX(280px); opacity: 0; }
+        12% { opacity: 1; }
+        88% { opacity: 1; }
+        100% { transform: translateX(120px); opacity: 0; }
+      }
+      .flow-particle-right {
+        animation: move-particle-right 3s infinite linear;
+      }
+      .flow-particle-left {
+        animation: move-particle-left 3.5s infinite linear 1.5s;
+      }
     </style>
   </defs>
 
@@ -111,6 +131,10 @@
   <circle cx="150" cy="185" r="3" fill="url(#htp-gradient)" opacity="0.8" />
   <!-- 집과 사람 사이 (사선) -->
   <circle cx="250" cy="185" r="3" fill="url(#htp-gradient)" opacity="0.8" />
+
+  <!-- 0-2. 가로선 상의 양방향 교차 빛방울 (Flow Particles) -->
+  <circle class="flow-particle-right" cx="0" cy="250" r="3" fill="#E8613A" />
+  <circle class="flow-particle-left" cx="0" cy="250" r="3.5" fill="#1A1F36" stroke="url(#htp-gradient)" stroke-width="0.5" />
 
   <!-- 1. 집 (House) : 상단 중앙 (x=160~240, y=70~150) -->
   <g class="house" stroke="url(#htp-gradient)" stroke-width="2">
