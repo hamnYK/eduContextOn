@@ -718,15 +718,14 @@
 }
 
 /* ── Diagram Card Component ── */
-.diagram-section {
-  padding: 40px 64px;
-}
 .diagram-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   padding: 32px;
-  margin-bottom: 32px;
+  max-width: 960px;
+  margin: 0 auto 32px auto;
+  text-align: left;
   box-shadow: var(--shadow-sm);
   transition: var(--t);
   position: relative;

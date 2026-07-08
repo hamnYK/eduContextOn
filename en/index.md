@@ -10,15 +10,13 @@ og_locale: "en_US"
 ---
 
 <!-- House, Tree, Person SVG Illustration (Triple Structure) -->
-<section class="section" style="text-align: center; padding: 24px 0; position: relative; overflow: hidden; background: linear-gradient(118deg, rgba(245, 240, 232, 0.0) 0%, rgba(245, 240, 232, 0.30) 55%, rgba(232, 97, 58, 0.03) 100%);">
+<section class="section" style="text-align: center; padding: 24px 0 60px 0; position: relative; overflow: hidden; background: linear-gradient(118deg, rgba(245, 240, 232, 0.0) 0%, rgba(245, 240, 232, 0.30) 55%, rgba(232, 97, 58, 0.03) 100%);">
   <canvas id="hero-canvas" class="hero-canvas"></canvas>
-  <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="House, Tree, Person" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto; position: relative; z-index: 1;" />
-</section>
+  <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="House, Tree, Person" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto 40px auto; position: relative; z-index: 1;" />
 
-<!-- Ontology & System Dynamics Visualization Diagram -->
-<section class="section diagram-section">
+  <!-- Ontology & System Dynamics Visualization Diagram (Merged Inside Illustration Section) -->
   <!-- Card 1: System Dynamics -->
-  <div class="diagram-card">
+  <div class="diagram-card" style="position: relative; z-index: 1;">
     <h3 class="diagram-title">1. Ontology-Based Simulation Engine (System Dynamics)</h3>
     <p class="diagram-desc">A closed-loop control system of cognitive architecture that simulates static knowledge data (Stock) and inference rules (Flow) in a real-time feedback loop via a time controller (Δt).</p>
     <div class="diagram-wrapper">
@@ -27,9 +25,9 @@ graph TD
     subgraph Integrated_SD_System [Ontology-Based Simulation Engine (Closed Loop)]
         direction TB
         
-        Ontology[("Static Ontology DB <br> [Current State: Stock] <br> ex. Moon's Power=100, My Anger=50")]
-        RuleEngine{{"SWRL / Rule Engine <br> [Change Rule: Flow] <br> IF Anger>40 THEN Trigger Resistance"}}
-        TimeController(("Time & State Controller <br> [Time Progress: Δt] <br> Mathematical Operation & Update"))
+        Ontology[( "Static Ontology DB <br> [Current State: Stock] <br> ex. Moon's Power=100, My Anger=50" )]
+        RuleEngine{{ "SWRL / Rule Engine <br> [Change Rule: Flow] <br> IF Anger>40 THEN Trigger Resistance" }}
+        TimeController(( "Time & State Controller <br> [Time Progress: Δt] <br> Mathematical Operation & Update" ))
         
         Ontology -- "① Provide Current State(t) Data" --> RuleEngine
         RuleEngine -- "② Infer Event/Change on Condition Met" --> TimeController
@@ -41,8 +39,8 @@ graph TD
     end
 
     %% Guardrail Connection
-    LLM -. "④ Hallucination Prevention Verification (Grounding) <br> Establish Secure Context Network" .-> Ontology
-    TimeController -. "⑤ Block Action on Rule Violation (Risk Mitigation)" .-> LLM
+    LLM -.->| "④ Hallucination Prevention Verification (Grounding) <br> Establish Secure Context Network" | Ontology
+    TimeController -.->| "⑤ Block Action on Rule Violation (Risk Mitigation)" | LLM
 
     style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
     style RuleEngine fill:#e2f0d9,stroke:#333,stroke-width:1px
@@ -52,7 +50,7 @@ graph TD
   </div>
 
   <!-- Card 2: Ontology Rule -->
-  <div class="diagram-card">
+  <div class="diagram-card" style="position: relative; z-index: 1;">
     <h3 class="diagram-title">2. Cognitive Inference Rules (Ontology Rule)</h3>
     <p class="diagram-desc">A semantic inference rule network of the rule engine that derives complex sociological conformity, resistance behaviors, and the resulting causal isolation status from current state data.</p>
     <div class="diagram-wrapper">
@@ -86,7 +84,7 @@ graph LR
   </div>
 
   <!-- Card 3: Static Ontology -->
-  <div class="diagram-card">
+  <div class="diagram-card" style="position: relative; z-index: 1; margin-bottom: 0;">
     <h3 class="diagram-title">3. Conceptual & Instance Schema (Static Ontology)</h3>
     <p class="diagram-desc">A static semantic network consisting of a T-Box class hierarchy and an A-Box instance structure, organically structuring objects' locations, entities, and relationship attributes (rdf:type).</p>
     <div class="diagram-wrapper">

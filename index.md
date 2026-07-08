@@ -8,15 +8,13 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
 ---
 
 <!-- 집, 나무, 사람 SVG 일러스트 (트리플 삼각 구조) -->
-<section class="section" style="text-align: center; padding: 24px 0; position: relative; overflow: hidden; background: linear-gradient(118deg, rgba(245, 240, 232, 0.0) 0%, rgba(245, 240, 232, 0.30) 55%, rgba(232, 97, 58, 0.03) 100%);">
+<section class="section" style="text-align: center; padding: 24px 0 60px 0; position: relative; overflow: hidden; background: linear-gradient(118deg, rgba(245, 240, 232, 0.0) 0%, rgba(245, 240, 232, 0.30) 55%, rgba(232, 97, 58, 0.03) 100%);">
   <canvas id="hero-canvas" class="hero-canvas"></canvas>
-  <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="집, 나무, 사람" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto; position: relative; z-index: 1;" />
-</section>
+  <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="집, 나무, 사람" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto 40px auto; position: relative; z-index: 1;" />
 
-<!-- 온톨로지 & 시스템 다이내믹스 시각화 다이어그램 -->
-<section class="section diagram-section">
+  <!-- 온톨로지 & 시스템 다이내믹스 시각화 다이어그램 (일러스트 영역 내부 병합) -->
   <!-- Card 1: System Dynamics -->
-  <div class="diagram-card">
+  <div class="diagram-card" style="position: relative; z-index: 1;">
     <h3 class="diagram-title">1. 온톨로지 기반 시뮬레이션 엔진 (System Dynamics)</h3>
     <p class="diagram-desc">정적인 지식 데이터(Stock)와 추론 규칙(Flow)을 시간 제어기(Δt)를 통해 실시간 피드백 루프로 시뮬레이션하는 인지 아키텍처의 Closed-Loop 제어 시스템입니다.</p>
     <div class="diagram-wrapper">
@@ -25,9 +23,9 @@ graph TD
     subgraph Integrated_SD_System [온톨로지 기반 시뮬레이션 엔진 (Closed Loop)]
         direction TB
         
-        Ontology[("정적 온톨로지 DB <br> [현재 상태: Stock] <br> ex. 달의 권력=100, 나의 분노=50")]
-        RuleEngine{{"SWRL / 룰 엔진 <br> [변화 규칙: Flow] <br> IF 분노>40 THEN 저항 발동"}}
-        TimeController(("시간 및 상태 제어기 <br> [시간 진행: Δt] <br> 수학적 연산 및 업데이트"))
+        Ontology[( "정적 온톨로지 DB <br> [현재 상태: Stock] <br> ex. 달의 권력=100, 나의 분노=50" )]
+        RuleEngine{{ "SWRL / 룰 엔진 <br> [변화 규칙: Flow] <br> IF 분노>40 THEN 저항 발동" }}
+        TimeController(( "시간 및 상태 제어기 <br> [시간 진행: Δt] <br> 수학적 연산 및 업데이트" ))
         
         Ontology -- "① 현재 상태(t) 데이터 제공" --> RuleEngine
         RuleEngine -- "② 조건 충족 시 이벤트/변화량 추론" --> TimeController
@@ -39,8 +37,8 @@ graph TD
     end
 
     %% Guardrail Connection
-    LLM -. "④ 환각 방지 검증 (Grounding) <br> 안전한 맥락망 구성" .-> Ontology
-    TimeController -. "⑤ 룰 위반 시 행동 차단 (Risk Mitigation)" .-> LLM
+    LLM -.->| "④ 환각 방지 검증 (Grounding) <br> 안전한 맥락망 구성" | Ontology
+    TimeController -.->| "⑤ 룰 위반 시 행동 차단 (Risk Mitigation)" | LLM
 
     style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
     style RuleEngine fill:#e2f0d9,stroke:#333,stroke-width:1px
@@ -50,7 +48,7 @@ graph TD
   </div>
 
   <!-- Card 2: Ontology Rule -->
-  <div class="diagram-card">
+  <div class="diagram-card" style="position: relative; z-index: 1;">
     <h3 class="diagram-title">2. 인지 추론 규칙 (Ontology Rule)</h3>
     <p class="diagram-desc">현재 상태 데이터로부터 복잡한 사회학적 순응, 저항 발현, 그리고 이에 따른 인과적인 고립 상태를 도출하는 룰 엔진의 의미론적(Semantic) 추론 규칙망입니다.</p>
     <div class="diagram-wrapper">
@@ -84,7 +82,7 @@ graph LR
   </div>
 
   <!-- Card 3: Static Ontology -->
-  <div class="diagram-card">
+  <div class="diagram-card" style="position: relative; z-index: 1; margin-bottom: 0;">
     <h3 class="diagram-title">3. 개념 및 개체 스키마 (Static Ontology)</h3>
     <p class="diagram-desc">T-Box 개념 계층과 A-Box 개체 구조를 엮어 구성한 정적 의미망으로, 객체의 위치(Location), 사물(Object), 관계 속성(rdf:type)을 유기적으로 구조화합니다.</p>
     <div class="diagram-wrapper">
