@@ -43,9 +43,9 @@ graph TD
     LLM -.->|④ 환각 방지 검증 Grounding <br> 안전한 맥락망 구성| Ontology
     TimeController -.->|⑤ 룰 위반 시 행동 차단 Risk Mitigation| LLM
 
-    style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
-    style RuleEngine fill:#e2f0d9,stroke:#333,stroke-width:1px
-    style TimeController fill:#deebf7,stroke:#333,stroke-width:1px
+    style Ontology fill:none
+    style RuleEngine fill:none
+    style TimeController fill:none
       </div>
     </div>
   </div>
@@ -208,6 +208,50 @@ graph TD
   mermaid.initialize({
     startOnLoad: true,
     theme: 'base',
+    themeCSS: `
+      /* 전체 폰트 및 색상 표준 상속 */
+      g.classGroup text, g.node text, g.cluster text, .label, .edgeLabel, .edgeLabel span {
+        font-family: var(--font-sans), "Outfit", sans-serif !important;
+        font-size: 13px !important;
+        fill: var(--ink) !important;
+        color: var(--ink) !important;
+      }
+      /* 노드 본체 모던화 (원색 제거, 샌드 틴트 및 잉크 네이비 테두리) */
+      .node rect, .node circle, .node polygon, .node path, .node ellipse {
+        fill: rgba(245, 240, 232, 0.4) !important;
+        stroke: var(--ink) !important;
+        stroke-width: 1.5px !important;
+        rx: 8px !important;
+        ry: 8px !important;
+      }
+      /* 화살표 및 선 스타일 */
+      .edgePath .path {
+        stroke: var(--ink) !important;
+        stroke-width: 1.5px !important;
+      }
+      .edgePath .marker {
+        fill: var(--ink) !important;
+        stroke: var(--ink) !important;
+      }
+      /* 라벨 배경 정리 */
+      .edgeLabel rect {
+        fill: #FDFDFD !important;
+        opacity: 0.9 !important;
+      }
+      /* 서브그래프 박스 커스텀 */
+      .cluster rect {
+        fill: rgba(26, 31, 54, 0.02) !important;
+        stroke: rgba(26, 31, 54, 0.15) !important;
+        stroke-width: 1px !important;
+        stroke-dasharray: 3 3 !important;
+        rx: 12px !important;
+        ry: 12px !important;
+      }
+      .cluster-label text, .cluster-label span {
+        font-weight: 600 !important;
+        fill: var(--ink) !important;
+      }
+    `,
     themeVariables: {
       fontFamily: 'var(--font-sans), "Outfit", sans-serif',
       primaryColor: '#F5F0E8',         /* Warm Sand 바탕 */
