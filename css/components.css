@@ -88,6 +88,20 @@
   z-index: 0;
   opacity: 0.55;
 }
+.hero-bg-icon svg {
+  animation: heroFloating 8s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes heroFloating {
+  0%, 100% { transform: translateY(0)    rotate(0deg); }
+  50%       { transform: translateY(-12px) rotate(0.8deg); }
+}
+
+/* 섹션 내 텍스트·콘텐츠를 canvas 및 배경 SVG 위로 */
+.section > *:not(.hero-canvas):not(.hero-bg-icon) {
+  position: relative;
+  z-index: 1;
+}
 
 /* 배경 – Sand warm gradient */
 .hero::after {
