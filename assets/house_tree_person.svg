@@ -109,6 +109,44 @@
       .flow-particle-left {
         animation: move-particle-left 3.5s infinite linear 1.5s;
       }
+
+      /* 6. 대각선 양방향 빛방울 교차 애니메이션 */
+      @keyframes move-diag-down-left {
+        0% { transform: translate(200px, 120px); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translate(100px, 230px); opacity: 0; }
+      }
+      @keyframes move-diag-up-right {
+        0% { transform: translate(100px, 230px); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translate(200px, 120px); opacity: 0; }
+      }
+      @keyframes move-diag-down-right {
+        0% { transform: translate(200px, 120px); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translate(300px, 230px); opacity: 0; }
+      }
+      @keyframes move-diag-up-left {
+        0% { transform: translate(300px, 230px); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translate(200px, 120px); opacity: 0; }
+      }
+      .flow-diag-down-left {
+        animation: move-diag-down-left 3.2s infinite linear;
+      }
+      .flow-diag-up-right {
+        animation: move-diag-up-right 3.5s infinite linear 1s;
+      }
+      .flow-diag-down-right {
+        animation: move-diag-down-right 2.8s infinite linear 0.5s;
+      }
+      .flow-diag-up-left {
+        animation: move-diag-up-left 3.4s infinite linear 1.8s;
+      }
     </style>
   </defs>
 
@@ -127,14 +165,18 @@
     <circle class="center-pulse" cx="200" cy="250" r="9" stroke="url(#htp-gradient)" stroke-width="1" fill="none" />
     <circle cx="230" cy="250" r="3" />
   </g>
-  <!-- 집과 나무 사이 (사선) -->
-  <circle cx="150" cy="185" r="3" fill="url(#htp-gradient)" opacity="0.8" />
-  <!-- 집과 사람 사이 (사선) -->
-  <circle cx="250" cy="185" r="3" fill="url(#htp-gradient)" opacity="0.8" />
 
   <!-- 0-2. 가로선 상의 양방향 교차 빛방울 (Flow Particles) -->
   <circle class="flow-particle-right" cx="0" cy="250" r="3" fill="#E8613A" />
   <circle class="flow-particle-left" cx="0" cy="250" r="3.5" fill="#1A1F36" stroke="url(#htp-gradient)" stroke-width="0.5" />
+
+  <!-- 0-3. 대각선 상의 양방향 교차 빛방울 (Diagonal Flow Particles) -->
+  <!-- 집-나무 라인 -->
+  <circle class="flow-diag-down-left" cx="0" cy="0" r="3" fill="#E8613A" />
+  <circle class="flow-diag-up-right" cx="0" cy="0" r="3.5" fill="#1A1F36" stroke="url(#htp-gradient)" stroke-width="0.5" />
+  <!-- 집-사람 라인 -->
+  <circle class="flow-diag-down-right" cx="0" cy="0" r="3" fill="#E8613A" />
+  <circle class="flow-diag-up-left" cx="0" cy="0" r="3.5" fill="#1A1F36" stroke="url(#htp-gradient)" stroke-width="0.5" />
 
   <!-- 1. 집 (House) : 상단 중앙 (x=160~240, y=70~150) -->
   <g class="house" stroke="url(#htp-gradient)" stroke-width="2">
