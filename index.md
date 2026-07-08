@@ -8,8 +8,8 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
 ---
 
 <!-- 집, 나무, 사람 SVG 일러스트 (트리플 삼각 구조) -->
-<section class="section" style="text-align: center; padding: 40px 0;">
-  <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="집, 나무, 사람" style="width: 100%; max-width: 360px; height: auto; opacity: 0.95; display: block; margin: 0 auto;" />
+<section class="section" style="text-align: center; padding: 60px 0;">
+  <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="집, 나무, 사람" style="width: 100%; max-width: 600px; height: auto; opacity: 0.95; display: block; margin: 0 auto;" />
 </section>
 
 <!-- 5. 교육 문의 -->
