@@ -10,7 +10,7 @@ og_locale: "en_US"
 ---
 
 <!-- House, Tree, Person SVG Illustration (Triple Structure) -->
-<section class="section" style="text-align: center; padding: 0 0 60px 0; position: relative; overflow: hidden;">
+<section class="section" style="text-align: center; padding: 0 0 60px 0; position: relative; overflow: hidden; background-color: var(--bg, #FAFAF8);">
   <!-- Illustration Background Deco Area (Confining gradient & canvas particle inside for normalization) -->
   <div style="position: relative; overflow: hidden; padding: 24px 0; background: linear-gradient(118deg, rgba(245, 240, 232, 0.0) 0%, rgba(245, 240, 232, 0.30) 55%, rgba(232, 97, 58, 0.03) 100%); margin-bottom: 40px;">
     <canvas id="hero-canvas" class="hero-canvas"></canvas>
