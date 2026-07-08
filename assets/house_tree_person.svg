@@ -128,20 +128,22 @@
     
     <!-- 벽 -->
     <rect x="170" y="110" width="60" height="40" fill="url(#htp-fill-navy)" />
-    <!-- 격자 창문 2개 -->
+    <!-- 격자 창문 2개 (겹침 방지 재정렬) -->
     <g opacity="0.85">
-      <rect x="178" y="118" width="14" height="14" />
-      <line x1="185" y1="118" x2="185" y2="132" />
-      <line x1="178" y1="125" x2="192" y2="125" />
+      <!-- 좌측 창문 -->
+      <rect x="174" y="116" width="12" height="12" />
+      <line x1="180" y1="116" x2="180" y2="128" />
+      <line x1="174" y1="122" x2="186" y2="122" />
       
-      <rect x="208" y="118" width="14" height="14" />
-      <line x1="215" y1="118" x2="215" y2="132" />
-      <line x1="208" y1="125" x2="222" y2="125" />
+      <!-- 우측 창문 -->
+      <rect x="214" y="116" width="12" height="12" />
+      <line x1="220" y1="116" x2="220" y2="128" />
+      <line x1="214" y1="122" x2="226" y2="122" />
     </g>
     
     <!-- 문 및 손잡이 -->
-    <rect x="190" y="125" width="20" height="25" fill="url(#htp-fill-coral)" />
-    <circle cx="194" cy="137" r="1.5" fill="url(#htp-gradient)" />
+    <rect x="190" y="128" width="20" height="22" fill="url(#htp-fill-coral)" />
+    <circle cx="205" cy="139" r="1.5" fill="url(#htp-gradient)" />
     
     <!-- 계단/기단 -->
     <path d="M 165 150 L 235 150 M 172 153 L 228 153" opacity="0.7" />
