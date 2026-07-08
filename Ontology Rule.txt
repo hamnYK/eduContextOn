@@ -1,0 +1,24 @@
+graph LR
+    subgraph Rule_1 [규칙 1 : 체제의 순응과 숭배 추론]
+        R1_Cond["IF <br> Moon(x) AND hasLocation(x, Chessboard) <br> AND Crowd(y) AND hasLocation(y, Chessboard)"]
+        R1_Engine{{SWRL 추론 엔진}}
+        R1_Result["THEN (Inferred) <br> <b>worships(y, x)</b> <br> (사람들이 달을 숭배함)"]
+        
+        R1_Cond --> R1_Engine --> R1_Result
+    end
+
+    subgraph Rule_2 [규칙 2 : 저항 행위 발현 추론]
+        R2_Cond["IF <br> I(x) AND hasEmotion(x, Anger) <br> AND Stone(z) AND hasLocation(z, Cliff) <br> AND Moon(y)"]
+        R2_Engine{{SWRL 추론 엔진}}
+        R2_Result["THEN (Inferred) <br> <b>throwsAt(x, z, y)</b> <br> (내가 달을 향해 돌을 던짐)"]
+        
+        R2_Cond --> R2_Engine --> R2_Result
+    end
+
+    subgraph Rule_3 [규칙 3 : 고립과 시선의 교차 추론]
+        R3_Cond["IF <br> throwsAt(I, Stone, Moon) <br> AND misses(Stone, Moon) <br> AND worships(Crowd, Moon)"]
+        R3_Engine{{SWRL 추론 엔진}}
+        R3_Result["THEN (Inferred) <br> <b>staresAt(Crowd, I)</b> <br> <b>hasStatus(I, Isolated)</b> <br> (군중이 나를 응시 / 고립 상태 부여)"]
+        
+        R3_Cond --> R3_Engine --> R3_Result
+    end
