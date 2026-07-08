@@ -33,7 +33,20 @@
 
     <!-- Main Content Area -->
     <main class="main">
-      <div class="page-header">
+      <div class="page-header video-header">
+        <!-- 개념 영상 배경 -->
+        <video
+          class="header-video-bg"
+          src="{{ '/assets/worflogy_concept_film_market.mp4' | relative_url }}"
+          autoplay
+          muted
+          loop
+          playsinline
+          aria-hidden="true"
+          preload="auto"
+        ></video>
+        <!-- 오버레이: 텍스트 가독성 확보 -->
+        <div class="header-video-overlay" aria-hidden="true"></div>
         <div class="section-label">contents.contextonai.com</div>
         <h1 class="section-title">{% if lang == 'en' %}Contexton Contents{% else %}컨텍스톤 콘텐츠{% endif %}</h1>
       </div>
