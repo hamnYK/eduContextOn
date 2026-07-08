@@ -69,11 +69,11 @@
       }
       .thought-pulse {
         animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-        transform-origin: 300px 182px;
+        transform-origin: 300px 180px;
       }
       .thought-orb {
         animation: float-thought 4s infinite ease-in-out;
-        transform-origin: 300px 182px;
+        transform-origin: 300px 180px;
       }
       .center-pulse {
         animation: pulse-ring 2.5s infinite ease-in-out;
@@ -178,25 +178,23 @@
       <!-- 머리에서 전구까지의 연결선 -->
       <path d="M 300 200 L 300 196" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.6" />
       
-      <!-- 전구 뒤 펄스 효과 링 -->
-      <circle class="thought-pulse" cx="300" cy="182" r="10" stroke="url(#htp-gradient)" stroke-width="1" fill="none" />
+      <!-- 전구 뒤 펄스 효과 링 (애니메이션 적용) -->
+      <circle class="thought-pulse" cx="300" cy="180" r="12" stroke="url(#htp-gradient)" stroke-width="1" fill="none" />
       
-      <!-- 전구 몸체 -->
-      <path d="M 293 182 A 7 7 0 1 1 307 182 L 304 192 L 296 192 Z" fill="url(#htp-fill-coral)" />
-      <!-- 전구 소켓 -->
-      <line x1="296" y1="194" x2="304" y2="194" stroke-width="1.5" />
-      <line x1="298" y1="197" x2="302" y2="197" stroke-width="1.5" />
+      <!-- 전형적인 백열전구 곡선 실루엣 (물방울 형상) -->
+      <path d="M 293,184 C 288,180 288,168 300,168 C 312,168 312,180 307,184 L 305,193 L 295,193 Z" fill="url(#htp-fill-coral)" />
+      <!-- 2단 정밀 소켓 -->
+      <rect x="296" y="193" width="8" height="4" rx="1" fill="url(#htp-fill-navy)" />
+      <rect x="297" y="197" width="6" height="3" rx="1" fill="url(#htp-fill-navy)" />
       
-      <!-- 전구 내 필라멘트 -->
-      <path d="M 299 180 L 299 185 M 297 183 L 303 183" opacity="0.7" stroke-width="1" />
+      <!-- 내부 V자형 필라멘트 -->
+      <path d="M 296,182 L 299,176 L 301,176 L 304,182" stroke-width="1.2" opacity="0.8" />
       
-      <!-- 빛줄기 발산선 (Glow rays) -->
-      <g opacity="0.8" stroke-width="1.5">
-        <line x1="300" y1="171" x2="300" y2="167" /> <!-- 위 -->
-        <line x1="291" y1="175" x2="287" y2="171" /> <!-- 좌상 -->
-        <line x1="309" y1="175" x2="313" y2="171" /> <!-- 우상 -->
-        <line x1="289" y1="184" x2="284" y2="184" /> <!-- 좌 -->
-        <line x1="311" y1="184" x2="316" y2="184" /> <!-- 우 -->
+      <!-- 3갈래 굵고 선명한 빛 빔 (Glow beams) -->
+      <g opacity="0.85" stroke-width="2">
+        <line x1="300" y1="163" x2="300" y2="157" /> <!-- 위 -->
+        <line x1="289" y1="169" x2="284" y2="164" /> <!-- 좌상 -->
+        <line x1="311" y1="169" x2="316" y2="164" /> <!-- 우상 -->
       </g>
     </g>
     
