@@ -18,12 +18,12 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
   <!-- 온톨로지 & 시스템 다이내믹스 시각화 다이어그램 (일러스트 영역 내부 병합) -->
   <!-- Card 1: System Dynamics -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
-    <h3 class="diagram-title">1. 온톨로지 기반 시뮬레이션 엔진 (System Dynamics)</h3>
+    <h3 class="diagram-title">1. 온톨로지 기반 시스템 다이내믹스 (Ontology-based System Dynamics)</h3>
     <p class="diagram-desc">정적인 지식 데이터(Stock)와 추론 규칙(Flow)을 시간 제어기(Δt)를 통해 실시간 피드백 루프로 시뮬레이션하는 인지 아키텍처의 Closed-Loop 제어 시스템입니다.</p>
     <div class="diagram-wrapper">
       <div class="mermaid">
 graph TD
-    subgraph Integrated_SD_System [온톨로지 기반 시뮬레이션 엔진 - Closed Loop]
+    subgraph Integrated_SD_System [온톨로지 기반 시스템 다이내믹스 - Closed Loop]
         direction TB
         
         Ontology[정적 온톨로지 DB <br> 현재 상태: Stock <br> ex. 달의 권력 100 / 나의 분노 50]
@@ -52,12 +52,12 @@ graph TD
 
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
-    <h3 class="diagram-title">2. 인지 추론 규칙 (Ontology Rule)</h3>
+    <h3 class="diagram-title">2. 의미론적 추론 규칙 (Semantic Inference Rules)</h3>
     <p class="diagram-desc">현재 상태 데이터로부터 복잡한 사회학적 순응, 저항 발현, 그리고 이에 따른 인과적인 고립 상태를 도출하는 룰 엔진의 의미론적(Semantic) 추론 규칙망입니다.</p>
     <div class="diagram-wrapper">
       <div class="mermaid">
 graph LR
-    subgraph Rule_1 [규칙 1 : 체제의 순응과 숭배 추론]
+    subgraph Rule_1 [규칙 1 : 체제 순응 및 숭배 추론]
         R1_Cond[IF <br> Moon x AND hasLocation x, Chessboard <br> AND Crowd y AND hasLocation y, Chessboard]
         R1_Engine{SWRL 추론 엔진}
         R1_Result[THEN Inferred <br> worships y, x <br> 사람들이 달을 숭배함]
@@ -66,17 +66,17 @@ graph LR
     end
 
     subgraph Rule_2 [규칙 2 : 저항 행위 발현 추론]
-        R2_Cond["IF <br> I(x) AND hasEmotion(x, Anger) <br> AND Stone(z) AND hasLocation(z, Cliff) <br> AND Moon(y)"]
-        R2_Engine{{SWRL 추론 엔진}}
-        R2_Result["THEN (Inferred) <br> <b>throwsAt(x, z, y)</b> <br> (내가 달을 향해 돌을 던짐)"]
+        R2_Cond[IF <br> I x AND hasEmotion x, Anger <br> AND Stone z AND hasLocation z, Cliff <br> AND Moon y]
+        R2_Engine{SWRL 추론 엔진}
+        R2_Result[THEN Inferred <br> throwsAt x, z, y <br> 내가 달을 향해 돌을 던짐]
         
         R2_Cond --> R2_Engine --> R2_Result
     end
 
     subgraph Rule_3 [규칙 3 : 고립과 시선의 교차 추론]
-        R3_Cond["IF <br> throwsAt(I, Stone, Moon) <br> AND misses(Stone, Moon) <br> AND worships(Crowd, Moon)"]
-        R3_Engine{{SWRL 추론 엔진}}
-        R3_Result["THEN (Inferred) <br> <b>staresAt(Crowd, I)</b> <br> <b>hasStatus(I, Isolated)</b> <br> (군중이 나를 응시 / 고립 상태 부여)"]
+        R3_Cond[IF <br> throwsAt I, Stone, Moon <br> AND misses Stone, Moon <br> AND worships Crowd, Moon]
+        R3_Engine{SWRL 추론 엔진}
+        R3_Result[THEN Inferred <br> staresAt Crowd, I <br> hasStatus I, Isolated <br> 군중이 나를 응시 / 고립 상태 부여]
         
         R3_Cond --> R3_Engine --> R3_Result
     end
@@ -86,7 +86,7 @@ graph LR
 
   <!-- Card 3: Static Ontology -->
   <div class="diagram-card" style="position: relative; z-index: 1; margin-bottom: 0;">
-    <h3 class="diagram-title">3. 개념 및 개체 스키마 (Static Ontology)</h3>
+    <h3 class="diagram-title">3. 도메인 온톨로지 스키마 (Domain Ontology Schema)</h3>
     <p class="diagram-desc">T-Box 개념 계층과 A-Box 개체 구조를 엮어 구성한 정적 의미망으로, 객체의 위치(Location), 사물(Object), 관계 속성(rdf:type)을 유기적으로 구조화합니다.</p>
     <div class="diagram-wrapper">
       <div class="mermaid">

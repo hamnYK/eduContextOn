@@ -20,12 +20,12 @@ og_locale: "en_US"
   <!-- Ontology & System Dynamics Visualization Diagram (Merged Inside Illustration Section) -->
   <!-- Card 1: System Dynamics -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
-    <h3 class="diagram-title">1. Ontology-Based Simulation Engine (System Dynamics)</h3>
+    <h3 class="diagram-title">1. Ontology-based System Dynamics</h3>
     <p class="diagram-desc">A closed-loop control system of cognitive architecture that simulates static knowledge data (Stock) and inference rules (Flow) in a real-time feedback loop via a time controller (Δt).</p>
     <div class="diagram-wrapper">
       <div class="mermaid">
 graph TD
-    subgraph Integrated_SD_System [Ontology-Based Simulation Engine - Closed Loop]
+    subgraph Integrated_SD_System [Ontology-based System Dynamics - Closed Loop]
         direction TB
         
         Ontology[Static Ontology DB <br> Current State: Stock <br> ex. Moons Power 100 / My Anger 50]
@@ -54,7 +54,7 @@ graph TD
 
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
-    <h3 class="diagram-title">2. Cognitive Inference Rules (Ontology Rule)</h3>
+    <h3 class="diagram-title">2. Semantic Inference Rules</h3>
     <p class="diagram-desc">A semantic inference rule network of the rule engine that derives complex sociological conformity, resistance behaviors, and the resulting causal isolation status from current state data.</p>
     <div class="diagram-wrapper">
       <div class="mermaid">
@@ -88,7 +88,7 @@ graph LR
 
   <!-- Card 3: Static Ontology -->
   <div class="diagram-card" style="position: relative; z-index: 1; margin-bottom: 0;">
-    <h3 class="diagram-title">3. Conceptual & Instance Schema (Static Ontology)</h3>
+    <h3 class="diagram-title">3. Domain Ontology Schema</h3>
     <p class="diagram-desc">A static semantic network consisting of a T-Box class hierarchy and an A-Box instance structure, organically structuring objects' locations, entities, and relationship attributes (rdf:type).</p>
     <div class="diagram-wrapper">
       <div class="mermaid">
