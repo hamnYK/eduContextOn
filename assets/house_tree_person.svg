@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <!-- 디자인 표준 색상 토큰 반영 그라데이션 -->
+    <linearGradient id="htp-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A1F36" />
+      <stop offset="50%" stop-color="#76453B" />  <!-- Ink Navy와 Coral의 자연스러운 블렌딩 톤 -->
+      <stop offset="100%" stop-color="#E8613A" />
+    </linearGradient>
+  </defs>
+
+  <g stroke="url(#htp-gradient)" stroke-width="2">
+    <!-- 1. 집 (House) -->
+    <g class="house">
+      <!-- 지붕 -->
+      <path d="M 70 120 L 120 70 L 170 120 Z" />
+      <!-- 벽 -->
+      <rect x="85" y="120" width="70" height="50" />
+      <!-- 문 -->
+      <rect x="108" y="140" width="24" height="30" />
+      <!-- 다락방 창문 -->
+      <circle cx="120" cy="98" r="8" />
+    </g>
+
+    <!-- 2. 나무 (Tree) -->
+    <g class="tree">
+      <!-- 나무 줄기 -->
+      <line x1="300" y1="125" x2="300" y2="170" />
+      <!-- 기하학적 3단 삼각형 잎 -->
+      <polygon points="300,45 260,95 340,95" />
+      <polygon points="300,70 265,120 335,120" />
+      <polygon points="300,95 270,145 330,145" />
+    </g>
+
+    <!-- 3. 사람 (Person) -->
+    <g class="person">
+      <!-- 머리 -->
+      <circle cx="480" cy="75" r="12" />
+      <!-- 몸통 -->
+      <line x1="480" y1="87" x2="480" y2="135" />
+      <!-- 팔 -->
+      <path d="M 455 105 L 480 95 L 505 105" />
+      <!-- 다리 -->
+      <line x1="480" y1="135" x2="465" y2="170" />
+      <line x1="480" y1="135" x2="495" y2="170" />
+    </g>
+  </g>
+</svg>

@@ -9,6 +9,11 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
 og_locale: "en_US"
 ---
 
+<!-- House, Tree, Person SVG Illustration -->
+<section class="section" style="text-align: center; padding: 60px 0;">
+  <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="House, Tree, Person" style="max-width: 100%; height: auto; max-height: 220px; opacity: 0.95; display: block; margin: 0 auto;" />
+</section>
+
 <!-- 5. Inquiries -->
 <section class="section" id="contact">
   <div class="section-label">Contact</div>
