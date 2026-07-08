@@ -22,7 +22,7 @@ og_locale: "en_US"
     <h3 class="diagram-title">1. Ontology-Based Simulation Engine (System Dynamics)</h3>
     <p class="diagram-desc">A closed-loop control system of cognitive architecture that simulates static knowledge data (Stock) and inference rules (Flow) in a real-time feedback loop via a time controller (Δt).</p>
     <div class="diagram-wrapper">
-      <pre class="mermaid">
+      <div class="mermaid">
 graph TD
     subgraph Integrated_SD_System [Ontology-Based Simulation Engine (Closed Loop)]
         direction TB
@@ -47,7 +47,7 @@ graph TD
     style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
     style RuleEngine fill:#e2f0d9,stroke:#333,stroke-width:1px
     style TimeController fill:#deebf7,stroke:#333,stroke-width:1px
-      </pre>
+      </div>
     </div>
   </div>
 
@@ -56,7 +56,7 @@ graph TD
     <h3 class="diagram-title">2. Cognitive Inference Rules (Ontology Rule)</h3>
     <p class="diagram-desc">A semantic inference rule network of the rule engine that derives complex sociological conformity, resistance behaviors, and the resulting causal isolation status from current state data.</p>
     <div class="diagram-wrapper">
-      <pre class="mermaid">
+      <div class="mermaid">
 graph LR
     subgraph Rule_1 [Rule 1 : Inferred System Conformity & Worship]
         R1_Cond["IF <br> Moon(x) AND hasLocation(x, Chessboard) <br> AND Crowd(y) AND hasLocation(y, Chessboard)"]
@@ -81,7 +81,7 @@ graph LR
         
         R3_Cond --> R3_Engine --> R3_Result
     end
-      </pre>
+      </div>
     </div>
   </div>
 
@@ -90,7 +90,7 @@ graph LR
     <h3 class="diagram-title">3. Conceptual & Instance Schema (Static Ontology)</h3>
     <p class="diagram-desc">A static semantic network consisting of a T-Box class hierarchy and an A-Box instance structure, organically structuring objects' locations, entities, and relationship attributes (rdf:type).</p>
     <div class="diagram-wrapper">
-      <pre class="mermaid">
+      <div class="mermaid">
 graph TD
     %% [T-Box] Class Hierarchy
     subgraph T_Box [Conceptual Framework: T-Box Classes]
@@ -130,7 +130,7 @@ graph TD
     Me -- "hasEmotion" --> Anger
     Anger -- "hasTarget" --> Moon
     Cliff -- "isAbove" --> Chessboard
-      </pre>
+      </div>
     </div>
   </div>
 </section>
