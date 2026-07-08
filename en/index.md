@@ -15,6 +15,126 @@ og_locale: "en_US"
   <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="House, Tree, Person" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto; position: relative; z-index: 1;" />
 </section>
 
+<!-- Ontology & System Dynamics Visualization Diagram -->
+<section class="section diagram-section">
+  <!-- Card 1: System Dynamics -->
+  <div class="diagram-card">
+    <h3 class="diagram-title">1. Ontology-Based Simulation Engine (System Dynamics)</h3>
+    <p class="diagram-desc">A closed-loop control system of cognitive architecture that simulates static knowledge data (Stock) and inference rules (Flow) in a real-time feedback loop via a time controller (Δt).</p>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+graph TD
+    subgraph Integrated_SD_System [Ontology-Based Simulation Engine (Closed Loop)]
+        direction TB
+        
+        Ontology[(Static Ontology DB \n [Current State: Stock] \n ex. Moon's Power=100, My Anger=50)]
+        RuleEngine{{SWRL / Rule Engine \n [Change Rule: Flow] \n IF Anger>40 THEN Trigger Resistance}}
+        TimeController((Time & State Controller \n [Time Progress: Δt] \n Mathematical Operation & Update))
+        
+        Ontology -- "① Provide Current State(t) Data" --> RuleEngine
+        RuleEngine -- "② Infer Event/Change on Condition Met" --> TimeController
+        TimeController -- "③ Progress Time(t+1) & Overwrite New State" --> Ontology
+    end
+
+    subgraph LLM_Interface [AI / User Layer]
+        LLM[Language Model / AI Agent \n Flexible Context Understanding & Interface]
+    end
+
+    %% Guardrail Connection
+    LLM -. "④ Hallucination Prevention Verification (Grounding) \n Establish Secure Context Network" .-> Ontology
+    TimeController -. "⑤ Block Action on Rule Violation (Risk Mitigation)" .-> LLM
+
+    style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
+    style RuleEngine fill:#e2f0d9,stroke:#333,stroke-width:1px
+    style TimeController fill:#deebf7,stroke:#333,stroke-width:1px
+      </pre>
+    </div>
+  </div>
+
+  <!-- Card 2: Ontology Rule -->
+  <div class="diagram-card">
+    <h3 class="diagram-title">2. Cognitive Inference Rules (Ontology Rule)</h3>
+    <p class="diagram-desc">A semantic inference rule network of the rule engine that derives complex sociological conformity, resistance behaviors, and the resulting causal isolation status from current state data.</p>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+graph LR
+    subgraph Rule_1 [Rule 1 : Inferred System Conformity & Worship]
+        R1_Cond["IF <br> Moon(x) AND hasLocation(x, Chessboard) <br> AND Crowd(y) AND hasLocation(y, Chessboard)"]
+        R1_Engine{{SWRL Inference Engine}}
+        R1_Result["THEN (Inferred) <br> <b>worships(y, x)</b> <br> (Crowd worships Moon)"]
+        
+        R1_Cond --> R1_Engine --> R1_Result
+    end
+
+    subgraph Rule_2 [Rule 2 : Inferred Emergence of Resistance]
+        R2_Cond["IF <br> I(x) AND hasEmotion(x, Anger) <br> AND Stone(z) AND hasLocation(z, Cliff) <br> AND Moon(y)"]
+        R2_Engine{{SWRL Inference Engine}}
+        R2_Result["THEN (Inferred) <br> <b>throwsAt(x, z, y)</b> <br> (I throw a stone at Moon)"]
+        
+        R2_Cond --> R2_Engine --> R2_Result
+    end
+
+    subgraph Rule_3 [Rule 3 : Inferred Isolation & Intersection of Gazes]
+        R3_Cond["IF <br> throwsAt(I, Stone, Moon) <br> AND misses(Stone, Moon) <br> AND worships(Crowd, Moon)"]
+        R3_Engine{{SWRL Inference Engine}}
+        R3_Result["THEN (Inferred) <br> <b>staresAt(Crowd, I)</b> <br> <b>hasStatus(I, Isolated)</b> <br> (Crowd stares at I / Isolated status assigned)"]
+        
+        R3_Cond --> R3_Engine --> R3_Result
+    end
+      </pre>
+    </div>
+  </div>
+
+  <!-- Card 3: Static Ontology -->
+  <div class="diagram-card">
+    <h3 class="diagram-title">3. Conceptual & Instance Schema (Static Ontology)</h3>
+    <p class="diagram-desc">A static semantic network consisting of a T-Box class hierarchy and an A-Box instance structure, organically structuring objects' locations, entities, and relationship attributes (rdf:type).</p>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+graph TD
+    %% [T-Box] Class Hierarchy
+    subgraph T_Box [Conceptual Framework: T-Box Classes]
+        Actor[Actor]
+        Location[Location]
+        Object[Object]
+        Phenomenon[Phenomenon]
+        Emotion[Emotion]
+    end
+
+    %% [A-Box] Instances
+    subgraph A_Box [Instance System: A-Box Instances]
+        Me((I))
+        Crowd((Crowd))
+        Cliff[(Cliff)]
+        Chessboard[(Chessboard)]
+        Moon{Moon}
+        Darkness[Darkness]
+        Stone>Stone]
+        Anger[Anger_Sorrow]
+    end
+
+    %% Instantiation (is-a relations)
+    Me -. "rdf:type" .-> Actor
+    Crowd -. "rdf:type" .-> Actor
+    Cliff -. "rdf:type" .-> Location
+    Chessboard -. "rdf:type" .-> Location
+    Moon -. "rdf:type" .-> Phenomenon
+    Darkness -. "rdf:type" .-> Phenomenon
+    Stone -. "rdf:type" .-> Object
+    Anger -. "rdf:type" .-> Emotion
+
+    %% Object Properties / Predicates
+    Me -- "hasLocation" --> Cliff
+    Crowd -- "hasLocation" --> Chessboard
+    Stone -- "hasLocation" --> Cliff
+    Me -- "hasEmotion" --> Anger
+    Anger -- "hasTarget" --> Moon
+    Cliff -- "isAbove" --> Chessboard
+      </pre>
+    </div>
+  </div>
+</section>
+
 <!-- 5. Inquiries -->
 <section class="section" id="contact" style="position: relative; overflow: hidden;">
   <!-- 헥사고날 프랙털 지식 그래프 배경 -->
@@ -82,3 +202,22 @@ og_locale: "en_US"
 </section>
 
 <script src="{{ '/js/hero-canvas.js' | relative_url }}" defer></script>
+
+<!-- Mermaid.js Loading & Worflogy Theme Initialization -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#F5F0E8',         /* Warm Sand 바탕 */
+      primaryTextColor: '#1A1F36',     /* Ink Navy 텍스트 */
+      primaryBorderColor: 'rgba(26, 31, 54, 0.15)',
+      lineColor: '#1A1F36',            /* 연결선 Navy */
+      secondaryColor: '#FDF0EC',       /* Living Coral 틴트 */
+      tertiaryColor: '#FAFAF8',
+      mainBkg: '#F5F0E8',
+      nodeBorder: 'rgba(26, 31, 54, 0.2)'
+    }
+  });
+</script>

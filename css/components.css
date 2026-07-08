@@ -717,6 +717,54 @@
   z-index: 0;
 }
 
+/* ── Diagram Card Component ── */
+.diagram-section {
+  padding: 40px 64px;
+}
+.diagram-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--t);
+  position: relative;
+  overflow: hidden;
+}
+.diagram-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(232, 97, 58, 0.2);
+}
+.diagram-title {
+  font-family: var(--font-serif-ko);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.diagram-desc {
+  font-size: var(--fs-body-min);
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.55;
+}
+.diagram-wrapper {
+  background: #FDFDFD;
+  border-radius: var(--r-sm);
+  padding: 20px;
+  overflow-x: auto;
+  border: 1px solid rgba(26, 31, 54, 0.05);
+  display: flex;
+  justify-content: center;
+}
+.diagram-wrapper .mermaid {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* ── Mobile Responsive Overrides ── */
 @media (max-width: 768px) {
   :root {
