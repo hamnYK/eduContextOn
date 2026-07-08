@@ -104,10 +104,10 @@
         100% { transform: translateX(120px); opacity: 0; }
       }
       .flow-particle-right {
-        animation: move-particle-right 3s infinite linear;
+        animation: move-particle-right 6.5s infinite linear;
       }
       .flow-particle-left {
-        animation: move-particle-left 3.5s infinite linear 1.5s;
+        animation: move-particle-left 7.0s infinite linear 3.5s;
       }
 
       /* 6. 대각선 양방향 빛방울 교차 애니메이션 */
@@ -136,16 +136,16 @@
         100% { transform: translate(200px, 120px); opacity: 0; }
       }
       .flow-diag-down-left {
-        animation: move-diag-down-left 3.2s infinite linear;
+        animation: move-diag-down-left 7.2s infinite linear;
       }
       .flow-diag-up-right {
-        animation: move-diag-up-right 3.5s infinite linear 1s;
+        animation: move-diag-up-right 7.8s infinite linear 3s;
       }
       .flow-diag-down-right {
-        animation: move-diag-down-right 2.8s infinite linear 0.5s;
+        animation: move-diag-down-right 6.2s infinite linear 1.5s;
       }
       .flow-diag-up-left {
-        animation: move-diag-up-left 3.4s infinite linear 1.8s;
+        animation: move-diag-up-left 7.5s infinite linear 4s;
       }
     </style>
   </defs>
