@@ -40,36 +40,84 @@
 
   <!-- 1. 집 (House) : 상단 중앙 (x=160~240, y=70~150) -->
   <g class="house" stroke="url(#htp-gradient)" stroke-width="2">
-    <!-- 지붕 -->
+    <!-- 굴뚝 -->
+    <rect x="222" y="80" width="10" height="20" fill="url(#htp-fill-navy)" />
+    <!-- 연기 방울들 -->
+    <circle cx="227" cy="70" r="3" fill="url(#htp-gradient)" opacity="0.7" />
+    <circle cx="232" cy="62" r="4.5" fill="url(#htp-gradient)" opacity="0.5" />
+    <circle cx="229" cy="52" r="6" fill="url(#htp-gradient)" opacity="0.3" />
+    
+    <!-- 지붕 (기하학적 선 패턴 가미) -->
     <path d="M 160 110 L 200 70 L 240 110 Z" fill="url(#htp-fill-coral)" />
+    <line x1="180" y1="90" x2="220" y2="90" opacity="0.3" />
+    <line x1="170" y1="100" x2="230" y2="100" opacity="0.3" />
+    
     <!-- 벽 -->
     <rect x="170" y="110" width="60" height="40" fill="url(#htp-fill-navy)" />
-    <!-- 문 -->
+    <!-- 격자 창문 2개 -->
+    <g opacity="0.85">
+      <rect x="178" y="118" width="14" height="14" />
+      <line x1="185" y1="118" x2="185" y2="132" />
+      <line x1="178" y1="125" x2="192" y2="125" />
+      
+      <rect x="208" y="118" width="14" height="14" />
+      <line x1="215" y1="118" x2="215" y2="132" />
+      <line x1="208" y1="125" x2="222" y2="125" />
+    </g>
+    
+    <!-- 문 및 손잡이 -->
     <rect x="190" y="125" width="20" height="25" fill="url(#htp-fill-coral)" />
-    <!-- 창문 -->
-    <circle cx="200" cy="94" r="6" fill="#FFFFFF" fill-opacity="0.2" />
+    <circle cx="194" cy="137" r="1.5" fill="url(#htp-gradient)" />
+    
+    <!-- 계단/기단 -->
+    <path d="M 165 150 L 235 150 M 172 153 L 228 153" opacity="0.7" />
   </g>
 
   <!-- 2. 나무 (Tree) : 하단 좌측 (x=60~140, y=210~290) -->
   <g class="tree" stroke="url(#htp-gradient)" stroke-width="2">
     <!-- 나무 줄기 -->
-    <line x1="100" y1="260" x2="100" y2="290" />
-    <!-- 기하학적 3단 삼각형 잎 -->
-    <polygon points="100,210 70,240 130,240" fill="url(#htp-fill-navy)" />
-    <polygon points="100,225 65,260 135,260" fill="url(#htp-fill-coral)" />
-    <polygon points="100,240 60,275 140,275" fill="url(#htp-fill-navy)" />
+    <rect x="97" y="255" width="6" height="35" fill="url(#htp-fill-navy)" />
+    <!-- 잔가지 분기 -->
+    <path d="M 97 265 L 87 257 M 103 260 L 113 252 M 97 273 L 89 268" opacity="0.8" />
+    
+    <!-- 다층 원형 잎사귀 레이어 (구름 형태의 풍성한 구성) -->
+    <!-- 1층 (좌) -->
+    <circle cx="85" cy="230" r="18" fill="url(#htp-fill-navy)" />
+    <!-- 2층 (우) -->
+    <circle cx="115" cy="230" r="18" fill="url(#htp-fill-coral)" />
+    <!-- 3층 (상) -->
+    <circle cx="100" cy="202" r="16" fill="url(#htp-fill-navy)" />
+    <!-- 4층 (상좌) -->
+    <circle cx="86" cy="212" r="12" fill="url(#htp-fill-coral)" />
+    <!-- 5층 (상우) -->
+    <circle cx="114" cy="212" r="12" fill="url(#htp-fill-navy)" />
+    <!-- 메인 중심 원 -->
+    <circle cx="100" cy="225" r="22" fill="url(#htp-fill-navy)" />
   </g>
 
   <!-- 3. 사람 (Person) : 하단 우측 (x=260~340, y=210~290) -->
   <g class="person" stroke="url(#htp-gradient)" stroke-width="2">
+    <!-- 생각 노드 링크 라인 -->
+    <path d="M 300 200 L 300 183" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.6" />
+    <circle cx="300" cy="180" r="3.5" fill="url(#htp-fill-coral)" />
+    <circle cx="300" cy="180" r="7" stroke="url(#htp-gradient)" stroke-width="1" fill="none" opacity="0.3" />
+    
     <!-- 머리 -->
-    <circle cx="300" cy="223" r="10" fill="url(#htp-fill-coral)" />
+    <circle cx="300" cy="213" r="10" fill="url(#htp-fill-coral)" />
     <!-- 몸통 -->
-    <path d="M 285 233 L 315 233 L 320 265 L 280 265 Z" fill="url(#htp-fill-navy)" />
-    <!-- 팔 -->
-    <path d="M 265 248 L 285 240 L 300 240 L 315 240 L 335 248" />
-    <!-- 다리 -->
-    <line x1="285" y1="265" x2="275" y2="290" />
-    <line x1="315" y1="265" x2="325" y2="290" />
+    <path d="M 285 223 L 315 223 L 320 255 L 280 255 Z" fill="url(#htp-fill-navy)" />
+    <!-- 정장/옷 깃 디테일 -->
+    <path d="M 294 223 L 300 233 L 306 223" opacity="0.6" />
+    
+    <!-- 양팔 (왼팔 허리 거치, 오른팔 포인팅 모션) -->
+    <path d="M 285 228 L 273 240 L 283 248" />
+    <path d="M 315 228 L 330 233 L 340 221" />
+    
+    <!-- 바지/하체 형태 -->
+    <rect x="284" y="255" width="10" height="25" rx="3.5" fill="url(#htp-fill-navy)" />
+    <rect x="306" y="255" width="10" height="25" rx="3.5" fill="url(#htp-fill-navy)" />
+    <!-- 신발/밑둥 라인 -->
+    <line x1="289" y1="280" x2="279" y2="285" />
+    <line x1="311" y1="280" x2="321" y2="285" />
   </g>
 </svg>
