@@ -692,6 +692,17 @@
   z-index: 2;
 }
 
+/* 배경 – 프랙털 파티클 캔버스 */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
 /* ── Mobile Responsive Overrides ── */
 @media (max-width: 768px) {
   :root {
