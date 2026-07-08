@@ -16,13 +16,87 @@
       <stop offset="0%" stop-color="#E8613A" stop-opacity="0.12" />
       <stop offset="100%" stop-color="#E8613A" stop-opacity="0.02" />
     </linearGradient>
+
+    <!-- 하드웨어 가속 기반 CSS 마이크로 애니메이션 -->
+    <style>
+      /* 1. 굴뚝 연기 플로팅 효과 */
+      @keyframes float-smoke-1 {
+        0% { transform: translateY(0px) scale(0.8); opacity: 0; }
+        50% { opacity: 0.7; }
+        100% { transform: translateY(-18px) scale(1.3); opacity: 0; }
+      }
+      @keyframes float-smoke-2 {
+        0% { transform: translateY(0px) scale(0.8); opacity: 0; }
+        50% { opacity: 0.5; }
+        100% { transform: translateY(-22px) scale(1.4); opacity: 0; }
+      }
+      @keyframes float-smoke-3 {
+        0% { transform: translateY(0px) scale(0.8); opacity: 0; }
+        50% { opacity: 0.3; }
+        100% { transform: translateY(-26px) scale(1.5); opacity: 0; }
+      }
+      .smoke-1 {
+        animation: float-smoke-1 3s infinite ease-in-out;
+        transform-origin: 227px 70px;
+      }
+      .smoke-2 {
+        animation: float-smoke-2 3.5s infinite ease-in-out 1s;
+        transform-origin: 232px 62px;
+      }
+      .smoke-3 {
+        animation: float-smoke-3 4s infinite ease-in-out 2s;
+        transform-origin: 229px 52px;
+      }
+
+      /* 2. 나무 잎사귀 미풍 흔들림 효과 */
+      @keyframes sway-tree {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(1.5deg); }
+      }
+      .tree-leaves {
+        animation: sway-tree 6s infinite ease-in-out;
+        transform-origin: 100px 250px;
+      }
+
+      /* 3. 생각/매개 노드 펄스 효과 */
+      @keyframes pulse-ring {
+        0% { transform: scale(0.7); opacity: 0.6; }
+        100% { transform: scale(1.4); opacity: 0; }
+      }
+      @keyframes float-thought {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      .thought-pulse {
+        animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform-origin: 300px 180px;
+      }
+      .thought-orb {
+        animation: float-thought 4s infinite ease-in-out;
+        transform-origin: 300px 180px;
+      }
+      .center-pulse {
+        animation: pulse-ring 2.5s infinite ease-in-out;
+        transform-origin: 200px 250px;
+      }
+
+      /* 4. 삼각 관계 온톨로지 점선 흐름 효과 */
+      @keyframes dash-flow {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+      .flow-line {
+        animation: dash-flow 1.5s infinite linear;
+      }
+    </style>
   </defs>
 
   <!-- 0. 삼각 관계 연결선 (온톨로지 링크) -->
   <g stroke="url(#htp-gradient)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.35">
-    <line x1="200" y1="120" x2="100" y2="230" />
-    <line x1="200" y1="120" x2="300" y2="230" />
-    <line x1="120" y1="250" x2="280" y2="250" />
+    <line class="flow-line" x1="200" y1="120" x2="100" y2="230" />
+    <line class="flow-line" x1="200" y1="120" x2="300" y2="230" />
+    <line class="flow-line" x1="120" y1="250" x2="280" y2="250" />
   </g>
 
   <!-- 0-1. 연결선 상의 매개 노드 (Flow Nodes) -->
@@ -30,7 +104,7 @@
   <g fill="url(#htp-gradient)" opacity="0.8">
     <circle cx="170" cy="250" r="3" />
     <circle cx="200" cy="250" r="5" />
-    <circle cx="200" cy="250" r="9" stroke="url(#htp-gradient)" stroke-width="1" fill="none" opacity="0.4" />
+    <circle class="center-pulse" cx="200" cy="250" r="9" stroke="url(#htp-gradient)" stroke-width="1" fill="none" />
     <circle cx="230" cy="250" r="3" />
   </g>
   <!-- 집과 나무 사이 (사선) -->
@@ -42,10 +116,10 @@
   <g class="house" stroke="url(#htp-gradient)" stroke-width="2">
     <!-- 굴뚝 -->
     <rect x="222" y="80" width="10" height="20" fill="url(#htp-fill-navy)" />
-    <!-- 연기 방울들 -->
-    <circle cx="227" cy="70" r="3" fill="url(#htp-gradient)" opacity="0.7" />
-    <circle cx="232" cy="62" r="4.5" fill="url(#htp-gradient)" opacity="0.5" />
-    <circle cx="229" cy="52" r="6" fill="url(#htp-gradient)" opacity="0.3" />
+    <!-- 연기 방울들 (애니메이션 적용) -->
+    <circle class="smoke-1" cx="227" cy="70" r="3" fill="url(#htp-gradient)" />
+    <circle class="smoke-2" cx="232" cy="62" r="4.5" fill="url(#htp-gradient)" />
+    <circle class="smoke-3" cx="229" cy="52" r="6" fill="url(#htp-gradient)" />
     
     <!-- 지붕 (기하학적 선 패턴 가미) -->
     <path d="M 160 110 L 200 70 L 240 110 Z" fill="url(#htp-fill-coral)" />
@@ -80,27 +154,31 @@
     <!-- 잔가지 분기 -->
     <path d="M 97 265 L 87 257 M 103 260 L 113 252 M 97 273 L 89 268" opacity="0.8" />
     
-    <!-- 다층 원형 잎사귀 레이어 (구름 형태의 풍성한 구성) -->
-    <!-- 1층 (좌) -->
-    <circle cx="85" cy="230" r="18" fill="url(#htp-fill-navy)" />
-    <!-- 2층 (우) -->
-    <circle cx="115" cy="230" r="18" fill="url(#htp-fill-coral)" />
-    <!-- 3층 (상) -->
-    <circle cx="100" cy="202" r="16" fill="url(#htp-fill-navy)" />
-    <!-- 4층 (상좌) -->
-    <circle cx="86" cy="212" r="12" fill="url(#htp-fill-coral)" />
-    <!-- 5층 (상우) -->
-    <circle cx="114" cy="212" r="12" fill="url(#htp-fill-navy)" />
-    <!-- 메인 중심 원 -->
-    <circle cx="100" cy="225" r="22" fill="url(#htp-fill-navy)" />
+    <!-- 다층 원형 잎사귀 레이어 (미풍에 흔들리는 sway 애니메이션 적용) -->
+    <g class="tree-leaves">
+      <!-- 1층 (좌) -->
+      <circle cx="85" cy="230" r="18" fill="url(#htp-fill-navy)" />
+      <!-- 2층 (우) -->
+      <circle cx="115" cy="230" r="18" fill="url(#htp-fill-coral)" />
+      <!-- 3층 (상) -->
+      <circle cx="100" cy="202" r="16" fill="url(#htp-fill-navy)" />
+      <!-- 4층 (상좌) -->
+      <circle cx="86" cy="212" r="12" fill="url(#htp-fill-coral)" />
+      <!-- 5층 (상우) -->
+      <circle cx="114" cy="212" r="12" fill="url(#htp-fill-navy)" />
+      <!-- 메인 중심 원 -->
+      <circle cx="100" cy="225" r="22" fill="url(#htp-fill-navy)" />
+    </g>
   </g>
 
   <!-- 3. 사람 (Person) : 하단 우측 (x=260~340, y=210~290) -->
   <g class="person" stroke="url(#htp-gradient)" stroke-width="2">
-    <!-- 생각 노드 링크 라인 -->
-    <path d="M 300 200 L 300 183" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.6" />
-    <circle cx="300" cy="180" r="3.5" fill="url(#htp-fill-coral)" />
-    <circle cx="300" cy="180" r="7" stroke="url(#htp-gradient)" stroke-width="1" fill="none" opacity="0.3" />
+    <!-- 생각 노드 링크 라인 및 노드 (플로팅 & 펄스 애니메이션 적용) -->
+    <g class="thought-orb">
+      <path d="M 300 200 L 300 183" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.6" />
+      <circle cx="300" cy="180" r="3.5" fill="url(#htp-fill-coral)" />
+      <circle class="thought-pulse" cx="300" cy="180" r="7" stroke="url(#htp-gradient)" stroke-width="1" fill="none" />
+    </g>
     
     <!-- 머리 -->
     <circle cx="300" cy="213" r="10" fill="url(#htp-fill-coral)" />
