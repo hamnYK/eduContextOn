@@ -757,6 +757,41 @@
   justify-content: center;
 }
 
+/* Mermaid SVG 폰트 및 색테마 사이트 표준 동기화 */
+.diagram-wrapper .mermaid svg * {
+  font-family: var(--font-sans), "Outfit", sans-serif !important;
+}
+.diagram-wrapper .mermaid svg .node rect,
+.diagram-wrapper .mermaid svg .node circle,
+.diagram-wrapper .mermaid svg .node polygon,
+.diagram-wrapper .mermaid svg .node path {
+  stroke: var(--ink) !important;
+  stroke-width: 1.2px !important;
+}
+.diagram-wrapper .mermaid svg .edgePath .path {
+  stroke: var(--ink) !important;
+  stroke-width: 1.5px !important;
+}
+.diagram-wrapper .mermaid svg .edgeLabel rect {
+  fill: var(--bg) !important;
+}
+.diagram-wrapper .mermaid svg .edgeLabel span,
+.diagram-wrapper .mermaid svg .edgeLabel {
+  color: var(--ink) !important;
+  font-size: var(--fs-body-min) !important;
+  font-weight: 500 !important;
+}
+.diagram-wrapper .mermaid svg .cluster rect {
+  fill: rgba(245, 240, 232, 0.4) !important;
+  stroke: rgba(26, 31, 54, 0.15) !important;
+  stroke-width: 1px !important;
+}
+.diagram-wrapper .mermaid svg .label {
+  color: var(--text) !important;
+  font-size: var(--fs-body-min) !important;
+  font-weight: 500 !important;
+}
+
 /* ── Mobile Responsive Overrides ── */
 @media (max-width: 768px) {
   :root {

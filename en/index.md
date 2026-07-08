@@ -211,6 +211,7 @@ graph TD
     startOnLoad: true,
     theme: 'base',
     themeVariables: {
+      fontFamily: 'var(--font-sans), "Outfit", sans-serif',
       primaryColor: '#F5F0E8',         /* Warm Sand 바탕 */
       primaryTextColor: '#1A1F36',     /* Ink Navy 텍스트 */
       primaryBorderColor: 'rgba(26, 31, 54, 0.15)',
