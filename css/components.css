@@ -719,21 +719,15 @@
 
 /* ── Diagram Card Component ── */
 .diagram-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 32px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 16px 0;
   max-width: 960px;
   margin: 0 auto 32px auto;
   text-align: left;
-  box-shadow: var(--shadow-sm);
-  transition: var(--t);
   position: relative;
   overflow: hidden;
-}
-.diagram-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: rgba(232, 97, 58, 0.2);
 }
 .diagram-title {
   font-family: var(--font-serif-ko);
@@ -749,11 +743,10 @@
   line-height: 1.55;
 }
 .diagram-wrapper {
-  background: #FDFDFD;
-  border-radius: var(--r-sm);
-  padding: 20px;
+  background: transparent;
+  border: none;
+  padding: 20px 0;
   overflow-x: auto;
-  border: 1px solid rgba(26, 31, 54, 0.05);
   display: flex;
   justify-content: center;
 }

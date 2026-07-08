@@ -22,25 +22,25 @@ og_locale: "en_US"
     <div class="diagram-wrapper">
       <div class="mermaid">
 graph TD
-    subgraph Integrated_SD_System [Ontology-Based Simulation Engine (Closed Loop)]
+    subgraph Integrated_SD_System [Ontology-Based Simulation Engine - Closed Loop]
         direction TB
         
-        Ontology[( "Static Ontology DB <br> [Current State: Stock] <br> ex. Moon's Power=100, My Anger=50" )]
-        RuleEngine{{ "SWRL / Rule Engine <br> [Change Rule: Flow] <br> IF Anger>40 THEN Trigger Resistance" }}
-        TimeController(( "Time & State Controller <br> [Time Progress: Δt] <br> Mathematical Operation & Update" ))
+        Ontology[Static Ontology DB <br> Current State: Stock <br> ex. Moons Power 100 / My Anger 50]
+        RuleEngine{SWRL / Rule Engine <br> Change Rule: Flow <br> IF Anger 40 THEN Trigger Resistance}
+        TimeController((Time & State Controller <br> Time Progress: Δt <br> Mathematical Operation & Update))
         
-        Ontology -- "① Provide Current State(t) Data" --> RuleEngine
-        RuleEngine -- "② Infer Event/Change on Condition Met" --> TimeController
-        TimeController -- "③ Progress Time(t+1) & Overwrite New State" --> Ontology
+        Ontology -- ① Provide Current State t Data --> RuleEngine
+        RuleEngine -- ② Infer Event/Change on Condition Met --> TimeController
+        TimeController -- ③ Progress Time t+1 & Overwrite New State --> Ontology
     end
 
     subgraph LLM_Interface [AI / User Layer]
-        LLM["Language Model / AI Agent <br> Flexible Context Understanding & Interface"]
+        LLM[Language Model / AI Agent <br> Flexible Context Understanding & Interface]
     end
 
     %% Guardrail Connection
-    LLM -.->| "④ Hallucination Prevention Verification (Grounding) <br> Establish Secure Context Network" | Ontology
-    TimeController -.->| "⑤ Block Action on Rule Violation (Risk Mitigation)" | LLM
+    LLM -.->|④ Hallucination Prevention Verification Grounding <br> Establish Secure Context Network| Ontology
+    TimeController -.->|⑤ Block Action on Rule Violation Risk Mitigation| LLM
 
     style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
     style RuleEngine fill:#e2f0d9,stroke:#333,stroke-width:1px
@@ -57,25 +57,25 @@ graph TD
       <div class="mermaid">
 graph LR
     subgraph Rule_1 [Rule 1 : Inferred System Conformity & Worship]
-        R1_Cond["IF <br> Moon(x) AND hasLocation(x, Chessboard) <br> AND Crowd(y) AND hasLocation(y, Chessboard)"]
-        R1_Engine{{SWRL Inference Engine}}
-        R1_Result["THEN (Inferred) <br> <b>worships(y, x)</b> <br> (Crowd worships Moon)"]
+        R1_Cond[IF <br> Moon x AND hasLocation x, Chessboard <br> AND Crowd y AND hasLocation y, Chessboard]
+        R1_Engine{SWRL Inference Engine}
+        R1_Result[THEN Inferred <br> worships y, x <br> Crowd worships Moon]
         
         R1_Cond --> R1_Engine --> R1_Result
     end
 
     subgraph Rule_2 [Rule 2 : Inferred Emergence of Resistance]
-        R2_Cond["IF <br> I(x) AND hasEmotion(x, Anger) <br> AND Stone(z) AND hasLocation(z, Cliff) <br> AND Moon(y)"]
-        R2_Engine{{SWRL Inference Engine}}
-        R2_Result["THEN (Inferred) <br> <b>throwsAt(x, z, y)</b> <br> (I throw a stone at Moon)"]
+        R2_Cond[IF <br> I x AND hasEmotion x, Anger <br> AND Stone z AND hasLocation z, Cliff <br> AND Moon y]
+        R2_Engine{SWRL Inference Engine}
+        R2_Result[THEN Inferred <br> throwsAt x, z, y <br> I throw a stone at Moon]
         
         R2_Cond --> R2_Engine --> R2_Result
     end
 
     subgraph Rule_3 [Rule 3 : Inferred Isolation & Intersection of Gazes]
-        R3_Cond["IF <br> throwsAt(I, Stone, Moon) <br> AND misses(Stone, Moon) <br> AND worships(Crowd, Moon)"]
-        R3_Engine{{SWRL Inference Engine}}
-        R3_Result["THEN (Inferred) <br> <b>staresAt(Crowd, I)</b> <br> <b>hasStatus(I, Isolated)</b> <br> (Crowd stares at I / Isolated status assigned)"]
+        R3_Cond[IF <br> throwsAt I, Stone, Moon <br> AND misses Stone, Moon <br> AND worships Crowd, Moon]
+        R3_Engine{SWRL Inference Engine}
+        R3_Result[THEN Inferred <br> staresAt Crowd, I <br> hasStatus I, Isolated <br> Crowd stares at I / Isolated status assigned]
         
         R3_Cond --> R3_Engine --> R3_Result
     end

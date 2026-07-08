@@ -20,25 +20,25 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     <div class="diagram-wrapper">
       <div class="mermaid">
 graph TD
-    subgraph Integrated_SD_System [온톨로지 기반 시뮬레이션 엔진 (Closed Loop)]
+    subgraph Integrated_SD_System [온톨로지 기반 시뮬레이션 엔진 - Closed Loop]
         direction TB
         
-        Ontology[( "정적 온톨로지 DB <br> [현재 상태: Stock] <br> ex. 달의 권력=100, 나의 분노=50" )]
-        RuleEngine{{ "SWRL / 룰 엔진 <br> [변화 규칙: Flow] <br> IF 분노>40 THEN 저항 발동" }}
-        TimeController(( "시간 및 상태 제어기 <br> [시간 진행: Δt] <br> 수학적 연산 및 업데이트" ))
+        Ontology[정적 온톨로지 DB <br> 현재 상태: Stock <br> ex. 달의 권력 100 / 나의 분노 50]
+        RuleEngine{SWRL / 룰 엔진 <br> 변화 규칙: Flow <br> IF 분노 40 THEN 저항 발동}
+        TimeController((시간 및 상태 제어기 <br> 시간 진행: Δt <br> 수학적 연산 및 업데이트))
         
-        Ontology -- "① 현재 상태(t) 데이터 제공" --> RuleEngine
-        RuleEngine -- "② 조건 충족 시 이벤트/변화량 추론" --> TimeController
-        TimeController -- "③ 시간(t+1) 진행 및 새로운 상태 덮어쓰기" --> Ontology
+        Ontology -- ① 현재 상태 t 데이터 제공 --> RuleEngine
+        RuleEngine -- ② 조건 충족 시 이벤트/변화량 추론 --> TimeController
+        TimeController -- ③ 시간 t+1 진행 및 새로운 상태 덮어쓰기 --> Ontology
     end
 
     subgraph LLM_Interface [AI / 사용자 계층]
-        LLM["언어 모델 / AI 에이전트 <br> 유연한 맥락 파악 및 인터페이스"]
+        LLM[언어 모델 / AI 에이전트 <br> 유연한 맥락 파악 및 인터페이스]
     end
 
     %% Guardrail Connection
-    LLM -.->| "④ 환각 방지 검증 (Grounding) <br> 안전한 맥락망 구성" | Ontology
-    TimeController -.->| "⑤ 룰 위반 시 행동 차단 (Risk Mitigation)" | LLM
+    LLM -.->|④ 환각 방지 검증 Grounding <br> 안전한 맥락망 구성| Ontology
+    TimeController -.->|⑤ 룰 위반 시 행동 차단 Risk Mitigation| LLM
 
     style Ontology fill:#f9f2f4,stroke:#333,stroke-width:1px
     style RuleEngine fill:#e2f0d9,stroke:#333,stroke-width:1px
@@ -55,9 +55,9 @@ graph TD
       <div class="mermaid">
 graph LR
     subgraph Rule_1 [규칙 1 : 체제의 순응과 숭배 추론]
-        R1_Cond["IF <br> Moon(x) AND hasLocation(x, Chessboard) <br> AND Crowd(y) AND hasLocation(y, Chessboard)"]
-        R1_Engine{{SWRL 추론 엔진}}
-        R1_Result["THEN (Inferred) <br> <b>worships(y, x)</b> <br> (사람들이 달을 숭배함)"]
+        R1_Cond[IF <br> Moon x AND hasLocation x, Chessboard <br> AND Crowd y AND hasLocation y, Chessboard]
+        R1_Engine{SWRL 추론 엔진}
+        R1_Result[THEN Inferred <br> worships y, x <br> 사람들이 달을 숭배함]
         
         R1_Cond --> R1_Engine --> R1_Result
     end
