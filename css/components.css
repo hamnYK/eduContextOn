@@ -718,6 +718,16 @@
 }
 
 /* ── Diagram Card Component ── */
+.diagram-card-sub {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sub);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  opacity: 0.75;
+}
 .diagram-card {
   background: transparent;
   border: none;
