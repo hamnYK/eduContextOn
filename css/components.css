@@ -723,7 +723,7 @@
   border: none;
   box-shadow: none;
   padding: 16px 0;
-  max-width: 960px;
+  max-width: 720px;
   margin: 0 auto 32px auto;
   text-align: left;
   position: relative;
@@ -747,6 +747,8 @@
   border: none;
   padding: 20px 0;
   overflow-x: auto;
+  max-width: 720px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
