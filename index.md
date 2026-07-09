@@ -213,59 +213,112 @@ graph TD
     startOnLoad: true,
     theme: 'base',
     themeCSS: `
-      /* 전체 폰트 및 색상 표준 상속 */
-      g.classGroup text, g.node text, g.cluster text, .label, .edgeLabel, .edgeLabel span {
-        font-family: var(--font-sans), "Outfit", sans-serif !important;
-        font-size: 13px !important;
-        fill: var(--ink) !important;
-        color: var(--ink) !important;
+      /* ─ 전체 폰트 동기화 ─ */
+      svg * {
+        font-family: 'Pretendard Variable', 'DM Sans', -apple-system, sans-serif !important;
       }
-      /* 노드 본체 모던화 (원색 제거, 샌드 틴트 및 잉크 네이비 테두리) */
-      .node rect, .node circle, .node polygon, .node path, .node ellipse {
-        fill: rgba(245, 240, 232, 0.4) !important;
-        stroke: var(--ink) !important;
+
+      /* ─ rect 노드: 순백 카드 ─ */
+      .node rect {
+        fill: #FFFFFF !important;
+        stroke: rgba(26, 31, 54, 0.25) !important;
         stroke-width: 1.5px !important;
-        rx: 8px !important;
-        ry: 8px !important;
+        rx: 10px !important;
+        ry: 10px !important;
       }
-      /* 화살표 및 선 스타일 */
+
+      /* ─ circle 노드: 코랄 틴트 (시간 제어기 등 핵심 허브) ─ */
+      .node circle {
+        fill: #FDF0EC !important;
+        stroke: #E8613A !important;
+        stroke-width: 2px !important;
+      }
+
+      /* ─ polygon/diamond: 샌드 (룰 엔진 등 판단 노드) ─ */
+      .node polygon {
+        fill: #F5F0E8 !important;
+        stroke: rgba(26, 31, 54, 0.30) !important;
+        stroke-width: 1.5px !important;
+      }
+
+      /* ─ path (비대칭 도형) ─ */
+      .node path {
+        fill: #F0EDE6 !important;
+        stroke: rgba(26, 31, 54, 0.25) !important;
+        stroke-width: 1.5px !important;
+      }
+
+      /* ─ 노드 내부 텍스트 ─ */
+      .node text, .nodeLabel, .label {
+        fill: #1A1F36 !important;
+        color: #1A1F36 !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        line-height: 1.55 !important;
+      }
+
+      /* ─ 연결선 ─ */
       .edgePath .path {
-        stroke: var(--ink) !important;
-        stroke-width: 1.5px !important;
+        stroke: rgba(26, 31, 54, 0.50) !important;
+        stroke-width: 1.4px !important;
       }
-      .edgePath .marker {
-        fill: var(--ink) !important;
-        stroke: var(--ink) !important;
+
+      /* ─ 화살표 마커 ─ */
+      .edgePath .marker, marker path {
+        fill: rgba(26, 31, 54, 0.50) !important;
+        stroke: none !important;
       }
-      /* 라벨 배경 정리 */
+
+      /* ─ 엣지 라벨 배경 ─ */
       .edgeLabel rect {
-        fill: #FDFDFD !important;
-        opacity: 0.9 !important;
-      }
-      /* 서브그래프 박스 커스텀 */
-      .cluster rect {
-        fill: rgba(26, 31, 54, 0.02) !important;
-        stroke: rgba(26, 31, 54, 0.15) !important;
+        fill: rgba(255, 252, 248, 0.95) !important;
+        stroke: rgba(26, 31, 54, 0.10) !important;
         stroke-width: 1px !important;
-        stroke-dasharray: 3 3 !important;
-        rx: 12px !important;
-        ry: 12px !important;
+        rx: 6px !important;
+        ry: 6px !important;
       }
+
+      /* ─ 엣지 라벨 텍스트 ─ */
+      .edgeLabel, .edgeLabel span {
+        color: rgba(26, 31, 54, 0.70) !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.1px !important;
+      }
+
+      /* ─ 클러스터(서브그래프) 박스 ─ */
+      .cluster rect {
+        fill: rgba(245, 240, 232, 0.50) !important;
+        stroke: rgba(26, 31, 54, 0.13) !important;
+        stroke-width: 1px !important;
+        stroke-dasharray: 6 4 !important;
+        rx: 14px !important;
+        ry: 14px !important;
+      }
+
+      /* ─ 클러스터 제목 ─ */
       .cluster-label text, .cluster-label span {
-        font-weight: 600 !important;
-        fill: var(--ink) !important;
+        fill: #1A1F36 !important;
+        color: #1A1F36 !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.4px !important;
       }
     `,
     themeVariables: {
-      fontFamily: 'var(--font-sans), "Outfit", sans-serif',
-      primaryColor: '#F5F0E8',         /* Warm Sand 바탕 */
-      primaryTextColor: '#1A1F36',     /* Ink Navy 텍스트 */
-      primaryBorderColor: 'rgba(26, 31, 54, 0.15)',
-      lineColor: '#1A1F36',            /* 연결선 Navy */
-      secondaryColor: '#FDF0EC',       /* Living Coral 틴트 */
-      tertiaryColor: '#FAFAF8',
-      mainBkg: '#F5F0E8',
-      nodeBorder: 'rgba(26, 31, 54, 0.2)'
+      fontFamily: "'Pretendard Variable', 'DM Sans', sans-serif",
+      primaryColor:       '#FFFFFF',
+      primaryTextColor:   '#1A1F36',
+      primaryBorderColor: 'rgba(26, 31, 54, 0.25)',
+      lineColor:          'rgba(26, 31, 54, 0.50)',
+      secondaryColor:     '#F5F0E8',
+      tertiaryColor:      '#FDF0EC',
+      mainBkg:            '#FFFFFF',
+      nodeBorder:         'rgba(26, 31, 54, 0.25)',
+      clusterBkg:         'rgba(245, 240, 232, 0.50)',
+      clusterBorder:      'rgba(26, 31, 54, 0.13)',
+      edgeLabelBackground:'rgba(255, 252, 248, 0.95)',
+      background:         '#FFFFFF'
     }
   });
 </script>
