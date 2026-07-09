@@ -718,15 +718,30 @@
 }
 
 /* ── Diagram Card Component ── */
+.diagram-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ink);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: var(--fs-badge);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
 .diagram-card-sub {
   font-family: var(--font-body);
   font-size: var(--fs-body-sub);
   font-weight: 600;
-  color: var(--ink);
+  color: var(--coral);
   letter-spacing: -0.3px;
   line-height: 1.4;
   margin-bottom: 10px;
-  opacity: 0.75;
+  opacity: 0.9;
 }
 .diagram-card {
   background: transparent;
