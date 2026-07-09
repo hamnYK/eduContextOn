@@ -20,6 +20,8 @@ og_locale: "en_US"
   <!-- Ontology & System Dynamics Visualization Diagram (Merged Inside Illustration Section) -->
   <!-- Card 1: System Dynamics -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
+    <span class="diagram-badge">A Small Ball Worflogy Has Launched & the Future</span>
+    <p class="diagram-card-sub">A New Paradigm of Self-Sustaining Knowledge Context Supply</p>
     <h3 class="diagram-title">1. Ontology-based System Dynamics</h3>
     <p class="diagram-desc">A closed-loop control system of cognitive architecture that simulates static knowledge data (Stock) and inference rules (Flow) in a real-time feedback loop via a time controller (Δt).</p>
     <div class="diagram-wrapper">
@@ -54,6 +56,8 @@ graph TD
 
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
+    <span class="diagram-badge">Traditional Top-Down Ontology Design & Its Present Value</span>
+    <p class="diagram-card-sub">Rapid Machine Situational Awareness & Data Orchestration</p>
     <h3 class="diagram-title">2. Semantic Inference Rules</h3>
     <p class="diagram-desc">A semantic inference rule network of the rule engine that derives complex sociological conformity, resistance behaviors, and the resulting causal isolation status from current state data.</p>
     <div class="diagram-wrapper">
@@ -211,59 +215,112 @@ graph TD
     startOnLoad: true,
     theme: 'base',
     themeCSS: `
-      /* 전체 폰트 및 색상 표준 상속 */
-      g.classGroup text, g.node text, g.cluster text, .label, .edgeLabel, .edgeLabel span {
-        font-family: var(--font-sans), "Outfit", sans-serif !important;
-        font-size: 13px !important;
-        fill: var(--ink) !important;
-        color: var(--ink) !important;
+      /* ─ Global Font Sync ─ */
+      svg * {
+        font-family: 'Pretendard Variable', 'DM Sans', -apple-system, sans-serif !important;
       }
-      /* 노드 본체 모던화 (원색 제거, 샌드 틴트 및 잉크 네이비 테두리) */
-      .node rect, .node circle, .node polygon, .node path, .node ellipse {
-        fill: rgba(245, 240, 232, 0.4) !important;
-        stroke: var(--ink) !important;
+
+      /* ─ rect node: pure white card ─ */
+      .node rect {
+        fill: #FFFFFF !important;
+        stroke: rgba(26, 31, 54, 0.25) !important;
         stroke-width: 1.5px !important;
-        rx: 8px !important;
-        ry: 8px !important;
+        rx: 10px !important;
+        ry: 10px !important;
       }
-      /* 화살표 및 선 스타일 */
+
+      /* ─ circle node: coral tint (key hub) ─ */
+      .node circle {
+        fill: #FDF0EC !important;
+        stroke: #E8613A !important;
+        stroke-width: 2px !important;
+      }
+
+      /* ─ polygon/diamond: sand (rule engine, decision) ─ */
+      .node polygon {
+        fill: #F5F0E8 !important;
+        stroke: rgba(26, 31, 54, 0.30) !important;
+        stroke-width: 1.5px !important;
+      }
+
+      /* ─ path (asymmetric shapes) ─ */
+      .node path {
+        fill: #F0EDE6 !important;
+        stroke: rgba(26, 31, 54, 0.25) !important;
+        stroke-width: 1.5px !important;
+      }
+
+      /* ─ Node inner text ─ */
+      .node text, .nodeLabel, .label {
+        fill: #1A1F36 !important;
+        color: #1A1F36 !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        line-height: 1.55 !important;
+      }
+
+      /* ─ Edges ─ */
       .edgePath .path {
-        stroke: var(--ink) !important;
-        stroke-width: 1.5px !important;
+        stroke: rgba(26, 31, 54, 0.50) !important;
+        stroke-width: 1.4px !important;
       }
-      .edgePath .marker {
-        fill: var(--ink) !important;
-        stroke: var(--ink) !important;
+
+      /* ─ Arrow markers ─ */
+      .edgePath .marker, marker path {
+        fill: rgba(26, 31, 54, 0.50) !important;
+        stroke: none !important;
       }
-      /* 라벨 배경 정리 */
+
+      /* ─ Edge label background ─ */
       .edgeLabel rect {
-        fill: #FDFDFD !important;
-        opacity: 0.9 !important;
-      }
-      /* 서브그래프 박스 커스텀 */
-      .cluster rect {
-        fill: rgba(26, 31, 54, 0.02) !important;
-        stroke: rgba(26, 31, 54, 0.15) !important;
+        fill: rgba(255, 252, 248, 0.95) !important;
+        stroke: rgba(26, 31, 54, 0.10) !important;
         stroke-width: 1px !important;
-        stroke-dasharray: 3 3 !important;
-        rx: 12px !important;
-        ry: 12px !important;
+        rx: 6px !important;
+        ry: 6px !important;
       }
+
+      /* ─ Edge label text ─ */
+      .edgeLabel, .edgeLabel span {
+        color: rgba(26, 31, 54, 0.70) !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.1px !important;
+      }
+
+      /* ─ Cluster (subgraph) box ─ */
+      .cluster rect {
+        fill: rgba(245, 240, 232, 0.50) !important;
+        stroke: rgba(26, 31, 54, 0.13) !important;
+        stroke-width: 1px !important;
+        stroke-dasharray: 6 4 !important;
+        rx: 14px !important;
+        ry: 14px !important;
+      }
+
+      /* ─ Cluster label ─ */
       .cluster-label text, .cluster-label span {
-        font-weight: 600 !important;
-        fill: var(--ink) !important;
+        fill: #1A1F36 !important;
+        color: #1A1F36 !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.4px !important;
       }
     `,
     themeVariables: {
-      fontFamily: 'var(--font-sans), "Outfit", sans-serif',
-      primaryColor: '#F5F0E8',         /* Warm Sand 바탕 */
-      primaryTextColor: '#1A1F36',     /* Ink Navy 텍스트 */
-      primaryBorderColor: 'rgba(26, 31, 54, 0.15)',
-      lineColor: '#1A1F36',            /* 연결선 Navy */
-      secondaryColor: '#FDF0EC',       /* Living Coral 틴트 */
-      tertiaryColor: '#FAFAF8',
-      mainBkg: '#F5F0E8',
-      nodeBorder: 'rgba(26, 31, 54, 0.2)'
+      fontFamily: "'Pretendard Variable', 'DM Sans', sans-serif",
+      primaryColor:       '#FFFFFF',
+      primaryTextColor:   '#1A1F36',
+      primaryBorderColor: 'rgba(26, 31, 54, 0.25)',
+      lineColor:          'rgba(26, 31, 54, 0.50)',
+      secondaryColor:     '#F5F0E8',
+      tertiaryColor:      '#FDF0EC',
+      mainBkg:            '#FFFFFF',
+      nodeBorder:         'rgba(26, 31, 54, 0.25)',
+      clusterBkg:         'rgba(245, 240, 232, 0.50)',
+      clusterBorder:      'rgba(26, 31, 54, 0.13)',
+      edgeLabelBackground:'rgba(255, 252, 248, 0.95)',
+      background:         '#FFFFFF'
     }
   });
 </script>
