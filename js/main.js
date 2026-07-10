@@ -92,3 +92,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+/* ── Decalcomanie Word Emitter (entropy, story, cord) ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const emitters = document.querySelectorAll('.decal-word-emitter');
+  if (!emitters.length) return;
+
+  const WORDS = ['entropy', 'story', 'cord'];
+
+  emitters.forEach(emitter => {
+    let timeoutId = null;
+
+    function emitWord() {
+      // 1.5초 ~ 2.4초 사이의 랜덤한 타이밍에 단어 생성
+      const delay = 1400 + Math.random() * 1000;
+      
+      timeoutId = setTimeout(() => {
+        if (!document.body.contains(emitter)) return;
+
+        const selectedWord = WORDS[Math.floor(Math.random() * WORDS.length)];
+        const span = document.createElement('span');
+        span.className = 'decal-word';
+        span.textContent = selectedWord;
+        
+        // 정중앙(50%, 50%) 방출 지점 설정
+        span.style.left = '50%';
+        span.style.top = '50%';
+        span.style.transform = 'translate(-50%, -50%) scale(0.4)';
+        span.style.opacity = '0';
+        
+        emitter.appendChild(span);
+
+        // 강제 reflow 후 애니메이션 동작
+        requestAnimationFrame(() => {
+          // 0 ~ 360도 임의의 방향
+          const angle = Math.random() * Math.PI * 2;
+          // 방출 반경 (80px ~ 180px)
+          const distance = 80 + Math.random() * 100;
+          const targetX = Math.cos(angle) * distance;
+          const targetY = Math.sin(angle) * distance;
+          const rotate = -18 + Math.random() * 36; // -18도 ~ 18도 임의 회전
+          const scale = 0.85 + Math.random() * 0.35; // 0.85 ~ 1.2 배율
+
+          span.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98)';
+          span.style.transform = `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY}px)) scale(${scale}) rotate(${rotate}deg)`;
+          span.style.opacity = '0.8';
+
+          // 1.6초 뒤 서서히 흐려지며 사라지도록 추가 트리거
+          setTimeout(() => {
+            if (span.parentNode) {
+              span.style.opacity = '0';
+            }
+          }, 1600);
+        });
+
+        // 3.4초의 전체 애니메이션이 끝나면 DOM에서 완전 제거
+        setTimeout(() => {
+          if (span.parentNode) {
+            span.remove();
+          }
+        }, 3400);
+
+        // 다음 방출 예약
+        emitWord();
+      }, delay);
+    }
+
+    emitWord();
+  });
+});

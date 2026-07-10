@@ -132,6 +132,8 @@ graph TD
       <div class="decal-drop right-drop-2"></div>
       <div class="decal-drop right-drop-3"></div>
     </div>
+    <!-- 단어 방출용 컨테이너 -->
+    <div class="decal-word-emitter"></div>
   </div>
 
   <!-- Card 2: Ontology Rule -->
