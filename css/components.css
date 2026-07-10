@@ -1508,49 +1508,56 @@
   overflow: visible;
 }
 
-.decal-word {
+.decal-word-wrapper {
   position: absolute;
-  font-family: var(--font-serif-en, serif);
-  font-size: 15px;
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: 0.8px;
-  text-transform: lowercase;
-  color: var(--ink, #1a1f36);
   pointer-events: none;
   white-space: nowrap;
   will-change: transform, opacity, filter;
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.4);
   filter: blur(12px); /* 최초 파동(중첩) 상태: 두꺼운 블러 */
-  /* 양자 진동 효과 부여 */
+  z-index: 2;
+}
+
+.decal-word {
+  display: inline-block;
+  font-family: var(--font-serif-en, serif);
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink, #1a1f36);
+  pointer-events: none;
+  will-change: transform;
+  /* 안쪽 글자 자체의 양자 진동 효과 부여 */
   animation: quantumFluctuation 0.32s infinite alternate ease-in-out;
 }
 
 /* 양자 중첩 요동 및 색수차 시뮬레이션 키프레임 */
 @keyframes quantumFluctuation {
   0% {
-    transform: translate(-50%, -50%) scale(var(--q-scale, 1)) skew(0deg);
+    transform: translate(0, 0) skew(0deg);
     text-shadow: 
       0 0 8px rgba(255, 255, 255, 0.95), 
       0 0 14px rgba(232, 97, 58, 0.35);
   }
   25% {
-    transform: translate(calc(-50% - 1.2px), calc(-50% + 0.8px)) scale(var(--q-scale, 1)) skew(-1.5deg);
+    transform: translate(-1.2px, 0.8px) skew(-1.5deg);
     text-shadow: 
       -1px 0 rgba(232, 97, 58, 0.75), 
       1px 0 rgba(26, 86, 130, 0.75), 
       0 0 11px rgba(255, 255, 255, 0.9);
   }
   75% {
-    transform: translate(calc(-50% + 1px), calc(-50% - 1px)) scale(var(--q-scale, 1)) skew(1deg);
+    transform: translate(1px, -1px) skew(1deg);
     text-shadow: 
       1px 0 rgba(232, 97, 58, 0.75), 
       -1px 0 rgba(26, 86, 130, 0.75), 
       0 0 13px rgba(255, 255, 255, 0.95);
   }
   100% {
-    transform: translate(-50%, -50%) scale(var(--q-scale, 1)) skew(-0.5deg);
+    transform: translate(0, 0) skew(-0.5deg);
     text-shadow: 
       0 0 8px rgba(255, 255, 255, 0.95), 
       0 0 14px rgba(232, 97, 58, 0.35);

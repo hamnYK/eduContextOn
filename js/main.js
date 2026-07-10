@@ -111,18 +111,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!document.body.contains(emitter)) return;
 
         const selectedWord = WORDS[Math.floor(Math.random() * WORDS.length)];
+        
+        // 1. 외각 비행/블러 핸들링 래퍼 생성
+        const wrapper = document.createElement('span');
+        wrapper.className = 'decal-word-wrapper';
+        wrapper.style.left = '50%';
+        wrapper.style.top = '50%';
+        wrapper.style.transform = 'translate(-50%, -50%) scale(0.4)';
+        wrapper.style.opacity = '0';
+        wrapper.style.filter = 'blur(12px)'; // 최초 파동 상태
+        
+        // 2. 내부 양자 요동 텍스트 생성
         const span = document.createElement('span');
         span.className = 'decal-word';
         span.textContent = selectedWord;
         
-        // 정중앙(50%, 50%) 방출 지점 설정
-        span.style.left = '50%';
-        span.style.top = '50%';
-        span.style.transform = 'translate(-50%, -50%) scale(0.4)';
-        span.style.opacity = '0';
-        span.style.filter = 'blur(12px)'; // 최초 파동 상태
-        
-        emitter.appendChild(span);
+        wrapper.appendChild(span);
+        emitter.appendChild(wrapper);
 
         // 강제 reflow 후 애니메이션 동작
         requestAnimationFrame(() => {
@@ -135,29 +140,26 @@ document.addEventListener('DOMContentLoaded', () => {
           const rotate = -18 + Math.random() * 36; // -18도 ~ 18도 임의 회전
           const scale = 0.85 + Math.random() * 0.35; // 0.85 ~ 1.2 배율
 
-          // CSS 키프레임에 스케일 변수 바인딩
-          span.style.setProperty('--q-scale', scale);
-
           // 1단계 트랜지션: 파동에서 선명한 입자로 변화 (0.8초 동안 빠르게 관측)
-          span.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 0.8s ease-out, filter 0.8s ease-out';
-          span.style.transform = `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY}px)) scale(${scale}) rotate(${rotate}deg)`;
-          span.style.opacity = '0.85';
-          span.style.filter = 'blur(0px)'; // 선명한 관측 상태
+          wrapper.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 0.8s ease-out, filter 0.8s ease-out';
+          wrapper.style.transform = `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY}px)) scale(${scale}) rotate(${rotate}deg)`;
+          wrapper.style.opacity = '0.85';
+          wrapper.style.filter = 'blur(0px)'; // 선명한 관측 상태
 
           // 2단계 트랜지션: 1.4초 후 다시 파동으로 산란되며 기화 (2.0초 동안 느리게 소멸)
           setTimeout(() => {
-            if (span.parentNode) {
-              span.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 2.0s ease-in, filter 2.0s ease-in';
-              span.style.opacity = '0';
-              span.style.filter = 'blur(16px)'; // 파동으로 흩어짐
+            if (wrapper.parentNode) {
+              wrapper.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 2.0s ease-in, filter 2.0s ease-in';
+              wrapper.style.opacity = '0';
+              wrapper.style.filter = 'blur(16px)'; // 파동으로 흩어짐
             }
           }, 1400);
         });
 
         // 3.4초의 전체 애니메이션이 끝나면 DOM에서 완전 제거
         setTimeout(() => {
-          if (span.parentNode) {
-            span.remove();
+          if (wrapper.parentNode) {
+            wrapper.remove();
           }
         }, 3400);
 
@@ -182,9 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
         rightEl: connector.querySelector('.right-drop-1'),
         baseLeft: 24, baseTop: 18,
         x: 0, y: 0, vx: 0, vy: 0,
-        hueBase: 28, hueRange: 17,    // Warm Editorial (Hue: 11 ~ 45, terracotta/apricot)
-        satBase: 78, satRange: 7,
-        lightBase: 56, lightRange: 6,
+        hueBase: 35, hueRange: 35,    // Warm Editorial (Hue: 0 ~ 70, Terracotta to Lemon Yellow)
+        satBase: 82, satRange: 6,
+        lightBase: 54, lightRange: 6,
         timeOffset: 0
       },
       {
@@ -192,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
         rightEl: connector.querySelector('.right-drop-2'),
         baseLeft: 36, baseTop: 32,
         x: 0, y: 0, vx: 0, vy: 0,
-        hueBase: 222, hueRange: 22,   // Deep Intellectual (Hue: 200 ~ 244, indigo/navy/teal)
-        satBase: 62, satRange: 7,
-        lightBase: 23, lightRange: 5, // 지성적인 어두운 깊이감
+        hueBase: 220, hueRange: 40,   // Deep Intellectual (Hue: 180 ~ 260, Teal to Midnight Indigo/Violet)
+        satBase: 70, satRange: 10,
+        lightBase: 25, lightRange: 6,
         timeOffset: Math.PI / 3
       },
       {
@@ -202,9 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
         rightEl: connector.querySelector('.right-drop-3'),
         baseLeft: 42, baseTop: 48,
         x: 0, y: 0, vx: 0, vy: 0,
-        hueBase: 67, hueRange: 22,    // Ethereal Catalyst (Hue: 45 ~ 89, muted gold/olive/sage)
-        satBase: 72, satRange: 12,
-        lightBase: 48, lightRange: 6,
+        hueBase: 95, hueRange: 50,    // Ethereal Catalyst (Hue: 45 ~ 145, Gold to Emerald Sage/Mint)
+        satBase: 78, satRange: 10,
+        lightBase: 46, lightRange: 6,
         timeOffset: Math.PI * 2 / 3
       }
     ];
@@ -249,10 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const borderRadiusVal = `${r1}% ${100 - r1}% ${r2}% ${100 - r2}% / ${r3}% ${r4}% ${100 - r4}% ${100 - r3}%`;
 
-        // 3. 실시간 Color Morphing (선택된 테마 팔레트 연산)
-        const currentHue = d.hueBase + Math.sin(animTime * 0.8 + d.timeOffset) * d.hueRange;
-        const currentSat = d.satBase + Math.sin(animTime * 0.4 + d.timeOffset) * d.satRange;
-        const currentLight = d.lightBase + Math.cos(animTime * 0.5 + d.timeOffset) * d.lightRange;
+        // 3. 실시간 Color Morphing (다중 파동 중첩 및 색 회전 속도 약 2.5배 가속)
+        const tColor = animTime * 2.4 + d.timeOffset;
+        const beatWave = Math.sin(tColor) * 0.65 + Math.sin(tColor * 1.7) * 0.35;
+        
+        const currentHue = d.hueBase + beatWave * d.hueRange;
+        const currentSat = d.satBase + Math.cos(animTime * 1.2 + d.timeOffset) * d.satRange;
+        const currentLight = d.lightBase + Math.sin(animTime * 1.5 + d.timeOffset) * d.lightRange;
         
         const colorVal = `hsl(${Math.round(currentHue)}, ${Math.round(currentSat)}%, ${Math.round(currentLight)}%)`;
 
