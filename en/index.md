@@ -20,8 +20,8 @@ og_locale: "en_US"
   <!-- Ontology & System Dynamics Visualization Diagram (Merged Inside Illustration Section) -->
   <!-- Card 1: System Dynamics -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
-    <span class="diagram-badge">A Small Ball Worflogy Has Launched & the Future</span>
-    <p class="diagram-card-sub">A New Paradigm of Self-Sustaining Knowledge Context Supply</p>
+    <span class="diagram-badge">The Future Snowball of the Small Ball Worflogy Has Launched</span>
+    <p class="diagram-card-sub">A New Paradigm of the Evolution and Supply of Self-Sustaining Knowledge Context</p>
     <h3 class="diagram-title">1. Ontology-based System Dynamics</h3>
     <p class="diagram-desc">A closed-loop control system of cognitive architecture that simulates static knowledge data (Stock) and inference rules (Flow) in a real-time feedback loop via a time controller (Δt).</p>
     <div class="diagram-wrapper">
@@ -56,8 +56,8 @@ graph TD
 
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
-    <span class="diagram-badge">Traditional Top-Down Ontology Design & Its Present Value</span>
-    <p class="diagram-card-sub">Rapid Machine Situational Awareness & Data Orchestration</p>
+    <span class="diagram-badge">Traditional Top-Down Ontology Design & Its Present Value Combined with LLMs</span>
+    <p class="diagram-card-sub">From Limited Semantic Search and Rule-Based Reasoning to Rapid Machine Situational Awareness and Data Orchestration</p>
     <h3 class="diagram-title">2. Semantic Inference Rules</h3>
     <p class="diagram-desc">A semantic inference rule network of the rule engine that derives complex sociological conformity, resistance behaviors, and the resulting causal isolation status from current state data.</p>
     <div class="diagram-wrapper">
