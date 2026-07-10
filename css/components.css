@@ -1386,16 +1386,18 @@
 }
 
 /* ================================================
-   WORFLOGY — Decalcomanie Connector
+   WORFLOGY — Decalcomanie Connector (Gooey Fluid Art)
    ================================================ */
 .decalcomanie-connector {
   position: relative;
   width: 100%;
-  height: 90px;
-  margin: -16px auto;
+  height: 140px;
+  margin: 12px auto;
   pointer-events: none;
-  z-index: 0;
+  z-index: 2; /* 뱃지 위에 입체적으로 보이도록 z-index 조절 */
   overflow: visible;
+  /* contrast 연산을 통해 선명한 외곽선을 뽑기 위해 가상의 연한 배경 바탕 확보 */
+  background: transparent; 
 }
 
 .decalcomanie-connector .decal-fluid-container {
@@ -1406,70 +1408,72 @@
   width: 100%;
   max-width: 720px;
   height: 100%;
-  filter: blur(18px) contrast(1.25);
-  opacity: 0.16;
+  /* 선명하고 쫀득한 물감 번짐 효과(Gooey)를 위한 최적의 수치 */
+  filter: blur(14px) contrast(24);
+  /* 대칼코마니가 흐릿하지 않고 뚜렷하게 눈에 띄도록 투명도 상향 */
+  opacity: 0.85;
 }
 
 .decalcomanie-connector .decal-drop {
   position: absolute;
   border-radius: 50%;
-  mix-blend-mode: multiply;
   will-change: transform, border-radius;
+  mix-blend-mode: normal;
 }
 
-/* 왼쪽 물감 */
+/* 왼쪽 물감 (Coral - 현대/미래의 강한 융합 에너지) */
 .decalcomanie-connector .left-drop-1 {
-  left: 22%;
-  top: 25%;
-  width: 55px;
-  height: 55px;
-  background: radial-gradient(circle, var(--living-coral, #e8613a) 0%, rgba(232, 97, 58, 0.1) 80%);
-  animation: decalDropFlow1 10s ease-in-out infinite alternate;
+  left: 24%;
+  top: 20%;
+  width: 65px;
+  height: 65px;
+  background: var(--living-coral, #e8613a); /* 선명한 고유 원색 */
+  animation: decalDropFlow1 12s ease-in-out infinite alternate;
 }
 
 .decalcomanie-connector .left-drop-2 {
   left: 36%;
-  top: 40%;
-  width: 42px;
-  height: 42px;
-  background: radial-gradient(circle, var(--ink, #1a1f36) 0%, rgba(26, 31, 54, 0.1) 80%);
-  animation: decalDropFlow2 8s ease-in-out infinite alternate;
+  top: 35%;
+  width: 50px;
+  height: 50px;
+  background: var(--ink, #1a1f36); /* 선명한 고유 원색 */
+  animation: decalDropFlow2 9s ease-in-out infinite alternate;
 }
 
-/* 오른쪽 물감 (대칭) */
+/* 오른쪽 물감 (대칭 데칼코마니) */
 .decalcomanie-connector .right-drop-1 {
-  right: 22%;
-  top: 25%;
-  width: 55px;
-  height: 55px;
-  background: radial-gradient(circle, var(--living-coral, #e8613a) 0%, rgba(232, 97, 58, 0.1) 80%);
+  right: 24%;
+  top: 20%;
+  width: 65px;
+  height: 65px;
+  background: var(--living-coral, #e8613a);
   transform: scaleX(-1);
-  animation: decalDropFlow1-R 10s ease-in-out infinite alternate;
+  animation: decalDropFlow1-R 12s ease-in-out infinite alternate;
 }
 
 .decalcomanie-connector .right-drop-2 {
   right: 36%;
-  top: 40%;
-  width: 42px;
-  height: 42px;
-  background: radial-gradient(circle, var(--ink, #1a1f36) 0%, rgba(26, 31, 54, 0.1) 80%);
+  top: 35%;
+  width: 50px;
+  height: 50px;
+  background: var(--ink, #1a1f36);
   transform: scaleX(-1);
-  animation: decalDropFlow2-R 8s ease-in-out infinite alternate;
+  animation: decalDropFlow2-R 9s ease-in-out infinite alternate;
 }
 
-/* 애니메이션 */
+/* 애니메이션: 두 유체가 결합되고 분리되도록 수평/수직 변위를 확장 */
 @keyframes decalDropFlow1 {
   0% {
     transform: translate(0, 0) scale(1);
     border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
   }
   50% {
-    transform: translate(12px, -8px) scale(1.1);
-    border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+    transform: translate(25px, -12px) scale(1.15);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
   }
   100% {
-    transform: translate(25px, 12px) scale(1.2);
-    border-radius: 58% 42% 40% 60% / 55% 55% 45% 45%;
+    transform: translate(65px, 20px) scale(1.3); /* 대칭축 중심부로 깊게 진입 */
+    border-radius: 65% 35% 38% 62% / 60% 60% 40% 40%;
   }
 }
 
@@ -1479,12 +1483,12 @@
     border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
   }
   50% {
-    transform: scaleX(-1) translate(12px, -8px) scale(1.1);
-    border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+    transform: scaleX(-1) translate(25px, -12px) scale(1.15);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
   }
   100% {
-    transform: scaleX(-1) translate(25px, 12px) scale(1.2);
-    border-radius: 58% 42% 40% 60% / 55% 55% 45% 45%;
+    transform: scaleX(-1) translate(65px, 20px) scale(1.3);
+    border-radius: 65% 35% 38% 62% / 60% 60% 40% 40%;
   }
 }
 
@@ -1494,12 +1498,12 @@
     border-radius: 50%;
   }
   50% {
-    transform: translate(6px, 10px) scale(0.95) rotate(30deg);
-    border-radius: 45% 55% 45% 55%;
+    transform: translate(12px, 15px) scale(0.9) rotate(45deg);
+    border-radius: 40% 60% 40% 60%;
   }
   100% {
-    transform: translate(-18px, -12px) scale(1.05) rotate(70deg);
-    border-radius: 35% 65% 45% 55% / 45% 55% 45% 55%;
+    transform: translate(-30px, -20px) scale(1.1) rotate(100deg);
+    border-radius: 30% 70% 45% 55% / 40% 60% 40% 60%;
   }
 }
 
@@ -1509,27 +1513,27 @@
     border-radius: 50%;
   }
   50% {
-    transform: scaleX(-1) translate(6px, 10px) scale(0.95) rotate(30deg);
-    border-radius: 45% 55% 45% 55%;
+    transform: scaleX(-1) translate(12px, 15px) scale(0.9) rotate(45deg);
+    border-radius: 40% 60% 40% 60%;
   }
   100% {
-    transform: scaleX(-1) translate(-18px, -12px) scale(1.05) rotate(70deg);
-    border-radius: 35% 65% 45% 55% / 45% 55% 45% 55%;
+    transform: scaleX(-1) translate(-30px, -20px) scale(1.1) rotate(100deg);
+    border-radius: 30% 70% 45% 55% / 40% 60% 40% 60%;
   }
 }
 
 /* 반응형 모바일 대응 */
 @media (max-width: 768px) {
   .decalcomanie-connector {
-    height: 60px;
-    margin: -8px auto;
+    height: 80px;
+    margin: 4px auto;
   }
   .decalcomanie-connector .decal-fluid-container {
-    opacity: 0.1;
-    filter: blur(14px) contrast(1.15);
+    opacity: 0.6;
+    filter: blur(10px) contrast(18);
   }
-  .decalcomanie-connector .left-drop-1 { left: 15%; width: 40px; height: 40px; }
-  .decalcomanie-connector .left-drop-2 { left: 32%; width: 30px; height: 30px; }
-  .decalcomanie-connector .right-drop-1 { right: 15%; width: 40px; height: 40px; }
-  .decalcomanie-connector .right-drop-2 { right: 32%; width: 30px; height: 30px; }
+  .decalcomanie-connector .left-drop-1 { left: 16%; width: 45px; height: 45px; }
+  .decalcomanie-connector .left-drop-2 { left: 30%; width: 35px; height: 35px; }
+  .decalcomanie-connector .right-drop-1 { right: 16%; width: 45px; height: 45px; }
+  .decalcomanie-connector .right-drop-2 { right: 30%; width: 35px; height: 35px; }
 }
