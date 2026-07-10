@@ -127,8 +127,10 @@ graph TD
     <div class="decal-fluid-container">
       <div class="decal-drop left-drop-1"></div>
       <div class="decal-drop left-drop-2"></div>
+      <div class="decal-drop left-drop-3"></div>
       <div class="decal-drop right-drop-1"></div>
       <div class="decal-drop right-drop-2"></div>
+      <div class="decal-drop right-drop-3"></div>
     </div>
   </div>
 

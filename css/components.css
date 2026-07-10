@@ -1424,7 +1424,7 @@
 /* 왼쪽 물감 (Coral - 현대/미래의 강한 융합 에너지) */
 .decalcomanie-connector .left-drop-1 {
   left: 24%;
-  top: 20%;
+  top: 18%;
   width: 65px;
   height: 65px;
   background: var(--living-coral, #e8613a); /* 선명한 고유 원색 */
@@ -1433,17 +1433,27 @@
 
 .decalcomanie-connector .left-drop-2 {
   left: 36%;
-  top: 35%;
+  top: 32%;
   width: 50px;
   height: 50px;
   background: var(--ink, #1a1f36); /* 선명한 고유 원색 */
   animation: decalDropFlow2 9s ease-in-out infinite alternate;
 }
 
+/* 왼쪽 세 번째 물감 (Yellow - 트리플 구조 중심 연동 방울) */
+.decalcomanie-connector .left-drop-3 {
+  left: 42%;
+  top: 48%;
+  width: 38px;
+  height: 38px;
+  background: #ffcc00;
+  animation: decalDropFlow3 11s ease-in-out infinite alternate;
+}
+
 /* 오른쪽 물감 (대칭 데칼코마니) */
 .decalcomanie-connector .right-drop-1 {
   right: 24%;
-  top: 20%;
+  top: 18%;
   width: 65px;
   height: 65px;
   background: var(--living-coral, #e8613a);
@@ -1453,7 +1463,7 @@
 
 .decalcomanie-connector .right-drop-2 {
   right: 36%;
-  top: 35%;
+  top: 32%;
   width: 50px;
   height: 50px;
   background: var(--ink, #1a1f36);
@@ -1461,19 +1471,38 @@
   animation: decalDropFlow2-R 9s ease-in-out infinite alternate;
 }
 
-/* 애니메이션: 두 유체가 결합되고 분리되도록 수평/수직 변위를 확장 */
+/* 오른쪽 세 번째 물감 (대칭) */
+.decalcomanie-connector .right-drop-3 {
+  right: 42%;
+  top: 48%;
+  width: 38px;
+  height: 38px;
+  background: #ffcc00;
+  transform: scaleX(-1);
+  animation: decalDropFlow3-R 11s ease-in-out infinite alternate;
+}
+
+/* 애니메이션: 두 유체가 결합되고 분리되며 색상이 다채롭게 변화하도록 구성 */
 @keyframes decalDropFlow1 {
   0% {
     transform: translate(0, 0) scale(1);
     border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+    background: #e8613a; /* Living Coral */
+  }
+  33% {
+    background: #9b4de0; /* Purple */
   }
   50% {
     transform: translate(25px, -12px) scale(1.15);
     border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
   }
+  66% {
+    background: #e82c5a; /* Cherry Pink */
+  }
   100% {
     transform: translate(65px, 20px) scale(1.3); /* 대칭축 중심부로 깊게 진입 */
     border-radius: 65% 35% 38% 62% / 60% 60% 40% 40%;
+    background: #fca890; /* Light Coral */
   }
 }
 
@@ -1481,14 +1510,22 @@
   0% {
     transform: scaleX(-1) translate(0, 0) scale(1);
     border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+    background: #e8613a;
+  }
+  33% {
+    background: #9b4de0;
   }
   50% {
     transform: scaleX(-1) translate(25px, -12px) scale(1.15);
     border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
   }
+  66% {
+    background: #e82c5a;
+  }
   100% {
     transform: scaleX(-1) translate(65px, 20px) scale(1.3);
     border-radius: 65% 35% 38% 62% / 60% 60% 40% 40%;
+    background: #fca890;
   }
 }
 
@@ -1496,14 +1533,22 @@
   0% {
     transform: translate(0, 0) scale(1) rotate(0deg);
     border-radius: 50%;
+    background: #1a1f36; /* Ink Navy */
+  }
+  33% {
+    background: #1a5682; /* Deep Blue */
   }
   50% {
     transform: translate(12px, 15px) scale(0.9) rotate(45deg);
     border-radius: 40% 60% 40% 60%;
   }
+  66% {
+    background: #0f4c3a; /* Deep Greenish Teal */
+  }
   100% {
     transform: translate(-30px, -20px) scale(1.1) rotate(100deg);
     border-radius: 30% 70% 45% 55% / 40% 60% 40% 60%;
+    background: #2a335c; /* Lighter Navy */
   }
 }
 
@@ -1511,14 +1556,58 @@
   0% {
     transform: scaleX(-1) translate(0, 0) scale(1) rotate(0deg);
     border-radius: 50%;
+    background: #1a1f36;
+  }
+  33% {
+    background: #1a5682;
   }
   50% {
     transform: scaleX(-1) translate(12px, 15px) scale(0.9) rotate(45deg);
     border-radius: 40% 60% 40% 60%;
   }
+  66% {
+    background: #0f4c3a;
+  }
   100% {
     transform: scaleX(-1) translate(-30px, -20px) scale(1.1) rotate(100deg);
     border-radius: 30% 70% 45% 55% / 40% 60% 40% 60%;
+    background: #2a335c;
+  }
+}
+
+@keyframes decalDropFlow3 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 50%;
+    background: #ffcc00; /* Yellow */
+  }
+  50% {
+    transform: translate(-10px, -20px) scale(1.15) rotate(-45deg);
+    border-radius: 45% 55% 60% 40%;
+    background: #00cc99; /* Mint */
+  }
+  100% {
+    transform: translate(35px, -8px) scale(0.9) rotate(90deg);
+    border-radius: 55% 45% 35% 65%;
+    background: #ffa800; /* Deep Orange/Yellow */
+  }
+}
+
+@keyframes decalDropFlow3-R {
+  0% {
+    transform: scaleX(-1) translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 50%;
+    background: #ffcc00;
+  }
+  50% {
+    transform: scaleX(-1) translate(-10px, -20px) scale(1.15) rotate(-45deg);
+    border-radius: 45% 55% 60% 40%;
+    background: #00cc99;
+  }
+  100% {
+    transform: scaleX(-1) translate(35px, -8px) scale(0.9) rotate(90deg);
+    border-radius: 55% 45% 35% 65%;
+    background: #ffa800;
   }
 }
 
@@ -1534,6 +1623,8 @@
   }
   .decalcomanie-connector .left-drop-1 { left: 16%; width: 45px; height: 45px; }
   .decalcomanie-connector .left-drop-2 { left: 30%; width: 35px; height: 35px; }
+  .decalcomanie-connector .left-drop-3 { left: 38%; width: 25px; height: 25px; }
   .decalcomanie-connector .right-drop-1 { right: 16%; width: 45px; height: 45px; }
   .decalcomanie-connector .right-drop-2 { right: 30%; width: 35px; height: 35px; }
+  .decalcomanie-connector .right-drop-3 { right: 38%; width: 25px; height: 25px; }
 }
