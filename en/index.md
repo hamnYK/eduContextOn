@@ -14,6 +14,76 @@ og_locale: "en_US"
   <!-- Illustration Background Deco Area (Confining gradient & canvas particle inside for normalization) -->
   <div style="position: relative; overflow: hidden; padding: 24px 0; background: transparent; margin-bottom: 40px;">
     <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    
+    <!-- Floating Deco Elements (가나다, ABC, 123, Math Operators, Cube, Pyramid, Cone) -->
+    <div class="hero-deco-container">
+      <!-- Left Side -->
+      <div class="hero-deco-item deco-item-left-1 hero-deco-text-ko">가나다</div>
+      <div class="hero-deco-item deco-item-left-2 hero-deco-text-en">ABC</div>
+      <div class="hero-deco-item deco-item-left-3">
+        <!-- Cube SVG -->
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 L50 20 L30 30 L10 20 Z" fill="url(#cube-top)" opacity="0.85"/>
+          <path d="M10 20 L30 30 L30 50 L10 40 Z" fill="url(#cube-left)" opacity="0.85"/>
+          <path d="M30 30 L50 20 L50 40 L30 50 Z" fill="url(#cube-right)" opacity="0.85"/>
+          <defs>
+            <linearGradient id="cube-top" x1="10" y1="20" x2="50" y2="20" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fca890"/>
+              <stop offset="100%" stop-color="#e8613a"/>
+            </linearGradient>
+            <linearGradient id="cube-left" x1="10" y1="20" x2="30" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#e8613a"/>
+              <stop offset="100%" stop-color="#b83b1a"/>
+            </linearGradient>
+            <linearGradient id="cube-right" x1="30" y1="30" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fca890"/>
+              <stop offset="100%" stop-color="#d64c27"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="hero-deco-item deco-item-left-4 hero-deco-math">+ &minus; =</div>
+
+      <!-- Right Side -->
+      <div class="hero-deco-item deco-item-right-1 hero-deco-text-num">123</div>
+      <div class="hero-deco-item deco-item-right-2">
+        <!-- Pyramid SVG -->
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 8 L12 45 L30 52 Z" fill="url(#pyramid-left)" opacity="0.85"/>
+          <path d="M30 8 L30 52 L48 45 Z" fill="url(#pyramid-right)" opacity="0.85"/>
+          <defs>
+            <linearGradient id="pyramid-left" x1="12" y1="45" x2="30" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#121628"/>
+              <stop offset="100%" stop-color="#2a335c"/>
+            </linearGradient>
+            <linearGradient id="pyramid-right" x1="30" y1="52" x2="48" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#222949"/>
+              <stop offset="100%" stop-color="#3b4882"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="hero-deco-item deco-item-right-3">
+        <!-- Cone SVG -->
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 8 L12 42 A 18 7 0 0 0 48 42 Z" fill="url(#cone-body)" opacity="0.85"/>
+          <ellipse cx="30" cy="42" rx="18" ry="7" fill="url(#cone-base)" opacity="0.7"/>
+          <defs>
+            <linearGradient id="cone-body" x1="12" y1="42" x2="30" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#e8613a"/>
+              <stop offset="50%" stop-color="#f59173"/>
+              <stop offset="100%" stop-color="#b83b1a"/>
+            </linearGradient>
+            <linearGradient id="cone-base" x1="12" y1="42" x2="48" y2="42" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#80210a"/>
+              <stop offset="100%" stop-color="#e8613a"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="hero-deco-item deco-item-right-4 hero-deco-math">&radic; &divide; %</div>
+    </div>
+
     <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="House, Tree, Person" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto; position: relative; z-index: 1;" />
   </div>
 

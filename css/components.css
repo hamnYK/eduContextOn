@@ -1227,3 +1227,160 @@
     box-sizing: border-box;
   }
 }
+
+/* ================================================
+   WORFLOGY — Hero Floating Deco Elements
+   ================================================ */
+.hero-deco-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.hero-deco-item {
+  position: absolute;
+  user-select: none;
+  will-change: transform, opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 텍스트 요소 스타일 */
+.hero-deco-text-ko {
+  font-family: var(--font-serif-ko, serif);
+  font-size: 26px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--ink, #1a1f36) 30%, var(--living-coral, #e8613a) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.65;
+}
+
+.hero-deco-text-en {
+  font-family: var(--font-serif-en, serif);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink, #1a1f36);
+  opacity: 0.5;
+}
+
+.hero-deco-text-num {
+  font-family: var(--font-body, sans-serif);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--living-coral, #e8613a);
+  opacity: 0.45;
+}
+
+.hero-deco-math {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--ink, #1a1f36);
+  opacity: 0.45;
+  background: rgba(26, 31, 54, 0.03);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(26, 31, 54, 0.06);
+}
+
+/* SVG 그래픽 크기 제한 */
+.hero-deco-item svg {
+  width: 100%;
+  height: auto;
+  max-width: 52px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
+}
+
+/* 좌측 배치 */
+.deco-item-left-1 {
+  left: 10%;
+  top: 18%;
+  animation: floatDrift1 12s ease-in-out infinite alternate;
+}
+.deco-item-left-2 {
+  left: 18%;
+  top: 50%;
+  animation: floatDrift2 16s ease-in-out infinite alternate;
+}
+.deco-item-left-3 {
+  left: 8%;
+  top: 70%;
+  animation: floatDrift3 14s ease-in-out infinite alternate;
+}
+.deco-item-left-4 {
+  left: 24%;
+  top: 25%;
+  animation: floatDrift4 18s ease-in-out infinite alternate;
+}
+
+/* 우측 배치 */
+.deco-item-right-1 {
+  right: 10%;
+  top: 20%;
+  animation: floatDrift3 15s ease-in-out infinite alternate;
+}
+.deco-item-right-2 {
+  right: 20%;
+  top: 48%;
+  animation: floatDrift1 17s ease-in-out infinite alternate;
+}
+.deco-item-right-3 {
+  right: 8%;
+  top: 72%;
+  animation: floatDrift4 13s ease-in-out infinite alternate;
+}
+.deco-item-right-4 {
+  right: 24%;
+  top: 28%;
+  animation: floatDrift2 19s ease-in-out infinite alternate;
+}
+
+/* 애니메이션 */
+@keyframes floatDrift1 {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) translateX(6px) rotate(2deg); }
+  100% { transform: translateY(6px) translateX(-4px) rotate(-1deg); }
+}
+
+@keyframes floatDrift2 {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(10px) translateX(-8px) rotate(-3deg); }
+  100% { transform: translateY(-6px) translateX(5px) rotate(2deg); }
+}
+
+@keyframes floatDrift3 {
+  0% { transform: translateY(0px) translateX(0px) rotate(-2deg); }
+  50% { transform: translateY(-12px) translateX(-5px) rotate(1deg); }
+  100% { transform: translateY(8px) translateX(6px) rotate(-3deg); }
+}
+
+@keyframes floatDrift4 {
+  0% { transform: translateY(0px) translateX(0px) rotate(3deg); }
+  50% { transform: translateY(8px) translateX(10px) rotate(-1deg); }
+  100% { transform: translateY(-10px) translateX(-6px) rotate(2deg); }
+}
+
+/* 반응형 모바일 대응 */
+@media (max-width: 768px) {
+  .hero-deco-item {
+    opacity: 0.12 !important;
+    transform: scale(0.65) !important;
+  }
+  .deco-item-left-1 { left: 4%; top: 12%; }
+  .deco-item-left-2 { left: 6%; top: 48%; }
+  .deco-item-left-3 { left: 3%; top: 75%; }
+  .deco-item-left-4 { left: 14%; top: 22%; }
+  
+  .deco-item-right-1 { right: 4%; top: 14%; }
+  .deco-item-right-2 { right: 6%; top: 46%; }
+  .deco-item-right-3 { right: 3%; top: 78%; }
+  .deco-item-right-4 { right: 14%; top: 24%; }
+}
