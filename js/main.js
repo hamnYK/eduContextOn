@@ -195,8 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
         baseLeft: 36, baseTop: 32,
         x: 0, y: 0, vx: 0, vy: 0,
         hueBase: 220, hueRange: 40,   // Deep Intellectual (Hue: 180 ~ 260, Teal to Midnight Indigo/Violet)
-        satBase: 70, satRange: 10,
-        lightBase: 25, lightRange: 6,
+        satBase: 80, satRange: 10,
+        lightBase: 48, lightRange: 6,
         timeOffset: Math.PI / 3
       },
       {
@@ -205,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
         baseLeft: 42, baseTop: 48,
         x: 0, y: 0, vx: 0, vy: 0,
         hueBase: 95, hueRange: 50,    // Ethereal Catalyst (Hue: 45 ~ 145, Gold to Emerald Sage/Mint)
-        satBase: 78, satRange: 10,
-        lightBase: 46, lightRange: 6,
+        satBase: 82, satRange: 10,
+        lightBase: 52, lightRange: 6,
         timeOffset: Math.PI * 2 / 3
       }
     ];

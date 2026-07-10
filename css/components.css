@@ -1409,9 +1409,9 @@
   max-width: 720px;
   height: 100%;
   /* 선명하고 쫀득한 물감 번짐 효과(Gooey)를 위한 최적의 수치 */
-  filter: blur(14px) contrast(24);
+  filter: blur(11px) contrast(16);
   /* 대칼코마니가 흐릿하지 않고 뚜렷하게 눈에 띄도록 투명도 상향 */
-  opacity: 0.85;
+  opacity: 0.90;
 }
 
 .decalcomanie-connector .decal-drop {
@@ -1484,7 +1484,7 @@
   }
   .decalcomanie-connector .decal-fluid-container {
     opacity: 0.6;
-    filter: blur(10px) contrast(18);
+    filter: blur(8px) contrast(13);
   }
   .decalcomanie-connector .left-drop-1 { left: 16%; width: 45px; height: 45px; }
   .decalcomanie-connector .left-drop-2 { left: 30%; width: 35px; height: 35px; }
