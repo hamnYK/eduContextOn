@@ -1384,3 +1384,152 @@
   .deco-item-right-3 { right: 3%; top: 78%; }
   .deco-item-right-4 { right: 14%; top: 24%; }
 }
+
+/* ================================================
+   WORFLOGY — Decalcomanie Connector
+   ================================================ */
+.decalcomanie-connector {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  margin: -16px auto;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+.decalcomanie-connector .decal-fluid-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 720px;
+  height: 100%;
+  filter: blur(18px) contrast(1.25);
+  opacity: 0.16;
+}
+
+.decalcomanie-connector .decal-drop {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  will-change: transform, border-radius;
+}
+
+/* 왼쪽 물감 */
+.decalcomanie-connector .left-drop-1 {
+  left: 22%;
+  top: 25%;
+  width: 55px;
+  height: 55px;
+  background: radial-gradient(circle, var(--living-coral, #e8613a) 0%, rgba(232, 97, 58, 0.1) 80%);
+  animation: decalDropFlow1 10s ease-in-out infinite alternate;
+}
+
+.decalcomanie-connector .left-drop-2 {
+  left: 36%;
+  top: 40%;
+  width: 42px;
+  height: 42px;
+  background: radial-gradient(circle, var(--ink, #1a1f36) 0%, rgba(26, 31, 54, 0.1) 80%);
+  animation: decalDropFlow2 8s ease-in-out infinite alternate;
+}
+
+/* 오른쪽 물감 (대칭) */
+.decalcomanie-connector .right-drop-1 {
+  right: 22%;
+  top: 25%;
+  width: 55px;
+  height: 55px;
+  background: radial-gradient(circle, var(--living-coral, #e8613a) 0%, rgba(232, 97, 58, 0.1) 80%);
+  transform: scaleX(-1);
+  animation: decalDropFlow1-R 10s ease-in-out infinite alternate;
+}
+
+.decalcomanie-connector .right-drop-2 {
+  right: 36%;
+  top: 40%;
+  width: 42px;
+  height: 42px;
+  background: radial-gradient(circle, var(--ink, #1a1f36) 0%, rgba(26, 31, 54, 0.1) 80%);
+  transform: scaleX(-1);
+  animation: decalDropFlow2-R 8s ease-in-out infinite alternate;
+}
+
+/* 애니메이션 */
+@keyframes decalDropFlow1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+  }
+  50% {
+    transform: translate(12px, -8px) scale(1.1);
+    border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+  }
+  100% {
+    transform: translate(25px, 12px) scale(1.2);
+    border-radius: 58% 42% 40% 60% / 55% 55% 45% 45%;
+  }
+}
+
+@keyframes decalDropFlow1-R {
+  0% {
+    transform: scaleX(-1) translate(0, 0) scale(1);
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+  }
+  50% {
+    transform: scaleX(-1) translate(12px, -8px) scale(1.1);
+    border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+  }
+  100% {
+    transform: scaleX(-1) translate(25px, 12px) scale(1.2);
+    border-radius: 58% 42% 40% 60% / 55% 55% 45% 45%;
+  }
+}
+
+@keyframes decalDropFlow2 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+  50% {
+    transform: translate(6px, 10px) scale(0.95) rotate(30deg);
+    border-radius: 45% 55% 45% 55%;
+  }
+  100% {
+    transform: translate(-18px, -12px) scale(1.05) rotate(70deg);
+    border-radius: 35% 65% 45% 55% / 45% 55% 45% 55%;
+  }
+}
+
+@keyframes decalDropFlow2-R {
+  0% {
+    transform: scaleX(-1) translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+  50% {
+    transform: scaleX(-1) translate(6px, 10px) scale(0.95) rotate(30deg);
+    border-radius: 45% 55% 45% 55%;
+  }
+  100% {
+    transform: scaleX(-1) translate(-18px, -12px) scale(1.05) rotate(70deg);
+    border-radius: 35% 65% 45% 55% / 45% 55% 45% 55%;
+  }
+}
+
+/* 반응형 모바일 대응 */
+@media (max-width: 768px) {
+  .decalcomanie-connector {
+    height: 60px;
+    margin: -8px auto;
+  }
+  .decalcomanie-connector .decal-fluid-container {
+    opacity: 0.1;
+    filter: blur(14px) contrast(1.15);
+  }
+  .decalcomanie-connector .left-drop-1 { left: 15%; width: 40px; height: 40px; }
+  .decalcomanie-connector .left-drop-2 { left: 32%; width: 30px; height: 30px; }
+  .decalcomanie-connector .right-drop-1 { right: 15%; width: 40px; height: 40px; }
+  .decalcomanie-connector .right-drop-2 { right: 32%; width: 30px; height: 30px; }
+}

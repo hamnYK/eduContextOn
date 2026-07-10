@@ -124,6 +124,16 @@ graph TD
     </div>
   </div>
 
+  <!-- Decalcomanie connector effect between Card 1 and Card 2 -->
+  <div class="decalcomanie-connector">
+    <div class="decal-fluid-container">
+      <div class="decal-drop left-drop-1"></div>
+      <div class="decal-drop left-drop-2"></div>
+      <div class="decal-drop right-drop-1"></div>
+      <div class="decal-drop right-drop-2"></div>
+    </div>
+  </div>
+
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
     <span class="diagram-badge">Traditional Top-Down Ontology Design & Its Present Value Combined with LLMs</span>

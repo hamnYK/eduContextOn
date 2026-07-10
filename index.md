@@ -122,6 +122,16 @@ graph TD
     </div>
   </div>
 
+  <!-- Card 1과 Card 2 사이의 데칼코마니 커넥터 효과 -->
+  <div class="decalcomanie-connector">
+    <div class="decal-fluid-container">
+      <div class="decal-drop left-drop-1"></div>
+      <div class="decal-drop left-drop-2"></div>
+      <div class="decal-drop right-drop-1"></div>
+      <div class="decal-drop right-drop-2"></div>
+    </div>
+  </div>
+
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
     <span class="diagram-badge">전통적인 하향식 온톨로지 설계와 LLM과 결합한 현재의 활용가치</span>
