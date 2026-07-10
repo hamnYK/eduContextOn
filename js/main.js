@@ -255,7 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const tColor = animTime * 2.4 + d.timeOffset;
         const beatWave = Math.sin(tColor) * 0.65 + Math.sin(tColor * 1.7) * 0.35;
         
-        const currentHue = d.hueBase + beatWave * d.hueRange;
+        // 전체 색상환을 느리게 도는 드리프트 성분 (약 24초에 한 바퀴 회전)
+        const driftHue = (animTime * 15) % 360;
+        const currentHue = (d.hueBase + beatWave * d.hueRange + driftHue) % 360;
+        
         const currentSat = d.satBase + Math.cos(animTime * 1.2 + d.timeOffset) * d.satRange;
         const currentLight = d.lightBase + Math.sin(animTime * 1.5 + d.timeOffset) * d.lightRange;
         
