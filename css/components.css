@@ -1517,6 +1517,7 @@
   transform: translate(-50%, -50%) scale(0.4);
   filter: blur(12px); /* 최초 파동(중첩) 상태: 두꺼운 블러 */
   z-index: 2;
+  mix-blend-mode: difference; /* 물방울 유체 및 배경과 반응하여 유기적인 색상 반전 구현 */
 }
 
 .decal-word {
