@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const emitters = document.querySelectorAll('.decal-word-emitter');
   if (!emitters.length) return;
 
-  const WORDS = ['entropy', 'story', 'cord'];
+  const WORDS = ['ENTROPY', 'STORY', 'CORD'];
 
   emitters.forEach(emitter => {
     let timeoutId = null;
@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         span.style.top = '50%';
         span.style.transform = 'translate(-50%, -50%) scale(0.4)';
         span.style.opacity = '0';
+        span.style.filter = 'blur(12px)'; // 최초 파동 상태
         
         emitter.appendChild(span);
 
@@ -134,16 +135,23 @@ document.addEventListener('DOMContentLoaded', () => {
           const rotate = -18 + Math.random() * 36; // -18도 ~ 18도 임의 회전
           const scale = 0.85 + Math.random() * 0.35; // 0.85 ~ 1.2 배율
 
-          span.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98)';
-          span.style.transform = `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY}px)) scale(${scale}) rotate(${rotate}deg)`;
-          span.style.opacity = '0.8';
+          // CSS 키프레임에 스케일 변수 바인딩
+          span.style.setProperty('--q-scale', scale);
 
-          // 1.6초 뒤 서서히 흐려지며 사라지도록 추가 트리거
+          // 1단계 트랜지션: 파동에서 선명한 입자로 변화 (0.8초 동안 빠르게 관측)
+          span.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 0.8s ease-out, filter 0.8s ease-out';
+          span.style.transform = `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY}px)) scale(${scale}) rotate(${rotate}deg)`;
+          span.style.opacity = '0.85';
+          span.style.filter = 'blur(0px)'; // 선명한 관측 상태
+
+          // 2단계 트랜지션: 1.4초 후 다시 파동으로 산란되며 기화 (2.0초 동안 느리게 소멸)
           setTimeout(() => {
             if (span.parentNode) {
+              span.style.transition = 'transform 3.4s cubic-bezier(0.12, 0.75, 0.3, 0.98), opacity 2.0s ease-in, filter 2.0s ease-in';
               span.style.opacity = '0';
+              span.style.filter = 'blur(16px)'; // 파동으로 흩어짐
             }
-          }, 1600);
+          }, 1400);
         });
 
         // 3.4초의 전체 애니메이션이 끝나면 DOM에서 완전 제거
@@ -159,5 +167,110 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     emitWord();
+  });
+});
+
+/* ── Decalcomanie Fluid Physics Simulation (Random Morphing & Drift) ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const connectors = document.querySelectorAll('.decalcomanie-connector');
+  if (!connectors.length) return;
+
+  connectors.forEach(connector => {
+    const drops = [
+      {
+        leftEl: connector.querySelector('.left-drop-1'),
+        rightEl: connector.querySelector('.right-drop-1'),
+        baseLeft: 24, baseTop: 18,
+        x: 0, y: 0, vx: 0, vy: 0,
+        hueBase: 28, hueRange: 17,    // Warm Editorial (Hue: 11 ~ 45, terracotta/apricot)
+        satBase: 78, satRange: 7,
+        lightBase: 56, lightRange: 6,
+        timeOffset: 0
+      },
+      {
+        leftEl: connector.querySelector('.left-drop-2'),
+        rightEl: connector.querySelector('.right-drop-2'),
+        baseLeft: 36, baseTop: 32,
+        x: 0, y: 0, vx: 0, vy: 0,
+        hueBase: 222, hueRange: 22,   // Deep Intellectual (Hue: 200 ~ 244, indigo/navy/teal)
+        satBase: 62, satRange: 7,
+        lightBase: 23, lightRange: 5, // 지성적인 어두운 깊이감
+        timeOffset: Math.PI / 3
+      },
+      {
+        leftEl: connector.querySelector('.left-drop-3'),
+        rightEl: connector.querySelector('.right-drop-3'),
+        baseLeft: 42, baseTop: 48,
+        x: 0, y: 0, vx: 0, vy: 0,
+        hueBase: 67, hueRange: 22,    // Ethereal Catalyst (Hue: 45 ~ 89, muted gold/olive/sage)
+        satBase: 72, satRange: 12,
+        lightBase: 48, lightRange: 6,
+        timeOffset: Math.PI * 2 / 3
+      }
+    ];
+
+    if (!drops[0].leftEl || !drops[0].rightEl) return;
+
+    let animTime = 0;
+
+    function update() {
+      animTime += 0.015; // 프레임 진행도
+
+      drops.forEach((d, idx) => {
+        if (!d.leftEl || !d.rightEl) return;
+
+        // 1. 무작위 노이즈 가속도 연산
+        const forceX = (Math.random() - 0.5) * 0.22;
+        const forceY = (Math.random() - 0.5) * 0.22;
+
+        d.vx += forceX;
+        d.vy += forceY;
+
+        // 중심 복원력 (기준 반경 약 70px 제어)
+        const dist = Math.sqrt(d.x * d.x + d.y * d.y);
+        if (dist > 70) {
+          d.vx -= (d.x / dist) * 0.15;
+          d.vy -= (d.y / dist) * 0.15;
+        }
+
+        // 제동 댐핑
+        d.vx *= 0.96;
+        d.vy *= 0.96;
+
+        d.x += d.vx;
+        d.y += d.vy;
+
+        // 2. border-radius 찌그러짐 연산 (아메바 모션)
+        const t = animTime * 2.2 + d.timeOffset;
+        const r1 = Math.round(42 + Math.sin(t) * 16);
+        const r2 = Math.round(58 + Math.cos(t * 1.3) * 14);
+        const r3 = Math.round(50 + Math.sin(t * 0.8) * 18);
+        const r4 = Math.round(50 + Math.cos(t * 1.5) * 15);
+        
+        const borderRadiusVal = `${r1}% ${100 - r1}% ${r2}% ${100 - r2}% / ${r3}% ${r4}% ${100 - r4}% ${100 - r3}%`;
+
+        // 3. 실시간 Color Morphing (선택된 테마 팔레트 연산)
+        const currentHue = d.hueBase + Math.sin(animTime * 0.8 + d.timeOffset) * d.hueRange;
+        const currentSat = d.satBase + Math.sin(animTime * 0.4 + d.timeOffset) * d.satRange;
+        const currentLight = d.lightBase + Math.cos(animTime * 0.5 + d.timeOffset) * d.lightRange;
+        
+        const colorVal = `hsl(${Math.round(currentHue)}, ${Math.round(currentSat)}%, ${Math.round(currentLight)}%)`;
+
+        // 4. 스타일 할당 (대칭)
+        d.leftEl.style.left = `calc(${d.baseLeft}% + ${d.x}px)`;
+        d.leftEl.style.top = `calc(${d.baseTop}% + ${d.y}px)`;
+        d.leftEl.style.borderRadius = borderRadiusVal;
+        d.leftEl.style.backgroundColor = colorVal;
+
+        d.rightEl.style.right = `calc(${d.baseLeft}% + ${d.x}px)`;
+        d.rightEl.style.top = `calc(${d.baseTop}% + ${d.y}px)`;
+        d.rightEl.style.borderRadius = borderRadiusVal;
+        d.rightEl.style.backgroundColor = colorVal;
+      });
+
+      requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
   });
 });
