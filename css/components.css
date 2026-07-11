@@ -953,13 +953,13 @@
     --fs-badge: 10.5px;
     --fs-feat-num: 24px;
   }
-  .hero { padding: 100px 28px 60px; }
+  .hero { padding: 100px 20px 60px; }
   .hero-bg-icon { width: 200px; height: 200px; right: -20px; opacity: 0.35; }
-  .section { padding: 48px 28px; }
-  .page-header { padding: 100px 28px 40px; }
-  .project-hero { padding: 100px 28px 40px; }
-  .gallery { padding: 40px 28px; }
-  .features { padding: 40px 28px; }
+  .section { padding: 48px 20px; }
+  .page-header { padding: 100px 20px 40px; }
+  .project-hero { padding: 100px 20px 40px; }
+  .gallery { padding: 40px 20px; }
+  .features { padding: 40px 20px; }
   .card-grid,
   .feature-grid,
   .vision-grid,
@@ -974,7 +974,7 @@
   .project-hero-desc br {
     display: none;
   }
-  .graph-section { padding: 100px 28px 48px; }
+  .graph-section { padding: 100px 20px 48px; }
 
   .section-title {
     margin-bottom: 20px;
