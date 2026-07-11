@@ -188,4 +188,28 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     overflow: hidden;
   }
+
+  /* ── 모바일 좌우 여백 보정 ── */
+  /* 데스크톱의 64px 좌우 패딩을 모바일에서 20px로 축소 */
+  .section {
+    padding: 28px 20px;
+  }
+  .hero {
+    padding: 40px 20px 44px;
+  }
+  .page-header {
+    padding: 20px 20px 32px;
+  }
+  .project-hero {
+    padding: 20px 20px 32px;
+  }
+  .graph-section {
+    padding: 20px 20px 32px;
+  }
+  .gallery {
+    padding: 28px 20px;
+  }
+  .features {
+    padding: 28px 20px;
+  }
 }
