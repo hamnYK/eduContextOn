@@ -8,7 +8,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
 ---
 
 <!-- 집, 나무, 사람 SVG 일러스트 (트리플 삼각 구조) -->
-<section class="section" style="text-align: center; padding: 0 0 60px 0; position: relative; overflow: hidden; background: linear-gradient(to bottom, rgba(245, 240, 232, 0.10) 0%, var(--bg, #FAFAF8) 100%), linear-gradient(118deg, rgba(245, 240, 232, 0.0) 0%, rgba(245, 240, 232, 0.30) 55%, rgba(232, 97, 58, 0.03) 100%); background-size: 100% 480px, 100% 480px; background-repeat: no-repeat, no-repeat; background-color: var(--bg, #FAFAF8);">
+<section class="section" style="text-align: center; padding: 0 20px 60px 20px; position: relative; overflow: hidden; background: linear-gradient(to bottom, rgba(245, 240, 232, 0.10) 0%, var(--bg, #FAFAF8) 100%), linear-gradient(118deg, rgba(245, 240, 232, 0.0) 0%, rgba(245, 240, 232, 0.30) 55%, rgba(232, 97, 58, 0.03) 100%); background-size: 100% 480px, 100% 480px; background-repeat: no-repeat, no-repeat; background-color: var(--bg, #FAFAF8);">
   <!-- 일러스트 배경 데코 영역 (그라데이션 및 캔버스 파티클을 이 내부로 국한하여 정상화) -->
   <div style="position: relative; overflow: hidden; padding: 24px 0; background: transparent; margin-bottom: 40px;">
     <canvas id="hero-canvas" class="hero-canvas"></canvas>
