@@ -125,7 +125,182 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     <h2 class="onto-diagram-title">시맨틱 코스모스 관계 지도</h2>
     <p class="onto-diagram-subtitle">개념 노드를 클릭해 유기적 논리 구조를 탐색해 보세요.</p>
 
-    <svg class="cosmos-svg" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="cosmos-svg" viewBox="0 0 800 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- 화살표 마커 -->
+        <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 2 L 10 5 L 0 8 z" fill="#c0c4d0"/>
+        </marker>
+        <marker id="arrow-active" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 2 L 10 5 L 0 8 z" fill="#E8613A"/>
+        </marker>
+
+        <!-- 항성 글로우 필터 -->
+        <filter id="star-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" result="blur"/>
+          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+        <filter id="ember-glow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+
+        <!-- A: 항성 (태양) — 따뜻한 주황-금 -->
+        <radialGradient id="grad-a" cx="38%" cy="32%" r="62%">
+          <stop offset="0%"   stop-color="#FFF3A0"/>
+          <stop offset="35%"  stop-color="#FFCC44"/>
+          <stop offset="70%"  stop-color="#E8613A"/>
+          <stop offset="100%" stop-color="#8B1A00"/>
+        </radialGradient>
+
+        <!-- B: 목성 (전체론적) — 파란 가스 행성 -->
+        <radialGradient id="grad-b" cx="36%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#B8DCFF"/>
+          <stop offset="45%"  stop-color="#4488CC"/>
+          <stop offset="100%" stop-color="#0D2860"/>
+        </radialGradient>
+
+        <!-- C: 해왕성 (Weak Signal) — 보라-파랑 얼음 -->
+        <radialGradient id="grad-c" cx="36%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#D0AAFF"/>
+          <stop offset="50%"  stop-color="#7744CC"/>
+          <stop offset="100%" stop-color="#1E0850"/>
+        </radialGradient>
+
+        <!-- D: 토성 (시스템 다이나믹스) — 차가운 청록 -->
+        <radialGradient id="grad-d" cx="36%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#AAD8EE"/>
+          <stop offset="50%"  stop-color="#3A7AA0"/>
+          <stop offset="100%" stop-color="#081C2C"/>
+        </radialGradient>
+        <!-- 토성 고리 그라디언트 -->
+        <linearGradient id="ring-d" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="rgba(90,170,210,0)"/>
+          <stop offset="30%"  stop-color="rgba(90,170,210,0.45)"/>
+          <stop offset="70%"  stop-color="rgba(90,170,210,0.45)"/>
+          <stop offset="100%" stop-color="rgba(90,170,210,0)"/>
+        </linearGradient>
+
+        <!-- E: 화성 (시맨틱 재료) — 붉은 암석 -->
+        <radialGradient id="grad-e" cx="36%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#F0C880"/>
+          <stop offset="45%"  stop-color="#C06030"/>
+          <stop offset="100%" stop-color="#401000"/>
+        </radialGradient>
+
+        <!-- F: 지구 (시맨틱) — 청록 바다, 고리 -->
+        <radialGradient id="grad-f" cx="36%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#90F0E0"/>
+          <stop offset="45%"  stop-color="#20A888"/>
+          <stop offset="100%" stop-color="#044030"/>
+        </radialGradient>
+
+        <!-- G: 수성/달 (하향식 정적) — 회색 암석 -->
+        <radialGradient id="grad-g" cx="36%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#D8D8E8"/>
+          <stop offset="50%"  stop-color="#7070A0"/>
+          <stop offset="100%" stop-color="#1A1A30"/>
+        </radialGradient>
+
+        <!-- H: 적색왜성 (온톨로지 회귀) — 어두운 붉은 빛 -->
+        <radialGradient id="grad-h" cx="38%" cy="32%" r="62%">
+          <stop offset="0%"   stop-color="#FF9090"/>
+          <stop offset="40%"  stop-color="#CC2828"/>
+          <stop offset="100%" stop-color="#280404"/>
+        </radialGradient>
+      </defs>
+
+      <!-- ── 연결선 ── -->
+      <g id="links">
+        <line class="link-line" id="link-a-b" x1="382" y1="208" x2="198" y2="102"/>
+        <line class="link-line" id="link-a-c" x1="418" y1="208" x2="602" y2="102"/>
+        <line class="link-line" id="link-b-c" x1="196" y1="90"  x2="604" y2="90"/>
+        <line class="link-line" id="link-f-a" x1="400" y1="344" x2="400" y2="248"/>
+        <line class="link-line" id="link-e-f" x1="215" y1="372" x2="382" y2="372"/>
+        <line class="link-line" id="link-f-g" x1="418" y1="372" x2="585" y2="372"/>
+        <line class="link-line" id="link-d-e" x1="112" y1="448" x2="188" y2="386"/>
+        <path class="loop-arrow" id="link-g-h" d="M 606 386 Q 652 432 705 452" marker-end="url(#arrow)"/>
+        <path class="link-line"  id="link-d-b" d="M 106 448 Q 40 270 172 102" fill="none" stroke-dasharray="3 5"/>
+        <path class="loop-arrow" id="link-c-h" d="M 630 102 Q 792 272 708 448" marker-end="url(#arrow)"/>
+      </g>
+
+      <!-- ── B: 목성 (전체론적 관점) ── -->
+      <g class="node-group" id="node-b" onclick="showDetail('b')">
+        <circle cx="180" cy="90" r="22" fill="rgba(68,136,204,0.10)"/>
+        <circle class="node-circle" cx="180" cy="90" r="16" fill="url(#grad-b)"/>
+        <text class="node-text" x="180" y="60" text-anchor="middle">전체론적 관점</text>
+        <text class="node-text" x="180" y="49" text-anchor="middle" font-size="9" opacity="0.6">목성형</text>
+      </g>
+
+      <!-- ── C: 해왕성 (Weak Signal) ── -->
+      <g class="node-group" id="node-c" onclick="showDetail('c')">
+        <circle cx="620" cy="90" r="18" fill="rgba(119,68,204,0.10)"/>
+        <circle class="node-circle" cx="620" cy="90" r="13" fill="url(#grad-c)"/>
+        <text class="node-text" x="620" y="61" text-anchor="middle">Weak Signal</text>
+        <text class="node-text" x="620" y="50" text-anchor="middle" font-size="9" opacity="0.6">해왕성형 (Ansoff)</text>
+      </g>
+
+      <!-- ── A: 항성 (시맨틱 코스모스 = 중심) ── -->
+      <g class="node-group active" id="node-a" onclick="showDetail('a')">
+        <!-- 코로나 후광 -->
+        <circle cx="400" cy="228" r="46" fill="rgba(255,180,40,0.06)"/>
+        <circle cx="400" cy="228" r="38" fill="rgba(255,150,30,0.10)"/>
+        <!-- 항성 본체 -->
+        <circle class="node-circle" cx="400" cy="228" r="26" fill="url(#grad-a)" filter="url(#star-glow)"/>
+        <text class="node-text" x="400" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="#1A1F36">시맨틱 코스모스</text>
+        <text class="node-text" x="400" y="178" text-anchor="middle" font-size="10" fill="#E8613A" opacity="0.9">:= 온톨로지</text>
+      </g>
+
+      <!-- ── E: 화성 (시맨틱 재료) ── -->
+      <g class="node-group" id="node-e" onclick="showDetail('e')">
+        <circle class="node-circle" cx="200" cy="372" r="13" fill="url(#grad-e)"/>
+        <text class="node-text" x="200" y="400" text-anchor="middle">시맨틱 재료</text>
+        <text class="node-text" x="200" y="411" text-anchor="middle" font-size="9" opacity="0.6">화성형</text>
+      </g>
+
+      <!-- ── F: 지구 (시맨틱, 브리지) ── -->
+      <g class="node-group" id="node-f" onclick="showDetail('f')">
+        <!-- 지구 후광 -->
+        <circle cx="400" cy="372" r="22" fill="rgba(32,168,136,0.08)"/>
+        <!-- 지구 본체 -->
+        <circle class="node-circle" cx="400" cy="372" r="16" fill="url(#grad-f)"/>
+        <text class="node-text" x="400" y="404" text-anchor="middle" font-weight="700">시맨틱</text>
+        <text class="node-text" x="400" y="415" text-anchor="middle" font-size="9" opacity="0.6">지구형</text>
+      </g>
+
+      <!-- ── G: 수성 (하향식 정적) ── -->
+      <g class="node-group" id="node-g" onclick="showDetail('g')">
+        <circle class="node-circle" cx="600" cy="372" r="12" fill="url(#grad-g)"/>
+        <text class="node-text" x="600" y="400" text-anchor="middle">하향식 정적 구현체</text>
+        <text class="node-text" x="600" y="411" text-anchor="middle" font-size="9" opacity="0.6">수성형</text>
+      </g>
+
+      <!-- ── D: 토성 (시스템 다이나믹스, 고리) ── -->
+      <g class="node-group" id="node-d" onclick="showDetail('d')">
+        <!-- 토성 고리 (뒤) -->
+        <ellipse cx="100" cy="462" rx="26" ry="7"
+                 fill="none" stroke="url(#ring-d)" stroke-width="5"
+                 transform="rotate(-18, 100, 462)" opacity="0.6"/>
+        <!-- 행성 본체 -->
+        <circle class="node-circle" cx="100" cy="462" r="15" fill="url(#grad-d)"/>
+        <!-- 토성 고리 (앞 절반 — 아래쪽만 보이도록) -->
+        <path d="M 74 462 Q 100 474 126 462" fill="none"
+              stroke="rgba(90,170,210,0.5)" stroke-width="4"/>
+        <text class="node-text" x="100" y="495" text-anchor="middle">시스템 다이나믹스</text>
+        <text class="node-text" x="100" y="507" text-anchor="middle" font-size="9" opacity="0.6">토성형 (닫힌 루프)</text>
+      </g>
+
+      <!-- ── H: 적색왜성 (온톨로지 회귀) ── -->
+      <g class="node-group" id="node-h" onclick="showDetail('h')">
+        <!-- 적색 글로우 -->
+        <circle cx="712" cy="462" r="26" fill="rgba(204,40,40,0.10)"/>
+        <!-- 왜성 본체 -->
+        <circle class="node-circle" cx="712" cy="462" r="16" fill="url(#grad-h)" filter="url(#ember-glow)"/>
+        <text class="node-text" x="712" y="495" text-anchor="middle" fill="#E87070" font-weight="700" font-size="11">온톨로지 회귀</text>
+        <text class="node-text" x="712" y="507" text-anchor="middle" font-size="9" opacity="0.6">적색왜성형 (상향식)</text>
+      </g>
+    </svg>
+
       <defs>
         <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 2 L 10 5 L 0 8 z" fill="#c0c4d0" />
