@@ -155,6 +155,16 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
         <path class="loop-arrow" id="link-g-h"
               d="M 605 386 Q 650 430 705 452"
               marker-end="url(#arrow)" />
+
+        <!-- 외곽 관계선 -->
+        <!-- D ↔ B: 시스템 다이나믹스는 전체론적 관점의 공학적 구현 -->
+        <path class="link-line" id="link-d-b"
+              d="M 106 448 Q 40 270 172 102"
+              fill="none" stroke-dasharray="3 5" />
+        <!-- C → H: Weak Signal이 상향식 동적 구현체에 지속 흡수 -->
+        <path class="loop-arrow" id="link-c-h"
+              d="M 630 102 Q 790 270 706 448"
+              marker-end="url(#arrow)" />
       </g>
 
       <!-- ── 레벨 1: B 전체론적 관점 / C Weak Signal ── -->
@@ -174,7 +184,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
         <circle cx="400" cy="225" r="32" fill="none" stroke="#1A1F36" stroke-width="1" opacity="0.10"/>
         <circle class="node-circle" cx="400" cy="225" r="20" fill="#1A1F36" stroke="#E8613A" stroke-width="2.5"/>
         <text class="node-text" x="400" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="#1A1F36">시맨틱 코스모스</text>
-        <text class="node-text" x="400" y="184" text-anchor="middle" font-size="10" fill="#E8613A" opacity="0.85">= 온톨로지</text>
+        <text class="node-text" x="400" y="184" text-anchor="middle" font-size="10" fill="#E8613A" opacity="0.85">:= 온톨로지</text>
       </g>
 
       <!-- ── 레벨 3: E 시맨틱재료 / F 시맨틱 / G 하향식 ── -->
@@ -225,17 +235,17 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     b: {
       formula: "전체론적 관점 = 개별 개념보다 개념들의 상호작용 구조를 먼저 보는 시각",
       explain: "부분을 분석하기 전에 전체 피드백 구조를 읽습니다. 이 시각이 없으면 Weak Signal(C)은 잡음(noise)에 불과합니다. B가 C에 해석 맥락을 제공하고, 둘이 함께 시맨틱 코스모스(A)를 구성합니다. 시스템 다이나믹스(D)는 이 전체론적 관점을 공학적으로 구현하는 도구입니다.",
-      links: ["link-a-b", "link-b-c"]
+      links: ["link-a-b", "link-b-c", "link-d-b"]
     },
     c: {
       formula: "Weak Signal = 아직 형태를 갖추지 않은 변화의 조짐 (Ansoff, 1975)",
       explain: "Igor Ansoff가 정의한 개념으로, 통계적으로 유의미하지는 않지만 미래 변화를 암시하는 약하고 모호한 신호입니다. 전체론적 관점(B)이 있어야 이 신호를 의미 있는 패턴으로 해석할 수 있습니다. C는 B와 함께 시맨틱 코스모스(A)를 구성하고, 상향식 동적 구현체(H)가 C를 지속적으로 흡수합니다.",
-      links: ["link-a-c", "link-b-c"]
+      links: ["link-a-c", "link-b-c", "link-c-h"]
     },
     d: {
       formula: "시스템 다이나믹스 = 전체론적 관점을 닫힌 루프 피드백으로 형식화하는 방법론",
       explain: "Jay Forrester가 개발한 방법론으로, 전체론적 관점(B)을 수학적·공학적으로 다룰 수 있게 만드는 도구입니다. 개념들 간의 인과 피드백 루프를 닫힌 시스템으로 모델링하여, 공유된 개념화를 시뮬레이션 가능한 구조로 표현합니다. 이 과정에서 시맨틱 재료(E)가 생성됩니다.",
-      links: ["link-d-e"]
+      links: ["link-d-e", "link-d-b"]
     },
     e: {
       formula: "시맨틱 재료 = 시스템 다이나믹스 모델링에서 드러나는 개념 관계망",
@@ -255,7 +265,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     h: {
       formula: "온톨로지 회귀 = 하향식 정적(G)의 한계를 넘는 자생적 동적 모델",
       explain: "새로운 Weak Signal(C)이 감지될 때마다 개념 관계망을 점진적으로 재조정합니다. 설계자의 개입 없이 스스로 진화하며, 이 과정은 새 증거로 사전 지식을 갱신하는 베이지안 업데이트와 구조적으로 유사합니다. 이것이 Bottom-Up 접근의 핵심입니다.",
-      links: ["link-g-h"]
+      links: ["link-g-h", "link-c-h"]
     }
   };
 
