@@ -52,15 +52,33 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     position: relative;
     overflow: hidden;
   }
+  /* 도트 그리드 배경 효과 추가 */
+  .onto-diagram-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--r-lg);
+    background-image: radial-gradient(circle, rgba(26, 31, 54, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .onto-diagram-title, .onto-diagram-subtitle, .cosmos-svg, .detail-panel {
+    position: relative;
+    z-index: 1;
+  }
   .onto-diagram-title {
     font-family: var(--font-serif-ko);
-    font-size: 22px;
-    color: var(--ink);
+    font-size: var(--fs-h4);
+    font-weight: 600;
+    color: var(--text);
     text-align: center;
     margin: 0 0 6px;
+    letter-spacing: var(--ls-h4, -0.3px);
   }
   .onto-diagram-subtitle {
-    font-size: 14px;
+    font-family: var(--font-body);
+    font-size: var(--fs-body-min);
     color: var(--text-muted);
     text-align: center;
     margin: 0 0 32px;
@@ -85,57 +103,58 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     font-family: var(--font-body);
     font-size: 11px;
     font-weight: 600;
-    fill: rgba(107,114,128,1);
+    fill: var(--text-muted);
     pointer-events: none;
     transition: fill 0.2s;
   }
   .node-group:hover .node-text,
-  .node-group.active .node-text { fill: #1A1F36; }
+  .node-group.active .node-text { fill: var(--ink); }
   .link-line {
-    stroke: rgba(26,31,54,0.10);
+    stroke: var(--border);
     stroke-width: 1.5;
     stroke-dasharray: 5 4;
     transition: stroke 0.2s, stroke-width 0.2s, stroke-dasharray 0.2s;
   }
   .link-line.highlight {
-    stroke: #E8613A;
+    stroke: var(--coral);
     stroke-width: 2.5;
     stroke-dasharray: none;
   }
   .loop-arrow {
-    stroke: rgba(26,31,54,0.10);
+    stroke: var(--border);
     stroke-width: 2;
     fill: none;
     transition: stroke 0.2s;
   }
-  .loop-arrow.highlight { stroke: #E8613A; }
+  .loop-arrow.highlight { stroke: var(--coral); }
   .detail-panel {
     margin-top: 28px;
     padding: 22px 26px;
-    background: #F5F0E8;
-    border-radius: 10px;
-    border-left: 4px solid #1A1F36;
+    background: var(--sand);
+    border-radius: var(--r-md);
+    border-left: 4px solid var(--ink);
     min-height: 110px;
     transition: opacity 0.18s, transform 0.18s;
   }
   .detail-formula {
-    font-family: 'Noto Serif KR', 'Pretendard Variable', serif;
-    font-size: 17px;
+    font-family: var(--font-serif-ko);
+    font-size: var(--fs-body-sub, 17px);
     font-weight: 700;
-    color: #1A1F36;
+    color: var(--ink);
     margin: 0 0 8px;
   }
   .detail-explain {
-    font-size: 14px;
-    line-height: 1.75;
-    color: #1C1C1E;
+    font-family: var(--font-body);
+    font-size: var(--fs-body-min, 13px);
+    line-height: var(--lh-body-min, 1.7);
+    color: var(--text);
     margin: 0;
   }
   @media (max-width: 600px) {
     .cosmos-wrap { padding: 0 14px 40px; }
     .onto-diagram-section { padding: 20px 16px; }
     .cosmos-lead { padding: 16px 18px; gap: 14px; }
-    .cosmos-lead-quote { font-size: 17px; }
+    .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
   }
 </style>
