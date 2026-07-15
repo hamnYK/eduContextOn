@@ -665,7 +665,7 @@ graph TD
   
   <div class="section-label">Contact</div>
   <h2 class="section-title">교육 문의</h2>
-  <p class="section-desc">컨텍스톤 콘텐츠 교육 관련하여 협업, 네트워킹 등 궁금하신 사항이 있다면 언제든 문의해 주세요.</p>
+  <p class="section-desc">컨텍스톤 콘텐츠 교육 관련 협업 및 네트워킹 등 궁금하신 사항이 있다면 언제든 문의해 주세요.</p>
   
   <div class="btn-group">
     <button type="button" id="open-contact-modal" class="btn btn-primary">이메일 보내기</button>
