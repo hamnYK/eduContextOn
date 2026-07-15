@@ -129,17 +129,11 @@ h1, h2, h3, h4, h5, h6 {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
-  padding: 6px;
-  box-sizing: content-box;
-  border: 1px solid var(--border);
-  border-radius: var(--r-xs);
   color: var(--text-light);
-  transition: border-color var(--t), color var(--t), background var(--t);
+  transition: color var(--t);
 }
 .nav-item--external:hover .nav-external-icon {
-  border-color: var(--border-sand);
-  color: var(--text-muted);
-  background: var(--sand);
+  color: var(--text);
 }
 
 .sidebar-footer {
