@@ -44,7 +44,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
   .cosmos-svg {
     width: 100%;
     height: auto;
-    max-height: 520px;
+    max-height: 560px;
     display: block;
     margin: 0 auto;
     cursor: default;
@@ -296,7 +296,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
         <circle cx="712" cy="462" r="26" fill="rgba(204,40,40,0.10)"/>
         <!-- 왜성 본체 -->
         <circle class="node-circle" cx="712" cy="462" r="16" fill="url(#grad-h)" filter="url(#ember-glow)"/>
-        <text class="node-text" x="712" y="495" text-anchor="middle" fill="#E87070" font-weight="700" font-size="11">온톨로지 회귀</text>
+        <text class="node-text" x="712" y="495" text-anchor="middle" fill="#E8613A" font-weight="700" font-size="11">온톨로지 회귀</text>
         <text class="node-text" x="712" y="507" text-anchor="middle" font-size="9" opacity="0.6">적색왜성형 (상향식)</text>
       </g>
     </svg>
