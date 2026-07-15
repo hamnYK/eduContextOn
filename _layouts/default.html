@@ -20,6 +20,11 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
           </svg>{% if lang == 'en' %}Worflogy Home{% else %}워플로지 홈{% endif %}
         </a>
+        <a href="{{ '/ontology' | relative_url }}" class="nav-item{% if page.page_type == 'ontology' %} active{% endif %}">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a12.75 12.75 0 010 18M12 3a12.75 12.75 0 000 18" />
+          </svg>{% if lang == 'en' %}Ontology{% else %}온톨로지{% endif %}
+        </a>
         <a href="{% if lang == 'en' %}{{ '/en/' | relative_url }}{% endif %}#contact" class="nav-item">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -33,6 +38,16 @@
 
     <!-- Main Content Area -->
     <main class="main">
+      {% if page.page_type == 'ontology' %}
+      <div class="page-header static-header">
+        <div class="section-label">ontology</div>
+        <h1 class="section-title">{% if lang == 'en' %}Ontology{% else %}온톨로지{% endif %}</h1>
+        <blockquote class="header-quote">
+          <p class="header-quote-text">&#8220;온톨로지는 공유된 개념화의 형식적이고 명시적인 명세다.&#8221;</p>
+          <footer class="header-quote-footer">— Tom Gruber, 1993</footer>
+        </blockquote>
+      </div>
+      {% else %}
       <div class="page-header video-header">
         <!-- 개념 영상 배경 -->
         <video
@@ -57,6 +72,7 @@
           {% endif %}
         </p>
       </div>
+      {% endif %}
 
       {{ content }}
     </main>
