@@ -16,25 +16,31 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
   }
   .cosmos-lead {
     margin-bottom: 36px;
-    padding: 20px 26px;
+    padding: 14px 20px;
+    border-left: 2.5px solid var(--coral);
     background: rgba(232, 97, 58, 0.04);
-    border-radius: var(--r-md);
-    border: 1.5px solid var(--coral);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
   .cosmos-lead-label {
+    font-family: var(--font-serif-en);
     font-style: italic;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: var(--fs-label, 12px);
+    font-weight: 400;
     color: var(--coral);
-    margin: 0 0 10px;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
+    line-height: 1.35;
+    margin: 0;
   }
   .cosmos-lead-quote {
-    font-family: var(--font-serif-ko);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--fs-body-min, 13px);
+    font-weight: 400;
+    color: var(--text-muted);
     line-height: 1.7;
+    word-break: keep-all;
     margin: 0;
   }
   .onto-diagram-section {
@@ -144,7 +150,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     </div>
     <!-- 행성 관계 지도 -->
     <div class="onto-diagram-section">
-      <h2 class="onto-diagram-title">시맨틱 코스모스 관계 지도</h2>
+      <h2 class="onto-diagram-title">시맨틱 코스모스</h2>
       <p class="onto-diagram-subtitle">개념 노드를 클릭해 유기적 논리 구조를 탐색해 보세요.</p>
       <svg class="cosmos-svg" viewBox="0 0 800 540" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
