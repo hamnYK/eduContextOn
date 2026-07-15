@@ -266,10 +266,14 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
       <g id="links">
         <line class="link-line" id="link-a-b" x1="400" y1="250" x2="250" y2="150" />
         <line class="link-line" id="link-a-c" x1="400" y1="250" x2="550" y2="150" />
+        <!-- B+C가 함께 A를 구성함을 표현 -->
+        <line class="link-line" id="link-b-c" x1="260" y1="150" x2="540" y2="150" />
         
         <line class="link-line" id="link-d-e" x1="130" y1="360" x2="250" y2="280" />
         <line class="link-line" id="link-e-f" x1="250" y1="280" x2="400" y2="380" />
         <line class="link-line" id="link-f-g" x1="400" y1="380" x2="550" y2="330" />
+        <!-- 시맨틱(F) → 시맨틱 코스모스(A): 상향식 연결 -->
+        <line class="link-line" id="link-f-a" x1="400" y1="365" x2="400" y2="265" />
         
         <!-- 하향식과 상향식 분기선 -->
         <path class="loop-arrow" id="link-g-h" d="M 550 330 Q 640 420 500 440" marker-end="url(#arrow)" />
@@ -347,13 +351,13 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     },
     b: {
       formula: "시맨틱 코스모스 = 전체론적 관점 + Weak Signal (Ansoff)",
-      explain: "전체를 파악하는 전체론적 눈(Holistic)과 미래의 변화를 감지하는 약한 신호(Weak Signal)를 융합하여 미래 예측이 가능한 사유의 뼈대를 형성합니다.",
-      links: ["link-a-b"]
+      explain: "전체를 파악하는 전체론적 눈(Holistic)과, 미래의 변화를 미리 알아채는 약한 신호(Weak Signal, Ansoff)가 함께 작용하여 시맨틱 코스모스를 이룹니다. 두 요소는 독립적이지 않으며, 전체론적 관점이 Weak Signal을 의미 있게 해석할 수 있는 맥락을 제공합니다.",
+      links: ["link-a-b", "link-b-c"]
     },
     c: {
-      formula: "시맨틱 코스모스 확장 = 닫힌 루프 동적 시뮬레이션 + Weak Signal",
-      explain: "전체론적 사유에 머물지 않고 이를 시스템 다이나믹스의 피드백 루프와 연결하여 실시간 예측과 진화가 가능하도록 확장한 모델입니다.",
-      links: ["link-a-c"]
+      formula: "시맨틱 코스모스 확장 = 시스템 다이나믹스(닫힌 루프) + Weak Signal",
+      explain: "전체론적 관점(B)을 구체적인 공학 도구인 시스템 다이나믹스(닫힌 루프 피드백)로 정밀화하고, 여기에 Weak Signal을 더하면 실시간 예측과 자생적 진화가 가능한 확장 모델이 됩니다. Weak Signal은 B와 C 모두에서 공유되는 핵심 재료입니다.",
+      links: ["link-a-c", "link-b-c"]
     },
     d: {
       formula: "공유된 개념화의 형식 = 시스템 다이나믹스 (닫힌 루프)",
@@ -367,8 +371,8 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     },
     f: {
       formula: "시맨틱 = 명시적인 명세 + 시맨틱 재료",
-      explain: "시맨틱이란 명시적으로 표현된 정의에 머물지 않고, 시스템 다이나믹스를 통과하여 지속적으로 의미가 흐르는 재료가 합쳐져서 비로소 완성됩니다.",
-      links: ["link-e-f", "link-f-g"]
+      explain: "시맨틱이란 명시적으로 표현된 정의(명세)에, 시스템 다이나믹스에서 흘러온 공유된 개념화의 재료가 합쳐져서 비로소 완성됩니다. 이렇게 완성된 시맨틱은 다시 위로 올라가 시맨틱 코스모스를 구성하는 상향식 연결(↑)을 형성합니다.",
+      links: ["link-e-f", "link-f-g", "link-f-a"]
     },
     g: {
       formula: "온톨로지 기술 형식 = 시맨틱의 컴퓨터블 구현 프로토콜 (하향식 정적)",
@@ -376,8 +380,8 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
       links: ["link-f-g", "link-g-h"]
     },
     h: {
-      formula: "온톨로지 상향식 동적 구현체 = 온톨로지 회귀 (Bayesian)",
-      explain: "단 한 번의 선언으로 끝나지 않고, 새로운 Weak Signal이 감지될 때마다 전체 관계망의 확률과 가중치를 동적으로 조율(Bayesian Update)하여 현실 세계와 유연하게 맞춰나가는 자생적 모델입니다.",
+      formula: "온톨로지 상향식 동적 구현체 ≈ 온톨로지 회귀 (베이지안 구조 유사)",
+      explain: "단 한 번의 선언으로 끝나지 않고, 새로운 Weak Signal이 감지될 때마다 개념 관계망 전체를 조금씩 다시 정합시켜 나가는 자생적 모델입니다. 이 과정은 베이지안 업데이트(새 증거로 사전 확률을 갱신하는 방식)와 구조적으로 유사한 흐름을 갖습니다. 단, 수학적 등치가 아닌 철학적 유사성을 의미합니다.",
       links: ["link-g-h"]
     }
   };
