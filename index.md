@@ -479,6 +479,10 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     <div class="diagram-wrapper">
       <div class="mermaid">
 graph TD
+    subgraph External_Signal [외부 환경 / 미약한 신호]
+        WeakSignal[Weak Signal<br>아직 형태를 갖추지 않은 변화의 조짐<br>ex. 어둠 속 체스판 끝에서 느껴지는 빛]
+    end
+
     subgraph Integrated_SD_System [온톨로지 기반 시스템 다이내믹스 - Closed Loop]
         direction TB
         
@@ -495,6 +499,9 @@ graph TD
         LLM[언어 모델 / AI 에이전트 <br> 유연한 맥락 파악 및 인터페이스]
     end
 
+    %% Weak Signal → Ontology (외부 신호 입력)
+    WeakSignal -.->|⑥ 패턴 미확정 신호 입력 <br> 온톨로지 갱신 트리거| Ontology
+
     %% Guardrail Connection
     LLM -.->|④ 환각 방지 검증 Grounding <br> 안전한 맥락망 구성| Ontology
     TimeController -.->|⑤ 룰 위반 시 행동 차단 Risk Mitigation| LLM
@@ -502,6 +509,8 @@ graph TD
     style Ontology fill:none
     style RuleEngine fill:none
     style TimeController fill:none
+    style WeakSignal fill:none
+
       </div>
     </div>
   </div>
