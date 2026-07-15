@@ -15,32 +15,26 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     padding: 0 24px 60px;
   }
   .cosmos-lead {
-    display: flex;
-    align-items: stretch;
-    gap: 20px;
     margin-bottom: 36px;
-    padding: 24px 28px;
-    background: var(--sand);
-    border-radius: var(--r-lg);
-    border: 1px solid var(--border-sand);
+    padding: 20px 26px;
+    background: rgba(232, 97, 58, 0.04);
+    border-radius: var(--r-md);
+    border: 1.5px solid var(--coral);
   }
-  .cosmos-lead-bullet {
-    flex-shrink: 0;
-    width: 4px;
-    background: var(--coral);
-    border-radius: 2px;
+  .cosmos-lead-label {
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--coral);
+    margin: 0 0 10px;
+    letter-spacing: 0.2px;
   }
   .cosmos-lead-quote {
     font-family: var(--font-serif-ko);
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     color: var(--ink);
-    line-height: 1.65;
-    margin: 0 0 10px;
-  }
-  .cosmos-lead-attr {
-    font-size: 14px;
-    color: var(--text-muted);
+    line-height: 1.7;
     margin: 0;
   }
   .onto-diagram-section {
@@ -143,13 +137,10 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
 <!-- ── 시맨틱 코스모스 (Bottom-Up 통합) ── -->
 <section class="section" id="semantic-cosmos" style="padding-top: 0; padding-bottom: 0;">
   <div class="cosmos-wrap">
-    <!-- Gruber 인용구 bullet 타이틀 -->
+    <!-- Gruber 인용구 카드 -->
     <div class="cosmos-lead">
-      <div class="cosmos-lead-bullet"></div>
-      <div>
-        <p class="cosmos-lead-quote">&#8220;온톨로지는 공유된 개념화의 형식적이고 명시적인 명세다.&#8221;</p>
-        <p class="cosmos-lead-attr">— Tom Gruber, 1993</p>
-      </div>
+      <p class="cosmos-lead-label">Tom Gruber, 1993</p>
+      <p class="cosmos-lead-quote">&#8220;온톨로지는 공유된 개념화의 형식적이고 명시적인 명세다.&#8221;</p>
     </div>
     <!-- 행성 관계 지도 -->
     <div class="onto-diagram-section">
