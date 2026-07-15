@@ -126,13 +126,21 @@ h1, h2, h3, h4, h5, h6 {
 .nav-item--external { gap: 10px; }
 .nav-item-label { flex: 1; }
 .nav-external-icon {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-  opacity: 0.4;
-  transition: opacity var(--t);
+  padding: 6px;
+  box-sizing: content-box;
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+  color: var(--text-light);
+  transition: border-color var(--t), color var(--t), background var(--t);
 }
-.nav-item--external:hover .nav-external-icon { opacity: 0.8; }
+.nav-item--external:hover .nav-external-icon {
+  border-color: var(--border-sand);
+  color: var(--text-muted);
+  background: var(--sand);
+}
 
 .sidebar-footer {
   padding: 16px 24px;
