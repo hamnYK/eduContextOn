@@ -49,6 +49,26 @@
     resize();
     window.addEventListener('resize', resize);
 
+    /* 이미지 로드 후 높이 재계산: window load 이벤트 */
+    window.addEventListener('load', () => {
+      resize();
+      /* 노드 전체 재배치 (이전 H가 틀렸을 경우 대비) */
+      nodes = Array.from({ length: cfg.count }, makeNode);
+    }, { once: true });
+
+    /* ResizeObserver: 부모 컨테이너 크기 변화 감지 */
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(() => {
+        const prevH = H;
+        resize();
+        /* 높이가 의미 있게 바뀌었으면 노드 재배치 */
+        if (Math.abs(H - prevH) > 10) {
+          nodes = Array.from({ length: cfg.count }, makeNode);
+        }
+      });
+      ro.observe(parent);
+    }
+
     /* 마우스: canvas가 아닌 부모 엘리먼트에서 수신 (pointer-events:none 우회) */
     parent.addEventListener('mousemove', onMouseMove);
     parent.addEventListener('mouseleave', onMouseLeave);
@@ -80,6 +100,10 @@
     dpr = window.devicePixelRatio || 1;
     W   = canvas.offsetWidth;
     H   = canvas.offsetHeight;
+
+    /* 아직 레이아웃이 결정되지 않은 경우 무시 */
+    if (W < 1 || H < 1) return;
+
     canvas.width  = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
