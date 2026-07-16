@@ -529,7 +529,7 @@ graph TD
     <div class="decal-word-emitter"></div>
     <!-- 게시판 클릭 트리거 (투명 오버레이) -->
     <button id="board-trigger" class="board-trigger-overlay" aria-label="게시판 열기"></button>
-    <span class="board-trigger-hint">클릭하면 게시판이 열립니다 ✨</span>
+    <span class="board-trigger-hint">클릭하면 게시판이 열립니다</span>
   </div>
 
   <!-- Card 2: Ontology Rule -->

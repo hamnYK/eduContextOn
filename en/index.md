@@ -475,7 +475,7 @@ og_locale: "en_US"
   <!-- Card 1: System Dynamics -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
     <span class="diagram-badge">The Future Snowball of the Small Ball Worflogy Has Launched</span>
-    <p class="diagram-card-sub">A New Paradigm of the Evolution and Supply of Self-Sustaining Knowledge Context</p>
+    <p class="diagram-card-sub diagram-card-sub--coral">A New Paradigm of the Evolution and Supply of Self-Sustaining Knowledge Context</p>
     <h3 class="diagram-title">1. Ontology-based System Dynamics</h3>
     <p class="diagram-desc">A closed-loop control system of cognitive architecture that simulates static knowledge data (Stock) and inference rules (Flow) in a real-time feedback loop via a time controller (Δt).</p>
     <div class="diagram-wrapper">
@@ -527,14 +527,17 @@ graph TD
       <div class="decal-drop right-drop-2"></div>
       <div class="decal-drop right-drop-3"></div>
     </div>
-    <!-- 단어 방출용 컨테이너 -->
+    <!-- Word emitter container -->
     <div class="decal-word-emitter"></div>
+    <!-- Board click trigger (transparent overlay) -->
+    <button id="board-trigger" class="board-trigger-overlay" aria-label="Open Board"></button>
+    <span class="board-trigger-hint">Click to open the board</span>
   </div>
 
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
     <span class="diagram-badge">Traditional Top-Down Ontology Design & Its Present Value Combined with LLMs</span>
-    <p class="diagram-card-sub">From Limited Semantic Search and Rule-Based Reasoning to Rapid Machine Situational Awareness and Data Orchestration</p>
+    <p class="diagram-card-sub diagram-card-sub--coral">From Limited Semantic Search and Rule-Based Reasoning to Rapid Machine Situational Awareness and Data Orchestration</p>
     <h3 class="diagram-title">2. Semantic Inference Rules</h3>
     <p class="diagram-desc">A semantic inference rule network of the rule engine that derives complex sociological conformity, resistance behaviors, and the resulting causal isolation status from current state data.</p>
     <div class="diagram-wrapper">
@@ -801,3 +804,4 @@ graph TD
     }
   });
 </script>
+<script src="/js/board.js"></script>
