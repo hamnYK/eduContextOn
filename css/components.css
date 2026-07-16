@@ -1473,6 +1473,7 @@
   font-weight: 800;
   background: linear-gradient(135deg, var(--ink, #1a1f36) 30%, var(--living-coral, #e8613a) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 0.65;
 }
