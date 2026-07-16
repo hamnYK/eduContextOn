@@ -2182,3 +2182,133 @@
   }
 }
 
+/* ================================================
+   Sidebar Board Section
+   ================================================ */
+.sidebar-board-section {
+  padding: 8px 0 4px;
+}
+.sidebar-board-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 18px 6px;
+  opacity: 0.75;
+}
+.sidebar-board-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-board-list li {
+  padding: 0;
+}
+.sidebar-board-link {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 5px 18px 5px 22px;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+.sidebar-board-link:hover {
+  color: var(--coral);
+  border-left-color: var(--coral);
+  background: rgba(232, 97, 58, 0.05);
+}
+.sidebar-board-loading,
+.sidebar-board-empty {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 4px 22px;
+  opacity: 0.6;
+}
+
+/* ================================================
+   Board — 게시글 목록 카드 클릭 스타일
+   ================================================ */
+.board-post-card:hover {
+  border-color: rgba(232, 97, 58, 0.35);
+  box-shadow: 0 4px 20px rgba(232, 97, 58, 0.10);
+  transform: translateY(-1px);
+}
+.board-post-card:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+/* ================================================
+   Board — 게시글 상세 보기 패널
+   ================================================ */
+.board-detail-nav {
+  padding: 4px 0 14px;
+}
+.board-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border, rgba(26,31,54,0.12));
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.board-back-btn:hover {
+  color: var(--coral);
+  border-color: var(--coral);
+  background: rgba(232, 97, 58, 0.05);
+}
+.board-detail-article {
+  padding: 0;
+}
+.board-detail-header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border, rgba(26,31,54,0.10));
+}
+.board-detail-tag-hidden {
+  display: none !important;
+}
+.board-detail-title {
+  font-family: var(--font-serif-ko, serif);
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 700;
+  color: var(--text, #1a1f36);
+  margin: 8px 0 12px;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.board-detail-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+.board-detail-content {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text, #1a1f36);
+  word-break: keep-all;
+  white-space: pre-wrap;
+  min-height: 80px;
+}

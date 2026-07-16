@@ -1,7 +1,8 @@
 /**
  * WORFLOGY — board.js
  * 데칼코마니 클릭 → Google Sheets 연동 자유게시판
- * 탭: 글 목록 | 글 쓰기
+ * 패널: 글 목록 | 글 쓰기 | 게시글 상세
+ * 사이드바: 최신 5개 게시글 링크 자동 표시
  */
 (function () {
   'use strict';
@@ -9,6 +10,8 @@
   const WEB_APP_URL =
     window.WorflogyConfig?.WEB_APP_URL ||
     'https://script.google.com/macros/s/AKfycbxBsuTAuC2SE0CXE6ycda-AdzGGXeZfQ75Pz0qINdvStz6wVXay1df65IuI62-eL97Qmg/exec';
+
+  const MAX_SIDEBAR_POSTS = 5;
 
   // ─── XSS 방지 ────────────────────────────────────────────
   function esc(str) {
@@ -28,6 +31,7 @@
     wrap.setAttribute('aria-labelledby', 'board-modal-title');
     wrap.innerHTML = `
       <div class="board-modal">
+        <!-- 헤더 -->
         <header class="board-modal-header">
           <div class="board-modal-title-row">
             <h2 id="board-modal-title" class="board-modal-title">자유 게시판</h2>
@@ -39,6 +43,7 @@
           <button class="board-modal-close" id="board-modal-close" aria-label="닫기">✕</button>
         </header>
 
+        <!-- ① 글 목록 패널 -->
         <div class="board-panel" id="board-panel-list" role="tabpanel">
           <div class="board-filter-bar">
             <select id="board-category-filter" class="board-select" aria-label="카테고리 필터">
@@ -51,6 +56,7 @@
           </div>
         </div>
 
+        <!-- ② 글쓰기 패널 -->
         <div class="board-panel board-panel--hidden" id="board-panel-write" role="tabpanel">
           <form id="board-write-form" class="board-write-form" novalidate>
             <div class="board-form-row">
@@ -90,6 +96,30 @@
             <button class="board-btn board-btn--primary" id="board-success-ok">목록으로 돌아가기</button>
           </div>
         </div>
+
+        <!-- ③ 게시글 상세 패널 -->
+        <div class="board-panel board-panel--hidden" id="board-panel-detail" role="tabpanel">
+          <div class="board-detail-nav">
+            <button class="board-back-btn" id="board-back-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/>
+              </svg>
+              목록으로
+            </button>
+          </div>
+          <article class="board-detail-article">
+            <header class="board-detail-header">
+              <span class="board-post-tag board-detail-tag-hidden" id="board-detail-tag"></span>
+              <h2 class="board-detail-title" id="board-detail-title"></h2>
+              <div class="board-detail-meta">
+                <span class="board-detail-author" id="board-detail-author"></span>
+                <span class="board-detail-date"  id="board-detail-date"></span>
+              </div>
+            </header>
+            <div class="board-detail-content" id="board-detail-content"></div>
+          </article>
+        </div>
       </div>
     `;
     document.body.appendChild(wrap);
@@ -111,6 +141,7 @@
         return;
       }
 
+      // 카테고리 옵션 업데이트
       const cats = [...new Set(data.posts.map(p => p.category).filter(Boolean))];
       filterEl.innerHTML =
         '<option value="">전체 카테고리</option>' +
@@ -125,14 +156,15 @@
         return;
       }
 
-      listEl.innerHTML = filtered.map(post => {
+      listEl.innerHTML = filtered.map((post, idx) => {
         const dt = post.datetime
           ? new Date(post.datetime).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })
           : '';
         const preview = String(post.content || '').slice(0, 90) +
           (String(post.content || '').length > 90 ? '…' : '');
         return `
-          <article class="board-post-card">
+          <article class="board-post-card" data-idx="${idx}" tabindex="0" role="button"
+                   style="cursor:pointer" title="게시글 보기">
             ${post.category ? `<span class="board-post-tag">${esc(post.category)}</span>` : ''}
             <h3 class="board-post-title">${esc(post.title || '(제목 없음)')}</h3>
             <p class="board-post-preview">${esc(preview)}</p>
@@ -143,10 +175,62 @@
           </article>`;
       }).join('');
 
+      // 목록 카드 클릭 → 상세 보기
+      listEl._posts = filtered;
+      listEl.querySelectorAll('.board-post-card').forEach(card => {
+        card.addEventListener('click',  () => showPostDetail(listEl._posts[+card.dataset.idx]));
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') showPostDetail(listEl._posts[+card.dataset.idx]);
+        });
+      });
+
     } catch (err) {
       console.error('[Board] 불러오기 실패:', err);
       listEl.innerHTML = '<div class="board-error">게시글을 불러오지 못했습니다.<br>잠시 후 다시 시도해 주세요.</div>';
     }
+  }
+
+  // ─── 게시글 상세 표시 ─────────────────────────────────────
+  function showPostDetail(post) {
+    const tag     = document.getElementById('board-detail-tag');
+    const title   = document.getElementById('board-detail-title');
+    const author  = document.getElementById('board-detail-author');
+    const date    = document.getElementById('board-detail-date');
+    const content = document.getElementById('board-detail-content');
+
+    if (post.category) {
+      tag.textContent = post.category;
+      tag.classList.remove('board-detail-tag-hidden');
+    } else {
+      tag.textContent = '';
+      tag.classList.add('board-detail-tag-hidden');
+    }
+
+    title.textContent  = post.title || '(제목 없음)';
+    author.textContent = '✏ ' + (post.author || '익명');
+    date.textContent   = post.datetime
+      ? new Date(post.datetime).toLocaleDateString('ko-KR',
+          { year: 'numeric', month: 'long', day: 'numeric' })
+      : '';
+
+    // 줄바꿈 보존 (XSS 방지 후 <br> 변환)
+    content.innerHTML = esc(post.content || '').replace(/\n/g, '<br>');
+
+    showPanel('detail');
+  }
+
+  // ─── 패널 전환 ────────────────────────────────────────────
+  function showPanel(name) {
+    // 탭 버튼 상태 (detail은 탭 없음)
+    document.querySelectorAll('.board-tab').forEach(t => {
+      const on = t.dataset.tab === name;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    ['list', 'write', 'detail'].forEach(p => {
+      document.getElementById('board-panel-' + p)
+        .classList.toggle('board-panel--hidden', p !== name);
+    });
   }
 
   // ─── 게시글 제출 ──────────────────────────────────────────
@@ -183,15 +267,44 @@
     });
   }
 
-  // ─── 탭 전환 ──────────────────────────────────────────────
-  function switchTab(name) {
-    document.querySelectorAll('.board-tab').forEach(t => {
-      const on = t.dataset.tab === name;
-      t.classList.toggle('active', on);
-      t.setAttribute('aria-selected', String(on));
-    });
-    document.getElementById('board-panel-list').classList.toggle('board-panel--hidden', name !== 'list');
-    document.getElementById('board-panel-write').classList.toggle('board-panel--hidden', name !== 'write');
+  // ─── 사이드바 게시글 로드 ─────────────────────────────────
+  async function loadSidebarPosts(openBoardFn) {
+    const listEl = document.getElementById('sidebar-board-list');
+    if (!listEl) return;
+
+    try {
+      const res  = await fetch(WEB_APP_URL + '?action=getBoardPosts');
+      const data = await res.json();
+
+      if (!data.success || !Array.isArray(data.posts) || data.posts.length === 0) {
+        listEl.innerHTML = '<li class="sidebar-board-empty">등록된 게시글이 없습니다.</li>';
+        return;
+      }
+
+      const latest = data.posts.slice(0, MAX_SIDEBAR_POSTS);
+
+      listEl.innerHTML = latest.map((post, i) => {
+        const shortTitle = String(post.title || '(제목 없음)');
+        const display    = shortTitle.length > 20 ? shortTitle.slice(0, 20) + '…' : shortTitle;
+        return `<li>
+          <a href="#" class="sidebar-board-link" data-idx="${i}"
+             title="${esc(shortTitle)}">${esc(display)}</a>
+        </li>`;
+      }).join('');
+
+      // 클릭 시 모달 열고 상세 표시
+      listEl.querySelectorAll('.sidebar-board-link').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const post = latest[+link.dataset.idx];
+          openBoardFn(post); // 모달을 열며 해당 게시글 상세 표시
+        });
+      });
+
+    } catch (err) {
+      console.error('[Sidebar Board] 불러오기 실패:', err);
+      listEl.innerHTML = '<li class="sidebar-board-empty">불러오기 실패</li>';
+    }
   }
 
   // ─── 초기화 ───────────────────────────────────────────────
@@ -201,42 +314,79 @@
 
     const backdrop = createModal();
 
-    function openBoard() {
+    // 모달 열기 (postToShow가 있으면 상세 바로 표시)
+    function openBoard(postToShow) {
       backdrop.classList.add('active');
       document.body.style.overflow = 'hidden';
-      switchTab('list');
-      loadPosts();
+      if (postToShow) {
+        showPostDetail(postToShow);
+      } else {
+        showPanel('list');
+        loadPosts();
+      }
     }
+
     function closeBoard() {
       backdrop.classList.remove('active');
       document.body.style.overflow = '';
     }
 
-    trigger.addEventListener('click', openBoard);
+    // 이벤트 바인딩
+    trigger.addEventListener('click', () => openBoard());
     document.getElementById('board-modal-close').addEventListener('click', closeBoard);
     // 배경 클릭으로는 닫히지 않음 (✕ 버튼 또는 ESC로만 닫기)
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && backdrop.classList.contains('active')) closeBoard();
     });
+
+    // 탭 전환
     document.querySelectorAll('.board-tab').forEach(btn => {
-      btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+      btn.addEventListener('click', () => {
+        showPanel(btn.dataset.tab);
+        if (btn.dataset.tab === 'list') loadPosts();
+      });
     });
+
+    // 카테고리 필터
     document.getElementById('board-category-filter').addEventListener('change', e => {
       loadPosts(e.target.value);
     });
+
+    // 새로고침
     document.getElementById('board-refresh').addEventListener('click', () => {
       loadPosts(document.getElementById('board-category-filter').value);
     });
-    document.getElementById('board-write-cancel').addEventListener('click', () => switchTab('list'));
+
+    // 글쓰기 취소
+    document.getElementById('board-write-cancel').addEventListener('click', () => {
+      showPanel('list');
+      loadPosts();
+    });
+
+    // 상세 → 목록으로
+    document.getElementById('board-back-btn').addEventListener('click', () => {
+      showPanel('list');
+      loadPosts();
+    });
+
+    // 성공 후 목록으로
     document.getElementById('board-success-ok').addEventListener('click', () => {
       document.getElementById('board-write-form').style.display = '';
       document.getElementById('board-write-success').classList.add('board-success--hidden');
-      switchTab('list');
+      showPanel('list');
       loadPosts();
+      loadSidebarPosts(openBoard); // 사이드바 갱신
     });
+
+    // 폼 제출
     document.getElementById('board-write-form').addEventListener('submit', handleWriteSubmit);
+
+    // 글자수 카운트
     document.getElementById('board-input-content').addEventListener('input', function () {
       document.getElementById('board-content-count').textContent = this.value.length;
     });
+
+    // 사이드바 게시글 초기 로드
+    loadSidebarPosts(openBoard);
   });
 })();
