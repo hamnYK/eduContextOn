@@ -1604,6 +1604,7 @@
   z-index: 0;         /* 2 -> 0 하향 (카드 뒤로 배치) */
   overflow: visible;  /* hidden -> visible 복구 (잘림 해결) */
   transform: translateY(-80px); /* 전체를 위로 올려 Card 2 텍스트 침범 방지 */
+  margin-bottom: -80px;         /* translateY 공백 보정: Card 2를 레이아웃 상으로 당겨올림 */
   background: transparent;
 }
 
@@ -1625,52 +1626,53 @@
 .decalcomanie-connector .decal-drop {
   position: absolute;
   border-radius: 50%;
-  will-change: transform, border-radius;
+  will-change: transform, border-radius, background;
   mix-blend-mode: normal;
+  animation: decal-color-cycle 12s infinite linear;
 }
 
-/* 왼쪽 물감 (Coral - 현대/미래의 강한 융합 에너지) */
+/* 왼쪽 물감 — Entropy(0s) → Story(4s) → Cord(8s) 순환 */
 .decalcomanie-connector .left-drop-1 {
   left: 22%;
   top: 0%;
-  width: 200px;       /* 160px -> 200px */
-  height: 200px;      /* 160px -> 200px */
-  background: var(--living-coral, #e8613a); /* 선명한 고유 원색 */
+  width: 200px;
+  height: 200px;
+  animation-delay: 0s;    /* Entropy 시작 */
 }
 
 .decalcomanie-connector .left-drop-2 {
   left: 34%;
   top: 15%;
-  width: 200px;       /* 160px -> 200px */
-  height: 200px;      /* 160px -> 200px */
-  background: var(--ink, #1a1f36); /* 선명한 고유 원색 */
+  width: 200px;
+  height: 200px;
+  animation-delay: -4s;   /* Story 시작 (1/3 위상 차) */
 }
 
-/* 왼쪽 세 번째 물감 (Yellow - 트리플 구조 중심 연동 방울) */
+/* 왼쪽 세 번째 물감 */
 .decalcomanie-connector .left-drop-3 {
   left: 40%;
   top: 30%;
-  width: 200px;       /* 160px -> 200px */
-  height: 200px;      /* 160px -> 200px */
-  background: #ffcc00;
+  width: 200px;
+  height: 200px;
+  animation-delay: -8s;   /* Cord 시작 (2/3 위상 차) */
 }
 
 /* 오른쪽 물감 (대칭 데칼코마니) */
 .decalcomanie-connector .right-drop-1 {
   right: 22%;
   top: 0%;
-  width: 200px;       /* 160px -> 200px */
-  height: 200px;      /* 160px -> 200px */
-  background: var(--living-coral, #e8613a);
+  width: 200px;
+  height: 200px;
+  animation-delay: 0s;    /* Entropy 시작 */
   transform: scaleX(-1);
 }
 
 .decalcomanie-connector .right-drop-2 {
   right: 34%;
   top: 15%;
-  width: 200px;       /* 160px -> 200px */
-  height: 200px;      /* 160px -> 200px */
-  background: var(--ink, #1a1f36);
+  width: 200px;
+  height: 200px;
+  animation-delay: -4s;   /* Story 시작 */
   transform: scaleX(-1);
 }
 
@@ -1678,10 +1680,21 @@
 .decalcomanie-connector .right-drop-3 {
   right: 40%;
   top: 30%;
-  width: 200px;       /* 160px -> 200px */
-  height: 200px;      /* 160px -> 200px */
-  background: #ffcc00;
+  width: 200px;
+  height: 200px;
+  animation-delay: -8s;   /* Cord 시작 */
   transform: scaleX(-1);
+}
+
+/* ================================================
+   Decalcomanie — 3-Theme Color Cycle
+   Entropy(혼돈) → Story(서사) → Cord(연결)
+   ================================================ */
+@keyframes decal-color-cycle {
+  0%     { background: #6D28D9; }   /* Entropy — 딥 바이올렛 */
+  33.33% { background: #D97706; }   /* Story   — 앰버 골드   */
+  66.66% { background: #0891B2; }   /* Cord    — 사이언      */
+  100%   { background: #6D28D9; }   /* Entropy — 루프        */
 }
 
 /* 반응형 모바일 대응 */
