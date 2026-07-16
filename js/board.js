@@ -3,6 +3,7 @@
  * 데칼코마니 클릭 → Google Sheets 연동 자유게시판
  * 패널: 글 목록 | 글 쓰기 | 게시글 상세
  * 사이드바: 최신 5개 게시글 링크 자동 표시
+ * i18n: 페이지 lang 속성 기반 한국어/영문 자동 전환
  */
 (function () {
   'use strict';
@@ -12,6 +13,50 @@
     'https://script.google.com/macros/s/AKfycbxBsuTAuC2SE0CXE6ycda-AdzGGXeZfQ75Pz0qINdvStz6wVXay1df65IuI62-eL97Qmg/exec';
 
   const MAX_SIDEBAR_POSTS = 5;
+
+  // ─── 언어 감지 ────────────────────────────────────────────
+  const isEn = document.documentElement.lang === 'en' ||
+               window.location.pathname.startsWith('/en');
+
+  // ─── 번역 테이블 ──────────────────────────────────────────
+  const T = {
+    modalTitle:        isEn ? 'Community Board'          : '자유 게시판',
+    tabList:           isEn ? 'Posts'                    : '글 목록',
+    tabWrite:          isEn ? 'Write'                    : '글 쓰기',
+    close:             isEn ? 'Close'                    : '닫기',
+    allCategories:     isEn ? 'All Categories'           : '전체 카테고리',
+    refresh:           isEn ? 'Refresh'                  : '새로고침',
+    loading:           isEn ? 'Loading...'               : '불러오는 중...',
+    noPostsYet:        isEn ? 'No posts yet. Be the first to write.' : '아직 게시글이 없습니다. 첫 글을 남겨보세요.',
+    noCategoryPosts:   isEn ? 'No posts in this category.' : '해당 카테고리의 게시글이 없습니다.',
+    loadError:         isEn ? 'Failed to load posts. Please try again.'
+                             : '게시글을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.',
+    noTitle:           isEn ? '(No Title)'               : '(제목 없음)',
+    anonymous:         isEn ? 'Anonymous'                : '익명',
+    viewPost:          isEn ? 'View post'                : '게시글 보기',
+    labelTitle:        isEn ? 'Title'                    : '제목',
+    labelAuthor:       isEn ? 'Author'                   : '작성자',
+    labelCategory:     isEn ? 'Category'                 : '카테고리',
+    labelContent:      isEn ? 'Content'                  : '내용',
+    phTitle:           isEn ? 'Enter a title'            : '제목을 입력하세요',
+    phAuthor:          isEn ? 'Name or nickname'         : '이름 또는 닉네임',
+    phCategory:        isEn ? 'e.g. Idea, Question...'  : '예: 아이디어, 질문...',
+    phContent:         isEn ? 'Enter content...'         : '내용을 입력하세요...',
+    cancel:            isEn ? 'Cancel'                   : '취소',
+    submit:            isEn ? 'Post'                     : '게시하기',
+    submitting:        isEn ? 'Posting...'               : '게시 중...',
+    successMsg:        isEn ? 'Your post has been submitted!' : '게시물이 등록되었습니다!',
+    successSub:        isEn ? 'It may appear after admin review.' : '관리자 검토 후 노출될 수 있습니다.',
+    successBack:       isEn ? 'Back to List'             : '목록으로 돌아가기',
+    backToList:        isEn ? 'Back to List'             : '목록으로',
+    validateRequired:  isEn ? 'Title, author, and content are required.'
+                             : '제목, 작성자, 내용은 필수 항목입니다.',
+    submitError:       isEn ? 'An error occurred. Please try again.'
+                             : '게시 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.',
+    sidebarLoading:    isEn ? 'Loading...'               : '불러오는 중...',
+    sidebarEmpty:      isEn ? 'No posts yet.'            : '등록된 게시글이 없습니다.',
+    sidebarLoadError:  isEn ? 'Failed to load.'          : '불러오기 실패',
+  };
 
   // ─── XSS 방지 ────────────────────────────────────────────
   function esc(str) {
@@ -31,73 +76,72 @@
     wrap.setAttribute('aria-labelledby', 'board-modal-title');
     wrap.innerHTML = `
       <div class="board-modal">
-        <!-- 헤더 -->
         <header class="board-modal-header">
           <div class="board-modal-title-row">
-            <h2 id="board-modal-title" class="board-modal-title">자유 게시판</h2>
+            <h2 id="board-modal-title" class="board-modal-title">${T.modalTitle}</h2>
             <div class="board-modal-tabs" role="tablist">
-              <button class="board-tab active" data-tab="list" role="tab" aria-selected="true">글 목록</button>
-              <button class="board-tab" data-tab="write" role="tab" aria-selected="false">글 쓰기</button>
+              <button class="board-tab active" data-tab="list" role="tab" aria-selected="true">${T.tabList}</button>
+              <button class="board-tab" data-tab="write" role="tab" aria-selected="false">${T.tabWrite}</button>
             </div>
           </div>
-          <button class="board-modal-close" id="board-modal-close" aria-label="닫기">✕</button>
+          <button class="board-modal-close" id="board-modal-close" aria-label="${T.close}">✕</button>
         </header>
 
-        <!-- ① 글 목록 패널 -->
+        <!-- 글 목록 패널 -->
         <div class="board-panel" id="board-panel-list" role="tabpanel">
           <div class="board-filter-bar">
-            <select id="board-category-filter" class="board-select" aria-label="카테고리 필터">
-              <option value="">전체 카테고리</option>
+            <select id="board-category-filter" class="board-select" aria-label="${T.allCategories}">
+              <option value="">${T.allCategories}</option>
             </select>
-            <button class="board-refresh-btn" id="board-refresh" aria-label="새로고침">↺</button>
+            <button class="board-refresh-btn" id="board-refresh" aria-label="${T.refresh}">↺</button>
           </div>
           <div class="board-post-list" id="board-post-list">
-            <div class="board-loading"><span class="board-spinner"></span> 불러오는 중...</div>
+            <div class="board-loading"><span class="board-spinner"></span> ${T.loading}</div>
           </div>
         </div>
 
-        <!-- ② 글쓰기 패널 -->
+        <!-- 글쓰기 패널 -->
         <div class="board-panel board-panel--hidden" id="board-panel-write" role="tabpanel">
           <form id="board-write-form" class="board-write-form" novalidate>
             <div class="board-form-row">
-              <label for="board-input-title">제목 <span class="board-required" aria-hidden="true">*</span></label>
+              <label for="board-input-title">${T.labelTitle} <span class="board-required" aria-hidden="true">*</span></label>
               <input type="text" id="board-input-title" name="title"
-                placeholder="제목을 입력하세요" required maxlength="100" autocomplete="off">
+                placeholder="${T.phTitle}" required maxlength="100" autocomplete="off">
             </div>
             <div class="board-form-row board-form-row--two">
               <div>
-                <label for="board-input-author">작성자 <span class="board-required" aria-hidden="true">*</span></label>
+                <label for="board-input-author">${T.labelAuthor} <span class="board-required" aria-hidden="true">*</span></label>
                 <input type="text" id="board-input-author" name="author"
-                  placeholder="이름 또는 닉네임" required maxlength="30" autocomplete="nickname">
+                  placeholder="${T.phAuthor}" required maxlength="30" autocomplete="nickname">
               </div>
               <div>
-                <label for="board-input-category">카테고리</label>
+                <label for="board-input-category">${T.labelCategory}</label>
                 <input type="text" id="board-input-category" name="category"
-                  placeholder="예: 아이디어, 질문…" maxlength="20" autocomplete="off">
+                  placeholder="${T.phCategory}" maxlength="20" autocomplete="off">
               </div>
             </div>
             <div class="board-form-row">
-              <label for="board-input-content">내용 <span class="board-required" aria-hidden="true">*</span></label>
+              <label for="board-input-content">${T.labelContent} <span class="board-required" aria-hidden="true">*</span></label>
               <textarea id="board-input-content" name="content"
-                placeholder="내용을 입력하세요…" required maxlength="2000" rows="7"></textarea>
+                placeholder="${T.phContent}" required maxlength="2000" rows="7"></textarea>
               <span class="board-char-count">
                 <span id="board-content-count">0</span> / 2000
               </span>
             </div>
             <div class="board-form-actions">
-              <button type="button" class="board-btn board-btn--secondary" id="board-write-cancel">취소</button>
-              <button type="submit" class="board-btn board-btn--primary" id="board-write-submit">게시하기</button>
+              <button type="button" class="board-btn board-btn--secondary" id="board-write-cancel">${T.cancel}</button>
+              <button type="submit" class="board-btn board-btn--primary" id="board-write-submit">${T.submit}</button>
             </div>
           </form>
           <div class="board-success board-success--hidden" id="board-write-success">
             <div class="board-success-icon">✓</div>
-            <p class="board-success-msg">게시물이 등록되었습니다!</p>
-            <p class="board-success-sub">관리자 검토 후 노출될 수 있습니다.</p>
-            <button class="board-btn board-btn--primary" id="board-success-ok">목록으로 돌아가기</button>
+            <p class="board-success-msg">${T.successMsg}</p>
+            <p class="board-success-sub">${T.successSub}</p>
+            <button class="board-btn board-btn--primary" id="board-success-ok">${T.successBack}</button>
           </div>
         </div>
 
-        <!-- ③ 게시글 상세 패널 -->
+        <!-- 게시글 상세 패널 -->
         <div class="board-panel board-panel--hidden" id="board-panel-detail" role="tabpanel">
           <div class="board-detail-nav">
             <button class="board-back-btn" id="board-back-btn">
@@ -105,7 +149,7 @@
                    stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/>
               </svg>
-              목록으로
+              ${T.backToList}
             </button>
           </div>
           <article class="board-detail-article">
@@ -130,21 +174,20 @@
   async function loadPosts(categoryFilter) {
     const listEl   = document.getElementById('board-post-list');
     const filterEl = document.getElementById('board-category-filter');
-    listEl.innerHTML = '<div class="board-loading"><span class="board-spinner"></span> 불러오는 중...</div>';
+    listEl.innerHTML = `<div class="board-loading"><span class="board-spinner"></span> ${T.loading}</div>`;
 
     try {
       const res  = await fetch(WEB_APP_URL + '?action=getBoardPosts');
       const data = await res.json();
 
       if (!data.success || !Array.isArray(data.posts) || data.posts.length === 0) {
-        listEl.innerHTML = '<div class="board-empty">아직 게시글이 없습니다.<br>첫 글을 남겨보세요! 🖊</div>';
+        listEl.innerHTML = `<div class="board-empty">${T.noPostsYet}</div>`;
         return;
       }
 
-      // 카테고리 옵션 업데이트
       const cats = [...new Set(data.posts.map(p => p.category).filter(Boolean))];
       filterEl.innerHTML =
-        '<option value="">전체 카테고리</option>' +
+        `<option value="">${T.allCategories}</option>` +
         cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
 
       const filtered = categoryFilter
@@ -152,30 +195,30 @@
         : data.posts;
 
       if (filtered.length === 0) {
-        listEl.innerHTML = '<div class="board-empty">해당 카테고리의 게시글이 없습니다.</div>';
+        listEl.innerHTML = `<div class="board-empty">${T.noCategoryPosts}</div>`;
         return;
       }
 
+      const locale = isEn ? 'en-US' : 'ko-KR';
       listEl.innerHTML = filtered.map((post, idx) => {
         const dt = post.datetime
-          ? new Date(post.datetime).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })
+          ? new Date(post.datetime).toLocaleDateString(locale, { month: 'short', day: 'numeric' })
           : '';
         const preview = String(post.content || '').slice(0, 90) +
           (String(post.content || '').length > 90 ? '…' : '');
         return `
           <article class="board-post-card" data-idx="${idx}" tabindex="0" role="button"
-                   style="cursor:pointer" title="게시글 보기">
+                   style="cursor:pointer" title="${T.viewPost}">
             ${post.category ? `<span class="board-post-tag">${esc(post.category)}</span>` : ''}
-            <h3 class="board-post-title">${esc(post.title || '(제목 없음)')}</h3>
+            <h3 class="board-post-title">${esc(post.title || T.noTitle)}</h3>
             <p class="board-post-preview">${esc(preview)}</p>
             <footer class="board-post-meta">
-              <span class="board-post-author">✏ ${esc(post.author || '익명')}</span>
+              <span class="board-post-author">${esc(post.author || T.anonymous)}</span>
               <span class="board-post-date">${dt}</span>
             </footer>
           </article>`;
       }).join('');
 
-      // 목록 카드 클릭 → 상세 보기
       listEl._posts = filtered;
       listEl.querySelectorAll('.board-post-card').forEach(card => {
         card.addEventListener('click',  () => showPostDetail(listEl._posts[+card.dataset.idx]));
@@ -185,8 +228,8 @@
       });
 
     } catch (err) {
-      console.error('[Board] 불러오기 실패:', err);
-      listEl.innerHTML = '<div class="board-error">게시글을 불러오지 못했습니다.<br>잠시 후 다시 시도해 주세요.</div>';
+      console.error('[Board] load error:', err);
+      listEl.innerHTML = `<div class="board-error">${T.loadError}</div>`;
     }
   }
 
@@ -206,22 +249,20 @@
       tag.classList.add('board-detail-tag-hidden');
     }
 
-    title.textContent  = post.title || '(제목 없음)';
-    author.textContent = '✏ ' + (post.author || '익명');
+    const locale = isEn ? 'en-US' : 'ko-KR';
+    title.textContent  = post.title || T.noTitle;
+    author.textContent = post.author || T.anonymous;
     date.textContent   = post.datetime
-      ? new Date(post.datetime).toLocaleDateString('ko-KR',
+      ? new Date(post.datetime).toLocaleDateString(locale,
           { year: 'numeric', month: 'long', day: 'numeric' })
       : '';
 
-    // 줄바꿈 보존 (XSS 방지 후 <br> 변환)
     content.innerHTML = esc(post.content || '').replace(/\n/g, '<br>');
-
     showPanel('detail');
   }
 
   // ─── 패널 전환 ────────────────────────────────────────────
   function showPanel(name) {
-    // 탭 버튼 상태 (detail은 탭 없음)
     document.querySelectorAll('.board-tab').forEach(t => {
       const on = t.dataset.tab === name;
       t.classList.toggle('active', on);
@@ -242,13 +283,13 @@
     const content  = document.getElementById('board-input-content').value.trim();
 
     if (!title || !author || !content) {
-      alert('제목, 작성자, 내용은 필수 항목입니다.');
+      alert(T.validateRequired);
       return;
     }
 
     const submitBtn = document.getElementById('board-write-submit');
-    submitBtn.disabled = true;
-    submitBtn.textContent = '게시 중…';
+    submitBtn.disabled    = true;
+    submitBtn.textContent = T.submitting;
 
     fetch(WEB_APP_URL, {
       method:  'POST',
@@ -260,10 +301,10 @@
       document.getElementById('board-write-form').style.display = 'none';
       document.getElementById('board-write-success').classList.remove('board-success--hidden');
     })
-    .catch(() => alert('게시 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.'))
+    .catch(() => alert(T.submitError))
     .finally(() => {
       submitBtn.disabled    = false;
-      submitBtn.textContent = '게시하기';
+      submitBtn.textContent = T.submit;
     });
   }
 
@@ -277,14 +318,13 @@
       const data = await res.json();
 
       if (!data.success || !Array.isArray(data.posts) || data.posts.length === 0) {
-        listEl.innerHTML = '<li class="sidebar-board-empty">등록된 게시글이 없습니다.</li>';
+        listEl.innerHTML = `<li class="sidebar-board-empty">${T.sidebarEmpty}</li>`;
         return;
       }
 
       const latest = data.posts.slice(0, MAX_SIDEBAR_POSTS);
-
       listEl.innerHTML = latest.map((post, i) => {
-        const shortTitle = String(post.title || '(제목 없음)');
+        const shortTitle = String(post.title || T.noTitle);
         const display    = shortTitle.length > 20 ? shortTitle.slice(0, 20) + '…' : shortTitle;
         return `<li>
           <a href="#" class="sidebar-board-link" data-idx="${i}"
@@ -292,18 +332,16 @@
         </li>`;
       }).join('');
 
-      // 클릭 시 모달 열고 상세 표시
       listEl.querySelectorAll('.sidebar-board-link').forEach(link => {
         link.addEventListener('click', e => {
           e.preventDefault();
-          const post = latest[+link.dataset.idx];
-          openBoardFn(post); // 모달을 열며 해당 게시글 상세 표시
+          openBoardFn(latest[+link.dataset.idx]);
         });
       });
 
     } catch (err) {
-      console.error('[Sidebar Board] 불러오기 실패:', err);
-      listEl.innerHTML = '<li class="sidebar-board-empty">불러오기 실패</li>';
+      console.error('[Sidebar Board] load error:', err);
+      listEl.innerHTML = `<li class="sidebar-board-empty">${T.sidebarLoadError}</li>`;
     }
   }
 
@@ -314,7 +352,6 @@
 
     const backdrop = createModal();
 
-    // 모달 열기 (postToShow가 있으면 상세 바로 표시)
     function openBoard(postToShow) {
       backdrop.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -331,15 +368,13 @@
       document.body.style.overflow = '';
     }
 
-    // 이벤트 바인딩
     trigger.addEventListener('click', () => openBoard());
     document.getElementById('board-modal-close').addEventListener('click', closeBoard);
-    // 배경 클릭으로는 닫히지 않음 (✕ 버튼 또는 ESC로만 닫기)
+    // 배경 클릭으로는 닫히지 않음 (✕ 버튼 또는 ESC 키로만 닫기)
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && backdrop.classList.contains('active')) closeBoard();
     });
 
-    // 탭 전환
     document.querySelectorAll('.board-tab').forEach(btn => {
       btn.addEventListener('click', () => {
         showPanel(btn.dataset.tab);
@@ -347,46 +382,38 @@
       });
     });
 
-    // 카테고리 필터
     document.getElementById('board-category-filter').addEventListener('change', e => {
       loadPosts(e.target.value);
     });
 
-    // 새로고침
     document.getElementById('board-refresh').addEventListener('click', () => {
       loadPosts(document.getElementById('board-category-filter').value);
     });
 
-    // 글쓰기 취소
     document.getElementById('board-write-cancel').addEventListener('click', () => {
       showPanel('list');
       loadPosts();
     });
 
-    // 상세 → 목록으로
     document.getElementById('board-back-btn').addEventListener('click', () => {
       showPanel('list');
       loadPosts();
     });
 
-    // 성공 후 목록으로
     document.getElementById('board-success-ok').addEventListener('click', () => {
       document.getElementById('board-write-form').style.display = '';
       document.getElementById('board-write-success').classList.add('board-success--hidden');
       showPanel('list');
       loadPosts();
-      loadSidebarPosts(openBoard); // 사이드바 갱신
+      loadSidebarPosts(openBoard);
     });
 
-    // 폼 제출
     document.getElementById('board-write-form').addEventListener('submit', handleWriteSubmit);
 
-    // 글자수 카운트
     document.getElementById('board-input-content').addEventListener('input', function () {
       document.getElementById('board-content-count').textContent = this.value.length;
     });
 
-    // 사이드바 게시글 초기 로드
     loadSidebarPosts(openBoard);
   });
 })();
