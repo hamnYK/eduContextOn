@@ -1603,9 +1603,10 @@
   pointer-events: none;
   z-index: 0;         /* 2 -> 0 하향 (카드 뒤로 배치) */
   overflow: visible;  /* hidden -> visible 복구 (잘림 해결) */
-  /* contrast 연산을 통해 선명한 외곽선을 뽑기 위해 가상의 연한 배경 바탕 확보 */
-  background: transparent; 
+  transform: translateY(-80px); /* 전체를 위로 올려 Card 2 텍스트 침범 방지 */
+  background: transparent;
 }
+
 
 .decalcomanie-connector .decal-fluid-container {
   position: absolute;
