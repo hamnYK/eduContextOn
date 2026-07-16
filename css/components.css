@@ -1631,7 +1631,7 @@
 /* 왼쪽 물감 (Coral - 현대/미래의 강한 융합 에너지) */
 .decalcomanie-connector .left-drop-1 {
   left: 22%;
-  top: 18%;
+  top: 0%;
   width: 200px;       /* 160px -> 200px */
   height: 200px;      /* 160px -> 200px */
   background: var(--living-coral, #e8613a); /* 선명한 고유 원색 */
@@ -1639,7 +1639,7 @@
 
 .decalcomanie-connector .left-drop-2 {
   left: 34%;
-  top: 32%;
+  top: 15%;
   width: 200px;       /* 160px -> 200px */
   height: 200px;      /* 160px -> 200px */
   background: var(--ink, #1a1f36); /* 선명한 고유 원색 */
@@ -1648,7 +1648,7 @@
 /* 왼쪽 세 번째 물감 (Yellow - 트리플 구조 중심 연동 방울) */
 .decalcomanie-connector .left-drop-3 {
   left: 40%;
-  top: 48%;
+  top: 30%;
   width: 200px;       /* 160px -> 200px */
   height: 200px;      /* 160px -> 200px */
   background: #ffcc00;
@@ -1657,7 +1657,7 @@
 /* 오른쪽 물감 (대칭 데칼코마니) */
 .decalcomanie-connector .right-drop-1 {
   right: 22%;
-  top: 18%;
+  top: 0%;
   width: 200px;       /* 160px -> 200px */
   height: 200px;      /* 160px -> 200px */
   background: var(--living-coral, #e8613a);
@@ -1666,7 +1666,7 @@
 
 .decalcomanie-connector .right-drop-2 {
   right: 34%;
-  top: 32%;
+  top: 15%;
   width: 200px;       /* 160px -> 200px */
   height: 200px;      /* 160px -> 200px */
   background: var(--ink, #1a1f36);
@@ -1676,7 +1676,7 @@
 /* 오른쪽 세 번째 물감 (대칭) */
 .decalcomanie-connector .right-drop-3 {
   right: 40%;
-  top: 48%;
+  top: 30%;
   width: 200px;       /* 160px -> 200px */
   height: 200px;      /* 160px -> 200px */
   background: #ffcc00;

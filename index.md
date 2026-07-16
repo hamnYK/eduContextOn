@@ -531,7 +531,7 @@ graph TD
 
   <!-- Card 2: Ontology Rule -->
   <div class="diagram-card" style="position: relative; z-index: 1;">
-    <span class="diagram-badge">전통적인 하향식 온톨로지 설계와 LLM과 결합한 현재의 활용가치</span>
+    <span class="diagram-badge">온톨로지 기술 형식 주의와 LLM과 결합한 현재의 활용가치</span>
     <p class="diagram-card-sub">제한된 의미론적 검색과 규칙 기반 추론으로부터 기계의 빠른 상황 인지와 데이터 오케스트레이션까지</p>
     <h3 class="diagram-title">2. 의미론적 추론 규칙 (Semantic Inference Rules)</h3>
     <p class="diagram-desc">현재 상태 데이터로부터 복잡한 사회학적 순응, 저항 발현, 그리고 이에 따른 인과적인 고립 상태를 도출하는 룰 엔진의 의미론적(Semantic) 추론 규칙망입니다.</p>
