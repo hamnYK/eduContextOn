@@ -214,7 +214,7 @@
 
     trigger.addEventListener('click', openBoard);
     document.getElementById('board-modal-close').addEventListener('click', closeBoard);
-    backdrop.addEventListener('click', e => { if (e.target === backdrop) closeBoard(); });
+    // 배경 클릭으로는 닫히지 않음 (✕ 버튼 또는 ESC로만 닫기)
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && backdrop.classList.contains('active')) closeBoard();
     });

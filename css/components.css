@@ -955,7 +955,8 @@
   opacity: 1;
   padding: 6px 16px;
   border-radius: 8px;
-  display: inline-block;
+  display: block;
+  width: fit-content;
 }
 .diagram-card {
   background: transparent;
