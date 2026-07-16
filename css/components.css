@@ -949,6 +949,14 @@
   margin-bottom: 10px;
   opacity: 0.9;
 }
+.diagram-card-sub--coral {
+  background: var(--coral, #e8613a);
+  color: #fff;
+  opacity: 1;
+  padding: 6px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
 .diagram-card {
   background: transparent;
   border: none;
@@ -1738,7 +1746,7 @@
   transform: translate(-50%, -50%) scale(0.4);
   filter: blur(12px); /* 최초 파동(중첩) 상태: 두꺼운 블러 */
   z-index: 2;
-  mix-blend-mode: difference; /* 물방울 유체 및 배경과 반응하여 유기적인 색상 반전 구현 */
+  mix-blend-mode: normal; /* difference 제거: 흰색 글씨 고정 */
 }
 
 .decal-word {
@@ -1749,7 +1757,7 @@
   font-style: italic;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--ink, #1a1f36);
+  color: #ffffff;             /* 흰색 고정 */
   pointer-events: none;
   will-change: transform;
   /* 안쪽 글자 자체의 양자 진동 효과 부여 */
