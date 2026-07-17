@@ -289,6 +289,15 @@
       return;
     }
 
+    // ─── 악성 스크립트 패턴 사전 차단 (서버 전송 전 2차 방어) ─
+    const badPattern = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>|javascript\s*:|on\w+\s*=\s*["\x27`]/i;
+    if (badPattern.test(title) || badPattern.test(author) || badPattern.test(category) || badPattern.test(content)) {
+      alert(isEn
+        ? 'Malicious script pattern detected. Please enter plain text only.'
+        : '악성 스크립트 패턴이 감지되었습니다. 일반 텍스트만 입력할 수 있습니다.');
+      return;
+    }
+
     const submitBtn = document.getElementById('board-write-submit');
     submitBtn.disabled    = true;
     submitBtn.textContent = T.submitting;
