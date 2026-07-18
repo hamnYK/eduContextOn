@@ -150,12 +150,36 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     color: var(--text);
     margin: 0;
   }
+  /* ── 온톨로지 패러다임 미디어 행 ── */
+  .cosmos-media-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 32px;
+    align-items: stretch;
+  }
+  .cosmos-media-item {
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+  }
+  .cosmos-media-img,
+  .cosmos-media-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   @media (max-width: 600px) {
     .cosmos-wrap { padding: 0 14px 40px; }
     .onto-diagram-section { padding: 20px 16px; }
     .cosmos-lead { padding: 16px 18px; gap: 14px; }
     .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
+    .cosmos-media-row { flex-direction: column; gap: 16px; margin-top: 24px; }
   }
 </style>
 
@@ -312,6 +336,31 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
       <div class="detail-panel" id="detail-panel">
         <p class="detail-formula" id="detail-formula">온톨로지 := 시맨틱 코스모스</p>
         <p class="detail-explain" id="detail-explain">Gruber(1993)의 '공유된 개념화의 형식적·명시적 명세'를 워플로지가 동적으로 재해석한 개념입니다. 고정된 선언이 아닌, 전체론적 관점과 Weak Signal이 상시 작용하는 살아있는 지식 구조입니다. 노드를 클릭해 각 개념을 탐색해 보세요.</p>
+      </div>
+    </div>
+    <!-- 온톨로지 패러다임 이미지 + 비교 영상 나란히 -->
+    <div class="cosmos-media-row">
+      <div class="cosmos-media-item">
+        <img
+          src="{{ '/assets/new ontology paradigm.png' | relative_url }}"
+          alt="새로운 온톨로지 패러다임"
+          class="cosmos-media-img"
+        />
+      </div>
+      <div class="cosmos-media-item">
+        <video
+          class="cosmos-media-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          controlslist="nodownload nofullscreen noremoteplayback"
+          oncontextmenu="return false"
+          aria-label="온톨로지 비교 영상"
+        >
+          <source src="{{ '/assets/ontology comparison.mp4' | relative_url }}" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
