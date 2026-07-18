@@ -153,18 +153,22 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
   /* ── 온톨로지 패러다임 미디어 행 ── */
   .cosmos-media-row {
     display: flex;
-    gap: 24px;
+    gap: 0;
     margin-top: 32px;
     align-items: stretch;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
   }
   .cosmos-media-item {
     flex: 1 1 0;
     min-width: 0;
-    border-radius: var(--r-md);
     overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    box-shadow: var(--shadow-sm);
+  }
+  /* 이미지-영상 사이 구분선 */
+  .cosmos-media-item + .cosmos-media-item {
+    border-left: 1px solid var(--border);
   }
   .cosmos-media-img,
   .cosmos-media-video {
@@ -179,8 +183,10 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     .cosmos-lead { padding: 16px 18px; gap: 14px; }
     .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
-    .cosmos-media-row { flex-direction: column; gap: 16px; margin-top: 24px; }
+    .cosmos-media-row { flex-direction: column; margin-top: 24px; }
+    .cosmos-media-item + .cosmos-media-item { border-left: none; border-top: 1px solid var(--border); }
   }
+
 </style>
 
 <!-- ── 시맨틱 코스모스 (Bottom-Up 통합) ── -->
