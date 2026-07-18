@@ -161,8 +161,17 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
   }
-  .cosmos-media-item {
-    flex: 1 1 0;
+  /* 이미지: 35% 고정 */
+  .cosmos-media-item:first-child {
+    flex: 0 0 35%;
+    max-width: 35%;
+    min-width: 0;
+    overflow: hidden;
+  }
+  /* 영상: 65% 차지 */
+  .cosmos-media-item:last-child {
+    flex: 0 0 65%;
+    max-width: 65%;
     min-width: 0;
     overflow: hidden;
   }
@@ -183,9 +192,13 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     .cosmos-lead { padding: 16px 18px; gap: 14px; }
     .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
-    .cosmos-media-row { flex-direction: column; margin-top: 24px; }
-    .cosmos-media-item + .cosmos-media-item { border-left: none; border-top: 1px solid var(--border); }
+    .cosmos-media-row { margin-top: 24px; }
+    /* 모바일: 이미지 숨김, 영상만 100% */
+    .cosmos-media-item:first-child { display: none; }
+    .cosmos-media-item:last-child { flex: 0 0 100%; max-width: 100%; }
+    .cosmos-media-item + .cosmos-media-item { border-left: none; }
   }
+
 
 </style>
 
