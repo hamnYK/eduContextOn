@@ -153,7 +153,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
   /* ── 온톨로지 워크플로우 영상 쿄케이스 ── */
   .hero-video-showcase {
     padding: 0 0 40px;
-    max-width: 992px;
+    max-width: 720px;
     margin: 0 auto;
   }
   .hero-video-frame {
