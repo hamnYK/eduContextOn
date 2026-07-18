@@ -155,36 +155,35 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     display: flex;
     gap: 0;
     margin-top: 32px;
-    align-items: stretch;
+    align-items: flex-start;
     border-radius: var(--r-md);
     overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
   }
-  /* 이미지: 35% 고정 */
+  /* 이미지: 15% 고정 */
   .cosmos-media-item:first-child {
-    flex: 0 0 35%;
-    max-width: 35%;
+    flex: 0 0 15%;
+    max-width: 15%;
     min-width: 0;
     overflow: hidden;
   }
-  /* 영상: 65% 차지 */
+  /* 영상: 85% 차지 */
   .cosmos-media-item:last-child {
-    flex: 0 0 65%;
-    max-width: 65%;
+    flex: 0 0 85%;
+    max-width: 85%;
     min-width: 0;
     overflow: hidden;
   }
-  /* 이미지-영상 사이 구분선 */
-  .cosmos-media-item + .cosmos-media-item {
-    border-left: 1px solid var(--border);
+  /* 이미지-영상 사이 구분선 없음 */
+  .cosmos-media-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
-  .cosmos-media-img,
   .cosmos-media-video {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
   }
   @media (max-width: 600px) {
     .cosmos-wrap { padding: 0 14px 40px; }
@@ -196,7 +195,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     /* 모바일: 이미지 숨김, 영상만 100% */
     .cosmos-media-item:first-child { display: none; }
     .cosmos-media-item:last-child { flex: 0 0 100%; max-width: 100%; }
-    .cosmos-media-item + .cosmos-media-item { border-left: none; }
+
   }
 
 
