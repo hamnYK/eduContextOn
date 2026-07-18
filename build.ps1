@@ -175,7 +175,7 @@ Write-Host "==========================================" -ForegroundColor Green
 
 # =========================================================
 # 6. GitHub Pages 자동 배포
-#    dist/ 내용을 로컬 Temp 경유 → main 브랜치 force push
+#    dist/ 내용을 로컬 Temp 경유 → gh-pages 브랜치 force push
 # =========================================================
 Write-Host " Starting Auto Deployment to GitHub Pages..." -ForegroundColor Cyan
 
@@ -219,9 +219,9 @@ try {
     $commitMsg = "deploy: eduContextOn Auto-build Deployment ($(Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))"
     & git commit -m "$commitMsg" | Out-Null
 
-    # main 브랜치로 force push
-    Write-Host "  -> Force pushing to Remote main branch..." -ForegroundColor Yellow
-    $pushResult = & git push -f "https://github.com/hamnYK/eduContextOn.git" master:main 2>&1
+    # gh-pages 브랜치로 force push
+    Write-Host "  -> Force pushing to Remote gh-pages branch..." -ForegroundColor Yellow
+    $pushResult = & git push -f "https://github.com/hamnYK/eduContextOn.git" master:gh-pages 2>&1
     Write-Host "  $pushResult" -ForegroundColor Gray
 
     Write-Host "==========================================" -ForegroundColor Green
