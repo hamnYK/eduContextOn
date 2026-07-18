@@ -15,6 +15,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+/* ── 전역 영상 보호: 우클릭 · 드래그 · PiP · 단축키 차단 ── */
+(function protectVideos() {
+  function applyVideoProtection(video) {
+    // 우클릭 메뉴 차단
+    video.addEventListener('contextmenu', (e) => e.preventDefault());
+    // 드래그 저장 차단
+    video.addEventListener('dragstart', (e) => e.preventDefault());
+    // Picture-in-Picture(PiP) 진입 차단
+    video.disablePictureInPicture = true;
+    video.addEventListener('enterpictureinpicture', (e) => {
+      document.exitPictureInPicture().catch(() => {});
+    });
+    // 영상 위 키보드 저장 단축키 차단 (S, U)
+    video.addEventListener('keydown', (e) => {
+      if (['s', 'S', 'u', 'U'].includes(e.key)) e.preventDefault();
+    });
+  }
+
+  // DOM 로드 후 기존 영상 전체 적용
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('video').forEach(applyVideoProtection);
+
+    // 동적으로 추가되는 영상도 감시
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((m) => {
+        m.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          if (node.tagName === 'VIDEO') applyVideoProtection(node);
+          node.querySelectorAll && node.querySelectorAll('video').forEach(applyVideoProtection);
+        });
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+})();
+
 /* ── Platform Node Entrance Animation ── */
 document.addEventListener('DOMContentLoaded', () => {
   const nodes = document.querySelectorAll('.pm-anim');
