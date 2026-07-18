@@ -1,0 +1,17 @@
+# Build output — 빌드 결과물 (GitHub에 올리지 않음)
+dist/
+
+# Jekyll 로컬 빌드 출력
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# OS 생성 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 에디터 설정
+.vscode/
+*.code-workspace

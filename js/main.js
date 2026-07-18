@@ -7,6 +7,14 @@ window.name = "worflogy_edu";
 
 /* ── Active nav item & Mobile sidebar (sidebar.js로 이관됨) ── */
 
+/* ── 전역 이미지 보호: 우클릭(탭에서 열기 / 이미지 복사) · 드래그 저장 차단 ── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('contextmenu', (e) => e.preventDefault());
+    img.addEventListener('dragstart',   (e) => e.preventDefault());
+  });
+});
+
 /* ── Platform Node Entrance Animation ── */
 document.addEventListener('DOMContentLoaded', () => {
   const nodes = document.querySelectorAll('.pm-anim');
