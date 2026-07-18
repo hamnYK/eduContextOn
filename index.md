@@ -150,39 +150,64 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     color: var(--text);
     margin: 0;
   }
-  /* ── 온톨로지 패러다임 미디어 (스크린 + 캐릭터 오버레이) ── */
-  .cosmos-media-row {
+  /* ── 온톨로지 워크플로우 영상 쿄케이스 ── */
+  .hero-video-showcase {
+    padding: 0 24px 60px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .hero-video-frame {
     position: relative;
-    margin-top: 32px;
-    border-radius: var(--r-md);
+    border-radius: 16px;
     overflow: hidden;
-    line-height: 0; /* 인라인 갭 방지 */
+    /* 감라스모피즘 테두리 */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 0 0 1px rgba(232, 97, 58, 0.18),
+      0 8px 32px rgba(0, 0, 0, 0.18),
+      0 2px 8px rgba(232, 97, 58, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    background: var(--surface);
+    line-height: 0;
   }
-  /* 영상: 스크린 역할, 전체 너비 */
-  .cosmos-media-item:last-child {
+  /* 상단 맥주 바 연출 */
+  .hero-video-frame::before {
+    content: '';
     display: block;
-    width: 100%;
+    height: 36px;
+    background: linear-gradient(135deg, #1a1f36 0%, #252b4a 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
-  /* 이미지: 영상 앞에 절대 위치 (캐릭터가 스크린 앞에 서있는 연출) */
-  .cosmos-media-item:first-child {
+  /* 맥주 도트 (OS 크롬 스타일) */
+  .hero-video-frame::after {
+    content: '';
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 20%;
-    z-index: 2;
+    top: 11px;
+    left: 14px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow: 19px 0 0 #ffbd2e, 38px 0 0 #27c93f;
     pointer-events: none;
   }
-  .cosmos-media-img {
+  .hero-video-showcase video {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
   }
-  .cosmos-media-video {
-    display: block;
-    width: 100%;
-    height: auto;
+  /* 테두리 그라데이션 워터마크 */
+  .hero-video-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(232, 97, 58, 0.07) 0%,
+      transparent 30%
+    );
+    z-index: 1;
   }
   @media (max-width: 600px) {
     .cosmos-wrap { padding: 0 14px 40px; }
@@ -190,14 +215,16 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     .cosmos-lead { padding: 16px 18px; gap: 14px; }
     .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
-    .cosmos-media-row { margin-top: 24px; }
-    /* 모바일: 이미지 숨김, 영상만 */
-    .cosmos-media-item:first-child { display: none; }
+    .hero-video-showcase { padding: 0 14px 40px; }
+    .hero-video-frame::before { height: 28px; }
+    .hero-video-frame::after { top: 8px; }
   }
 
 
 
+
 </style>
+
 
 <!-- ── 시맨틱 코스모스 (Bottom-Up 통합) ── -->
 <section class="section" id="semantic-cosmos" style="padding-top: 0; padding-bottom: 0;">
@@ -354,31 +381,6 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
         <p class="detail-explain" id="detail-explain">Gruber(1993)의 '공유된 개념화의 형식적·명시적 명세'를 워플로지가 동적으로 재해석한 개념입니다. 고정된 선언이 아닌, 전체론적 관점과 Weak Signal이 상시 작용하는 살아있는 지식 구조입니다. 노드를 클릭해 각 개념을 탐색해 보세요.</p>
       </div>
     </div>
-    <!-- 온톨로지 패러다임 이미지 + 비교 영상 나란히 -->
-    <div class="cosmos-media-row">
-      <div class="cosmos-media-item">
-        <img
-          src="{{ '/assets/new ontology paradigm.png' | relative_url }}"
-          alt="새로운 온톨로지 패러다임"
-          class="cosmos-media-img"
-        />
-      </div>
-      <div class="cosmos-media-item">
-        <video
-          class="cosmos-media-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          controlslist="nodownload nofullscreen noremoteplayback"
-          oncontextmenu="return false"
-          aria-label="온톨로지 비교 영상"
-        >
-          <source src="{{ '/assets/ontology comparison.mp4' | relative_url }}" type="video/mp4">
-        </video>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -532,6 +534,25 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     </div>
 
     <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="집, 나무, 사람" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto; position: relative; z-index: 1;" />
+  </div>
+
+  <!-- 온톨로지 워크플로우 영상 -->
+  <div class="hero-video-showcase" style="padding-bottom: 40px;">
+    <div class="hero-video-frame">
+      <div class="hero-video-glow" aria-hidden="true"></div>
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        controlslist="nodownload nofullscreen noremoteplayback"
+        oncontextmenu="return false"
+        aria-label="온톨로지 워크플로우 영상"
+      >
+        <source src="{{ '/assets/ontology workflow.mp4' | relative_url }}" type="video/mp4">
+      </video>
+    </div>
   </div>
 
   <!-- 온톨로지 & 시스템 다이내믹스 시각화 다이어그램 (일러스트 영역 내부 병합) -->
