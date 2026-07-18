@@ -150,35 +150,34 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     color: var(--text);
     margin: 0;
   }
-  /* ── 온톨로지 패러다임 미디어 행 ── */
+  /* ── 온톨로지 패러다임 미디어 (스크린 + 캐릭터 오버레이) ── */
   .cosmos-media-row {
-    display: flex;
-    gap: 0;
+    position: relative;
     margin-top: 32px;
-    align-items: flex-start;
     border-radius: var(--r-md);
     overflow: hidden;
+    line-height: 0; /* 인라인 갭 방지 */
   }
-  /* 이미지: 15% 고정 */
-  .cosmos-media-item:first-child {
-    flex: 0 0 15%;
-    max-width: 15%;
-    min-width: 0;
-    overflow: hidden;
-  }
-  /* 영상: 85% 차지 */
+  /* 영상: 스크린 역할, 전체 너비 */
   .cosmos-media-item:last-child {
-    flex: 0 0 85%;
-    max-width: 85%;
-    min-width: 0;
-    overflow: hidden;
+    display: block;
+    width: 100%;
   }
-  /* 이미지-영상 사이 구분선 없음 */
+  /* 이미지: 영상 앞에 절대 위치 (캐릭터가 스크린 앞에 서있는 연출) */
+  .cosmos-media-item:first-child {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    z-index: 2;
+    pointer-events: none;
+  }
   .cosmos-media-img {
     display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
   }
   .cosmos-media-video {
     display: block;
@@ -192,11 +191,10 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
     .cosmos-media-row { margin-top: 24px; }
-    /* 모바일: 이미지 숨김, 영상만 100% */
+    /* 모바일: 이미지 숨김, 영상만 */
     .cosmos-media-item:first-child { display: none; }
-    .cosmos-media-item:last-child { flex: 0 0 100%; max-width: 100%; }
-
   }
+
 
 
 </style>
