@@ -183,9 +183,10 @@ $OrigDir       = [System.IO.Directory]::GetCurrentDirectory()
 $TempDeployDir = [System.IO.Path]::Combine($env:TEMP, "educontexton_gh_deploy")
 
 # 시스템 경로 안전 가드
-if ($TempDeployDir -notlike "*educontexton_gh_deploy" -or
-    $TempDeployDir -like "*C:\Windows*" -or
-    $TempDeployDir -like "*System32*") {
+$pathIsUnsafe = ($TempDeployDir -notlike "*educontexton_gh_deploy") -or `
+                ($TempDeployDir -like "*C:\Windows*") -or `
+                ($TempDeployDir -like "*System32*")
+if ($pathIsUnsafe) {
     throw "Fatal: Path validation failed. Refusing to proceed to protect system files."
 }
 
