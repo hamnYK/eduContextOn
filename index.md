@@ -152,8 +152,8 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
   }
   /* ── 온톨로지 워크플로우 영상 쿄케이스 ── */
   .hero-video-showcase {
-    padding: 0 24px 60px;
-    max-width: 1040px;
+    padding: 0 0 40px;
+    max-width: 992px;
     margin: 0 auto;
   }
   .hero-video-frame {
@@ -537,7 +537,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
   </div>
 
   <!-- 온톨로지 워크플로우 영상 -->
-  <div class="hero-video-showcase" style="padding-bottom: 40px;">
+  <div class="hero-video-showcase">
     <div class="hero-video-frame">
       <div class="hero-video-glow" aria-hidden="true"></div>
       <video
