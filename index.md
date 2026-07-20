@@ -150,74 +150,57 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
     color: var(--text);
     margin: 0;
   }
-  /* ── 온톨로지 워크플로우 영상 쿄케이스 ── */
+  /* ── 온톨로지 워크플로우 영상 쇼케이스 ── */
   .hero-video-showcase {
     padding: 0 0 40px;
     max-width: 720px;
     margin: 0 auto;
   }
-  .hero-video-frame {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    /* 감라스모피즘 테두리 */
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
-      0 0 0 1px rgba(232, 97, 58, 0.18),
-      0 8px 32px rgba(0, 0, 0, 0.18),
-      0 2px 8px rgba(232, 97, 58, 0.10),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  .hero-video-card {
     background: var(--surface);
-    line-height: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
   }
-  /* 상단 맥주 바 연출 */
-  .hero-video-frame::before {
-    content: '';
-    display: block;
-    height: 36px;
-    background: linear-gradient(135deg, #1a1f36 0%, #252b4a 100%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  /* 카드 상단 레이블 바 */
+  .hero-video-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    background: var(--sand);
+    border-bottom: 1px solid var(--border-sand);
   }
-  /* 맥주 도트 (OS 크롬 스타일) */
-  .hero-video-frame::after {
-    content: '';
-    position: absolute;
-    top: 11px;
-    left: 14px;
-    width: 11px;
-    height: 11px;
+  .hero-video-card-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: #ff5f56;
-    box-shadow: 19px 0 0 #ffbd2e, 38px 0 0 #27c93f;
-    pointer-events: none;
+    background: var(--coral);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+  .hero-video-card-label {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: var(--fs-label, 12px);
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    line-height: 1;
   }
   .hero-video-showcase video {
     display: block;
     width: 100%;
     height: auto;
-  }
-  /* 테두리 그라데이션 워터마크 */
-  .hero-video-glow {
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      rgba(232, 97, 58, 0.07) 0%,
-      transparent 30%
-    );
-    z-index: 1;
+    line-height: 0;
   }
   @media (max-width: 600px) {
-    .cosmos-wrap { padding: 0 14px 40px; }
+    .cosmos-wrap { padding: 0 20px 40px; }
     .onto-diagram-section { padding: 20px 16px; }
     .cosmos-lead { padding: 16px 18px; gap: 14px; }
     .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
-    .hero-video-showcase { padding: 0 14px 40px; }
-    .hero-video-frame::before { height: 28px; }
-    .hero-video-frame::after { top: 8px; }
+    .hero-video-showcase { padding: 0 0 40px; }
   }
 
 
@@ -538,8 +521,11 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
 
   <!-- 온톨로지 워크플로우 영상 -->
   <div class="hero-video-showcase">
-    <div class="hero-video-frame">
-      <div class="hero-video-glow" aria-hidden="true"></div>
+    <div class="hero-video-card">
+      <div class="hero-video-card-header">
+        <span class="hero-video-card-dot" aria-hidden="true"></span>
+        <span class="hero-video-card-label">Ontology Workflow</span>
+      </div>
       <video
         autoplay
         muted

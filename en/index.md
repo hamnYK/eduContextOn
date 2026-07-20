@@ -153,11 +153,56 @@ og_locale: "en_US"
     margin: 0;
   }
   @media (max-width: 600px) {
-    .cosmos-wrap { padding: 0 14px 40px; }
+    .cosmos-wrap { padding: 0 20px 40px; }
     .onto-diagram-section { padding: 20px 16px; }
     .cosmos-lead { padding: 16px 18px; gap: 14px; }
     .cosmos-lead-quote { font-size: var(--fs-body-min, 13px); }
     .detail-panel { padding: 14px 16px; }
+    .hero-video-showcase { padding: 0 0 40px; }
+  }
+  /* ── Ontology Workflow Video Showcase ── */
+  .hero-video-showcase {
+    padding: 0 0 40px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero-video-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+  }
+  /* Card header label bar */
+  .hero-video-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    background: var(--sand);
+    border-bottom: 1px solid var(--border-sand);
+  }
+  .hero-video-card-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--coral);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+  .hero-video-card-label {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: var(--fs-label, 12px);
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    line-height: 1;
+  }
+  .hero-video-showcase video {
+    display: block;
+    width: 100%;
+    height: auto;
+    line-height: 0;
   }
 </style>
 
@@ -469,6 +514,28 @@ og_locale: "en_US"
     </div>
 
     <img src="{{ '/assets/house_tree_person.svg' | relative_url }}" alt="House, Tree, Person" style="width: 100%; max-width: 460px; height: auto; opacity: 0.95; display: block; margin: 0 auto; position: relative; z-index: 1;" />
+  </div>
+
+  <!-- Ontology Workflow Video -->
+  <div class="hero-video-showcase">
+    <div class="hero-video-card">
+      <div class="hero-video-card-header">
+        <span class="hero-video-card-dot" aria-hidden="true"></span>
+        <span class="hero-video-card-label">Ontology Workflow</span>
+      </div>
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        controlslist="nodownload nofullscreen noremoteplayback"
+        oncontextmenu="return false"
+        aria-label="Ontology Workflow Video"
+      >
+        <source src="{{ '/assets/ontology workflow.mp4' | relative_url }}" type="video/mp4">
+      </video>
+    </div>
   </div>
 
   <!-- Ontology & System Dynamics Visualization Diagram (Merged Inside Illustration Section) -->
