@@ -536,7 +536,7 @@ og_image: "https://contents.contextonai.com/assets/contexton_og_image.png"
         oncontextmenu="return false"
         aria-label="온톨로지 워크플로우 영상"
       >
-        <source src="{{ '/assets/ontology workflow.mp4' | relative_url }}" type="video/mp4">
+        <source src="{{ '/assets/ontology workflow more.mp4' | relative_url }}" type="video/mp4">
       </video>
     </div>
   </div>

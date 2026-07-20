@@ -533,7 +533,7 @@ og_locale: "en_US"
         oncontextmenu="return false"
         aria-label="Ontology Workflow Video"
       >
-        <source src="{{ '/assets/ontology workflow.mp4' | relative_url }}" type="video/mp4">
+        <source src="{{ '/assets/ontology workflow more.mp4' | relative_url }}" type="video/mp4">
       </video>
     </div>
   </div>
