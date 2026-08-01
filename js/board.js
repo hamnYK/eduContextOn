@@ -56,6 +56,11 @@
     sidebarLoading:    isEn ? 'Loading...'               : '불러오는 중...',
     sidebarEmpty:      isEn ? 'No posts yet.'            : '등록된 게시글이 없습니다.',
     sidebarLoadError:  isEn ? 'Failed to load.'          : '불러오기 실패',
+    labelImage:        isEn ? 'Image (optional)'           : '이미지 (선택)',
+    phImageBtn:        isEn ? 'Choose Image'               : '이미지 선택',
+    imageHint:         isEn ? 'Max 2MB · JPG, PNG, GIF, WEBP' : '최대 2MB · JPG, PNG, GIF, WEBP',
+    imageTooBig:       isEn ? 'Image must be under 2MB.'  : '이미지 파일은 2MB 이하여야 합니다.',
+    imageTypeError:    isEn ? 'Only image files are allowed.' : '이미지 파일만 첨부할 수 있습니다.',
   };
 
   // ─── XSS 방지 ────────────────────────────────────────────
@@ -129,6 +134,29 @@
               <span class="board-char-count">
                 <span id="board-content-count">0</span> / 2000
               </span>
+            </div>
+            <div class="board-form-row">
+              <label>${T.labelImage}</label>
+              <div class="board-image-upload">
+                <input type="file" id="board-input-image" name="image"
+                  accept="image/jpeg,image/png,image/gif,image/webp"
+                  class="board-image-input">
+                <label for="board-input-image" class="board-image-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                  </svg>
+                  ${T.phImageBtn}
+                </label>
+                <span class="board-image-hint">${T.imageHint}</span>
+              </div>
+              <div class="board-image-preview-wrap board-image-preview-wrap--hidden" id="board-image-preview-wrap">
+                <img id="board-image-preview" class="board-image-preview" src="" alt="preview">
+                <button type="button" class="board-image-remove" id="board-image-remove"
+                  aria-label="${isEn ? 'Remove image' : '이미지 삭제'}">✕</button>
+              </div>
             </div>
             <div class="board-form-actions">
               <button type="button" class="board-btn board-btn--secondary" id="board-write-cancel">${T.cancel}</button>
@@ -260,6 +288,19 @@
       : '';
 
     content.innerHTML = esc(post.content || '').replace(/\n/g, '<br>');
+
+    // ─── 이미지 렌더링 ───────────────────────────────────────
+    const existingImg = content.querySelector('.board-detail-image');
+    if (existingImg) existingImg.remove();
+    if (post.imageUrl && String(post.imageUrl).startsWith('https://')) {
+      const imgEl = document.createElement('img');
+      imgEl.src       = post.imageUrl;
+      imgEl.className = 'board-detail-image';
+      imgEl.alt       = esc(post.title || '');
+      imgEl.loading   = 'lazy';
+      content.insertBefore(imgEl, content.firstChild);
+    }
+
     showPanel('detail');
   }
 
@@ -276,17 +317,45 @@
     });
   }
 
-  // ─── 게시글 제출 ──────────────────────────────────────────
-  function handleWriteSubmit(e) {
+  // ─── FileReader → base64 Promise 헬퍼 ────────────────────
+  function readFileAsBase64(file) {
+    return new Promise(function (resolve, reject) {
+      const reader = new FileReader();
+      reader.onload  = function (ev) {
+        // data:[mime];base64,[data] 에서 순수 base64 부분만 추출
+        const base64 = ev.target.result.split(',')[1];
+        resolve(base64);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ─── 게시글 제출 (async) ──────────────────────────────────
+  async function handleWriteSubmit(e) {
     e.preventDefault();
     const title    = document.getElementById('board-input-title').value.trim();
     const author   = document.getElementById('board-input-author').value.trim();
     const category = document.getElementById('board-input-category').value.trim();
     const content  = document.getElementById('board-input-content').value.trim();
+    const fileInput = document.getElementById('board-input-image');
+    const imageFile = fileInput && fileInput.files[0] ? fileInput.files[0] : null;
 
     if (!title || !author || !content) {
       alert(T.validateRequired);
       return;
+    }
+
+    // ─── 이미지 유효성 검사 ───────────────────────────────────
+    if (imageFile) {
+      if (!imageFile.type.startsWith('image/')) {
+        alert(T.imageTypeError);
+        return;
+      }
+      if (imageFile.size > 2 * 1024 * 1024) {
+        alert(T.imageTooBig);
+        return;
+      }
     }
 
     // ─── 악성 스크립트 패턴 사전 차단 (서버 전송 전 2차 방어) ─
@@ -302,21 +371,45 @@
     submitBtn.disabled    = true;
     submitBtn.textContent = T.submitting;
 
-    fetch(WEB_APP_URL, {
-      method:  'POST',
-      mode:    'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ type: 'board', title, author, category, content })
-    })
-    .then(() => {
+    try {
+      // ─── 이미지 base64 변환 ─────────────────────────────────
+      let imageBase64  = '';
+      let imageMimeType = '';
+      if (imageFile) {
+        imageBase64   = await readFileAsBase64(imageFile);
+        imageMimeType = imageFile.type;
+      }
+
+      // ─── POST (Content-Type: text/plain → preflight 없이 응답 읽기 가능) ─
+      await fetch(WEB_APP_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body:    JSON.stringify({
+          type: 'board',
+          title,
+          author,
+          category,
+          content,
+          imageBase64,
+          imageMimeType,
+        }),
+      });
+
       document.getElementById('board-write-form').style.display = 'none';
       document.getElementById('board-write-success').classList.remove('board-success--hidden');
-    })
-    .catch(() => alert(T.submitError))
-    .finally(() => {
+
+      // ─── 폼 초기화 (다음 작성을 위해) ───────────────────────
+      if (fileInput) fileInput.value = '';
+      const previewWrap = document.getElementById('board-image-preview-wrap');
+      if (previewWrap) previewWrap.classList.add('board-image-preview-wrap--hidden');
+
+    } catch (err) {
+      console.error('[Board] submit error:', err);
+      alert(T.submitError);
+    } finally {
       submitBtn.disabled    = false;
       submitBtn.textContent = T.submit;
-    });
+    }
   }
 
   // ─── 사이드바 게시글 로드 ─────────────────────────────────
@@ -423,6 +516,34 @@
 
     document.getElementById('board-input-content').addEventListener('input', function () {
       document.getElementById('board-content-count').textContent = this.value.length;
+    });
+
+    // ─── 이미지 파일 선택 → 미리보기 ──────────────────────────
+    document.getElementById('board-input-image').addEventListener('change', function () {
+      const file     = this.files[0];
+      const wrap     = document.getElementById('board-image-preview-wrap');
+      const preview  = document.getElementById('board-image-preview');
+      if (!file) {
+        wrap.classList.add('board-image-preview-wrap--hidden');
+        preview.src = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        preview.src = ev.target.result;
+        wrap.classList.remove('board-image-preview-wrap--hidden');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // ─── 이미지 미리보기 삭제 버튼 ────────────────────────────
+    document.getElementById('board-image-remove').addEventListener('click', function () {
+      const fileInput = document.getElementById('board-input-image');
+      const wrap      = document.getElementById('board-image-preview-wrap');
+      const preview   = document.getElementById('board-image-preview');
+      fileInput.value = '';
+      preview.src     = '';
+      wrap.classList.add('board-image-preview-wrap--hidden');
     });
 
     loadSidebarPosts(openBoard);
