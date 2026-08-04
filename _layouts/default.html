@@ -1,0 +1,158 @@
+{% assign lang = page.lang | default: 'ko' %}<!DOCTYPE html>
+<html lang="{{ lang }}">
+  
+  {%- include head.html -%}
+
+  <body>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <a href="https://www.worflogy.com" target="worflogy_main" rel="opener"><img src="{{ '/assets/worflogy_logo.svg' | relative_url }}" alt="워플로지"></a>
+        <div class="sidebar-brand notranslate" translate="no">
+          <span class="brand-ko">주식회사 워플로지</span>
+          <span class="brand-en">Worflogy Inc.</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="{% if lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="nav-item{% if page.page_type != 'ontology' and page.url != '/en/' %} active{% endif %}">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>AI RISK
+        </a>
+
+
+        <a href="{% if lang == 'en' %}{{ '/en/' | relative_url }}{% endif %}#contact" class="nav-item">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>{% if lang == 'en' %}Contact{% else %}교육 문의{% endif %}
+        </a>
+        <div class="nav-divider"></div>
+        <a href="https://www.worflogy.com" class="nav-item nav-item--external" target="worflogy_main" rel="opener">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+          <span class="nav-item-label">{% if lang == 'en' %}Worflogy Home{% else %}워플로지 홈{% endif %}</span>
+          <svg class="nav-external-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </a>
+
+        <!-- 게시판 구분선 + 최신 글 목록 -->
+        <div class="nav-divider"></div>
+        <div class="sidebar-board-section">
+          <span class="sidebar-board-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/>
+            </svg>
+            {% if lang == 'en' %}Board{% else %}게시판{% endif %}
+          </span>
+          <ul id="sidebar-board-list" class="sidebar-board-list">
+            <li class="sidebar-board-loading">불러오는 중…</li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        {% if lang == 'en' %}© 2026 Worflogy Inc.<br />worflogy.com{% else %}© 2026 워플로지<br />worflogy.com{% endif %}
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main">
+      {% if page.page_type == 'ontology' %}
+      <div class="page-header static-header">
+        <h1 class="header-quote-text">&#8220;온톨로지는 공유된 개념화의 형식적이고 명시적인 명세다.&#8221;</h1>
+        <p class="header-quote-footer">— Tom Gruber, 1993</p>
+      </div>
+      {% else %}
+      <div class="page-header video-header">
+        <!-- 개념 영상 배경 -->
+        <video
+          class="header-video-bg"
+          src="{{ '/assets/worflogy_concept_film_market.mp4' | relative_url }}"
+          autoplay
+          muted
+          loop
+          playsinline
+          aria-hidden="true"
+          preload="auto"
+          controlslist="nodownload nofullscreen noremoteplayback"
+          oncontextmenu="return false"
+        ></video>
+        <!-- 오버레이: 텍스트 가독성 확보 -->
+        <div class="header-video-overlay" aria-hidden="true"></div>
+        <div class="section-label">contents.contextonai.com</div>
+        <h1 class="section-title">{% if lang == 'en' %}Contexton Contents{% else %}컨텍스톤 콘텐츠{% endif %}</h1>
+        <p class="section-desc">
+          {% if lang == 'en' %}
+            Evolve top-down static ontology design and inference rules into bottom-up dynamic ontology design and self-evolution
+          {% else %}
+            하향식 정적 온톨로지 설계와 추론 규칙을 상향식 동적 온톨로지 설계와 자생으로 진화
+          {% endif %}
+        </p>
+      </div>
+      {% endif %}
+
+      {{ content }}
+    </main>
+
+    <!-- General Contact Modal Backdrop -->
+    <div id="ir-modal-backdrop" class="ir-modal-backdrop">
+      <div class="ir-modal-content">
+        <div class="ir-modal-header">
+          <h3 class="ir-modal-title">{% if lang == 'en' %}Education Service Inquiry{% else %}교육 서비스 문의{% endif %}</h3>
+          <button type="button" id="close-ir-modal" class="ir-modal-close-btn" aria-label="{% if lang == 'en' %}Close modal{% else %}모달 닫기{% endif %}">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <form id="ir-proposal-form">
+          <div class="ir-form-group">
+            <label for="ir-name">{% if lang == 'en' %}Name{% else %}문의자 이름{% endif %}</label>
+            <input type="text" id="ir-name" name="name" required placeholder="{% if lang == 'en' %}Enter your full name{% else %}성함을 입력해 주세요{% endif %}" autocomplete="name" maxlength="50" />
+          </div>
+          <div class="ir-form-group">
+            <label for="ir-company">{% if lang == 'en' %}Company / Affiliation{% else %}회사명 / 소속{% endif %}</label>
+            <input type="text" id="ir-company" name="company" required placeholder="{% if lang == 'en' %}Enter your company or organization name{% else %}회사명 또는 기관명을 입력해 주세요{% endif %}" maxlength="100" />
+          </div>
+          <div class="ir-form-group">
+            <label for="ir-email">{% if lang == 'en' %}Email Address{% else %}이메일 주소{% endif %}</label>
+            <input type="email" id="ir-email" name="email" required placeholder="{% if lang == 'en' %}Enter email to receive reply{% else %}답변을 받으실 이메일을 입력해 주세요{% endif %}" autocomplete="email" maxlength="100" />
+          </div>
+          <div class="ir-form-group">
+            <label for="ir-message">{% if lang == 'en' %}Inquiry Details{% else %}문의 내용{% endif %}</label>
+            <textarea id="ir-message" name="message" required placeholder="{% if lang == 'en' %}Please describe details of your education service inquiry{% else %}교육 프로그램 도입 및 협업 문의 내용을 상세히 작성해 주세요{% endif %}" maxlength="3000"></textarea>
+          </div>
+          <div class="ir-modal-footer">
+            <button type="button" id="cancel-ir-modal" class="btn btn-outline">{% if lang == 'en' %}Cancel{% else %}취소{% endif %}</button>
+            <button type="submit" id="submit-ir-modal" class="btn btn-primary">{% if lang == 'en' %}Submit Inquiry{% else %}문의 제출하기{% endif %}</button>
+          </div>
+        </form>
+        <div id="ir-success-screen" class="ir-success-screen" style="display: none;">
+          <div class="ir-success-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+          </div>
+          <h4 class="ir-success-title">{% if lang == 'en' %}Submission Completed{% else %}문의 제출 완료{% endif %}</h4>
+          <p class="ir-success-desc">
+            {% if lang == 'en' %}Your education inquiry has been submitted successfully.<br>We will review your message and contact you shortly.{% else %}교육 서비스 문의가 성공적으로 접수되었습니다.<br>보내주신 문의 내용을 검토한 후 신속하게 연락드리겠습니다.{% endif %}
+          </p>
+          <button type="button" id="success-close-btn" class="btn btn-primary" style="border-radius: var(--r-sm);">{% if lang == 'en' %}OK{% else %}확인{% endif %}</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language Switcher -->
+    <script src="{{ '/js/language-switcher.js' | relative_url }}" defer></script>
+
+    <!-- Scripts -->
+    <script src="{{ '/js/config.js' | relative_url }}" defer></script>
+    <script src="{{ '/js/sidebar.js' | relative_url }}" defer></script>
+    <script src="{{ '/js/main.js' | relative_url }}"></script>
+    <script src="{{ '/js/modal.js' | relative_url }}"></script>
+    <script src="{{ '/js/contact.js' | relative_url }}" defer></script>
+  </body>
+</html>
