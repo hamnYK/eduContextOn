@@ -2312,6 +2312,23 @@
   white-space: pre-wrap;
   min-height: 80px;
 }
+.board-detail-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: block;
+  /* 이미지 다운로드 및 무단 수집 방지 */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 
 /* ================================================
    Board — 이미지 업로드 UI

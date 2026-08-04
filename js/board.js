@@ -298,6 +298,9 @@
       imgEl.className = 'board-detail-image';
       imgEl.alt       = esc(post.title || '');
       imgEl.loading   = 'lazy';
+      // 이미지 보호: 우클릭(컨텍스트 메뉴) 및 드래그 방지
+      imgEl.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+      imgEl.addEventListener('dragstart', function (e) { e.preventDefault(); });
       content.insertBefore(imgEl, content.firstChild);
     }
 
